@@ -23,22 +23,21 @@
 .button:hover {
   background: #eee;
 }
-.mid_container{
-  padding: .5rem 1rem;
+.mid_container {
+  padding: 0.5rem 1rem;
 }
-.list{
+.list {
   display: flex;
   justify-content: space-between;
   margin: 1rem 0;
-
 }
 .list figure,
-.list button{
-  margin:0
+.list button {
+  margin: 0;
 }
 .link {
-    font-size: 1.2rem;
-    text-align: center;
-    padding: 2rem;
-    background-color: #eeeeee;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 2rem;
+  background-color: #eeeeee;
 }
