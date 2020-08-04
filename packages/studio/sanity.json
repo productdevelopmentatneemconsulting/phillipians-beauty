@@ -1,11 +1,11 @@
 {
   "root": true,
   "project": {
-    "name": "PROJECT_NAME"
+    "name": "phillipians-beauty"
   },
   "api": {
-    "projectId": "PROJECT_ID",
-    "dataset": "DATASET_ID"
+    "projectId": "xmpcmhrn",
+    "dataset": "production"
   },
   "plugins": [
     "@sanity/base",

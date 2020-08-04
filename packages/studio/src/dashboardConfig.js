@@ -18,12 +18,12 @@ export default {
         data: [
           {
             title: 'GitHub repo',
-            value: 'REPO_URL',
+            value: 'https://github.com/productdevelopmentatneemconsulting/phillipians-beauty.git',
             category: 'Code'
           },
           {
             title: 'Frontend',
-            value: 'FRONTEND_URL',
+            value: 'http://friendly-banach-4b076d.netlify.app',
             category: 'apps'
           }
         ]
