@@ -1,6 +1,6 @@
 context("Header and Footer", () => {
   beforeEach(() => {
-    cy.visit("");
+    cy.visit("http://localhost:8000/");
   });
 
   describe("Header tests", () => {

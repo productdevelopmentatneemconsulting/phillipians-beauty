@@ -1,6 +1,7 @@
-context("Header and Footer", () => {
+context("Header and Footer Mobile Tests", () => {
   beforeEach(() => {
-    cy.visit("");
+    cy.viewport(375, 812); //iphone x
+    cy.visit("http://localhost:8000/");
   });
 
   describe("Header tests", () => {
@@ -8,8 +9,13 @@ context("Header and Footer", () => {
       cy.get("header")
         .find("div")
         .first()
-        .find("nav")
+        .find("span")
         .should("be.visible")
+        .contains("Toggle Navigation")
+        .parent()
+        .wait(1000)
+        .click()
+        .get("#nav")
         .find("ul")
         .should("contain", "Hair")
         .and("be.visible")

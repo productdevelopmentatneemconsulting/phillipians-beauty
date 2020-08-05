@@ -7,7 +7,9 @@
     "build": "GATSBY_INCREMENTAL_BUILD=true gatsby build --log-pages",
     "serve": "gatsby serve",
     "develop": "cross-env NODE_ENV=development && gatsby develop",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "cy:open": "cypress open",
+    "test:e2e": "start-server-and-test develop http://localhost:8000 cy:open"
   },
   "dependencies": {
     "beauty-portal-theme": "1.0.0",
