@@ -73,11 +73,11 @@ jobs:
         with:
           publish-dir: "packages/web/public"
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          production-branch: master
+          production-branch: develop
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_WEB_DEV_SITE_ID }}
-      - run: echo netlify URL ${{ steps.netlify-deploy.outputs.deploy-url }}
+      - run: echo netlify URL ${{ steps.netlify-deploy-develop.outputs.deploy-url }}
       - name: Deploy Web to Netlify Production Environment
         if: ${{ contains(github.ref, 'master') }}
         id: netlify-deploy
