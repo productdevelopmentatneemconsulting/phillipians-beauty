@@ -2,24 +2,24 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable import/no-unresolved */
 // eslint-disable-next-line no-unused-vars
-import React, { useState, useCallback } from 'react';
-import axios from 'axios';
-import qs from 'qs';
-import Dialog from 'part:@sanity/components/dialogs/fullscreen';
-import TextInput from 'part:@sanity/components/textinputs/default';
-import Button from 'part:@sanity/components/buttons/default';
-import Spinner from 'part:@sanity/components/loading/spinner';
+import React, { useState, useCallback } from 'react'
+import axios from 'axios'
+import qs from 'qs'
+import Dialog from 'part:@sanity/components/dialogs/fullscreen'
+import TextInput from 'part:@sanity/components/textinputs/default'
+import Button from 'part:@sanity/components/buttons/default'
+import Spinner from 'part:@sanity/components/loading/spinner'
 
-import { TabImage } from './TabImage';
-import styles from './TabAssetSource.css';
+import { TabImage } from './TabImage'
+import styles from './TabAssetSource.css'
 
 const SearchInput = ({ label, onChange, onEnter, value }) => {
   const onKeyPress = useCallback(
-    (event) => {
-      if (event.key === 'Enter') onEnter(event);
+    event => {
+      if (event.key === 'Enter') onEnter(event)
     },
     [onEnter]
-  );
+  )
 
   return (
     <div className={styles['c-search']}>
@@ -28,35 +28,35 @@ const SearchInput = ({ label, onChange, onEnter, value }) => {
         <TextInput onChange={onChange} onKeyPress={onKeyPress} value={value} />
       </label>
     </div>
-  );
-};
+  )
+}
 
 const TabImageSearch = ({ onClose, onSelect }) => {
   const [searchTerms, setSearchTerms] = useState({
     assetId: '',
-    search: '',
-  });
-  const [hasError, setHasError] = useState(false);
-  const [foundAssets, setFoundAssets] = useState();
-  const [loading, setLoading] = useState(false);
-  const [pageNumber, setPageNumber] = useState(1);
+    search: ''
+  })
+  const [hasError, setHasError] = useState(false)
+  const [foundAssets, setFoundAssets] = useState()
+  const [loading, setLoading] = useState(false)
+  const [pageNumber, setPageNumber] = useState(1)
 
   const onSearchTermChange = useCallback(
-    (key) => (val) => {
+    key => val => {
       setSearchTerms({
         ...searchTerms,
-        [key]: val.target.value,
-      });
+        [key]: val.target.value
+      })
     },
     [searchTerms, setSearchTerms]
-  );
+  )
 
   const onSearch = useCallback(
-    async (pageToFetch) => {
-      const searchButtonEvent = typeof pageToFetch !== 'number';
-      const page = searchButtonEvent ? 1 : pageToFetch;
+    async pageToFetch => {
+      const searchButtonEvent = typeof pageToFetch !== 'number'
+      const page = searchButtonEvent ? 1 : pageToFetch
       try {
-        setLoading(true);
+        setLoading(true)
         const resp = await axios.get(
           `https://qancgds6x3.execute-api.eu-west-1.amazonaws.com/staging/assets?${qs.stringify({
             ...(searchTerms.assetId && { assetID: searchTerms.assetId }),
@@ -74,25 +74,25 @@ const TabImageSearch = ({ onClose, onSelect }) => {
         )
 
         if (foundAssets && !searchButtonEvent) {
-          setFoundAssets({ ...resp.data, assets: [...foundAssets.assets, ...resp.data.assets] });
+          setFoundAssets({ ...resp.data, assets: [...foundAssets.assets, ...resp.data.assets] })
         } else {
-          setFoundAssets(resp.data);
+          setFoundAssets(resp.data)
         }
       } catch (err) {
-        setHasError(true);
+        setHasError(true)
       } finally {
-        setLoading(false);
+        setLoading(false)
       }
     },
     [searchTerms, pageNumber, foundAssets, setFoundAssets, setHasError, setLoading]
-  );
+  )
 
   const onIntersection = useCallback(() => {
-    if (pageNumber === foundAssets.numberOfPages) return;
+    if (pageNumber === foundAssets.numberOfPages) return
 
-    onSearch(pageNumber + 1);
-    setPageNumber(pageNumber + 1);
-  }, [onSearch, setPageNumber]);
+    onSearch(pageNumber + 1)
+    setPageNumber(pageNumber + 1)
+  }, [onSearch, setPageNumber])
 
   return (
     <Dialog title="Select image from TAB" onClose={onClose} isOpen>
@@ -129,12 +129,12 @@ const TabImageSearch = ({ onClose, onSelect }) => {
                     foundAssets.assets.length - 2 === index ? onIntersection : undefined
                   }
                 />
-              );
+              )
           })}
         {loading && <Spinner />}
       </div>
     </Dialog>
-  );
-};
+  )
+}
 
-export default TabImageSearch;
+export default TabImageSearch

@@ -1,11 +1,11 @@
 import { FaSlidersH } from 'react-icons/fa'
 
 export default {
-  name: 'articleSlider',
+  name: 'authorSlider',
   type: 'document',
   icon: FaSlidersH,
-  title: 'Article Slider',
-  description: 'Article slider for hero and tile user experiences ',
+  title: 'Author Slider',
+  description: 'Author slider for showing global editors & experts ',
   fields: [
     {
       name: 'name',
@@ -20,6 +20,12 @@ export default {
       description: 'Headline will be displayed on website'
     },
     {
+      name: 'description',
+      title: 'Description',
+      type: 'string',
+      description: 'Description will be displayed on website'
+    },
+    {
       name: 'slideType',
       title: 'Slide Type',
       type: 'reference',
@@ -32,11 +38,11 @@ export default {
       name: 'slides',
       type: 'array',
       title: 'Slides',
-      description: 'Add any article, image will be taken from the hero image',
+      description: 'Add list of authors',
       of: [
         {
           type: 'reference',
-          to: [{ type: 'howToArticle' }, { type: 'featureArticle' }, { type: 'galleryArticle' }]
+          to: [{ type: 'author' }]
         }
       ]
     },
