@@ -68,7 +68,7 @@ jobs:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
       - name: Deploy Web to Netlify Development Environment
         if: ${{ contains(github.ref, 'develop') }}
-        id: netlify-deploy
+        id: netlify-deploy-develop
         uses: nwtgck/actions-netlify@v1.1
         with:
           publish-dir: "packages/web/public"
