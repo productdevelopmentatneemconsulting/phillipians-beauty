@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { LandingSectionRendererInterface } from './models';
 import SanityArticleSlider from '../SanityArticleSlider';
 import SanityProductSlider from '../SanityProductSlider';
+import SanityAuthorSlider from '../SanityAuthorSlider';
 import SanityTextBlock from '../SanityTextBlock';
 import NewsletterBlock from '../NewsletterBlock';
 import SanityVideoBlock from '../SanityVideoBlock';
@@ -10,6 +11,7 @@ import ImageBlock from '../ImageBlock';
 const componentsMap = {
   SanityArticleSlider: SanityArticleSlider,
   SanityProductSlider: SanityProductSlider,
+  SanityAuthorSlider: SanityAuthorSlider,
   SanityTextBlock: SanityTextBlock,
   SanityNewsletterBlock: NewsletterBlock,
   SanityVideoBlock: SanityVideoBlock,

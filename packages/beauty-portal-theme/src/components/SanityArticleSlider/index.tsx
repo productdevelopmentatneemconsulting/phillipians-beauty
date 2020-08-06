@@ -8,6 +8,7 @@ import './styles.scss';
 
 const componentMap = {
   tile: ArticleTileSlider,
+  editor: ArticleTileSlider,
   hero: HeroSlider,
   stacker: TileStacker,
   default: TileStacker,
@@ -26,6 +27,7 @@ const SanityArticleSlider: FunctionComponent<SanityArticleSliderInterface> = ({
     sliderType = slideType.name.toLowerCase();
     if (sliderType.indexOf('hero') >= 0) return 'hero';
     if (sliderType.indexOf('tile') >= 0) return 'tile';
+    if (sliderType.indexOf('editor') >= 0) return 'editor';
     if (sliderType.indexOf('stacker') >= 0) return 'stacker';
 
     return 'default';
