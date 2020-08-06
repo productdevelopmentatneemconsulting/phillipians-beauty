@@ -12,17 +12,17 @@ const SanityTextBlock: FunctionComponent<SanityTextBlockInterface> = ({
   _rawTextBlockBody,
   textBlockType,
 }) => {
-  // const data = useStaticQuery(graphql`
-  //   query aboutSocialLinks {
-  //     brandInfo: sanityBrandInfo {
-  //       pinteresturl
-  //       twitterurl
-  //       youtubeurl
-  //       facebookurl
-  //       instaurl
-  //     }
-  //   }
-  // `);
+  const data = useStaticQuery(graphql`
+    query aboutSocialLinks {
+      brandInfo: sanityBrandInfo {
+        pinteresturl
+        twitterurl
+        youtubeurl
+        facebookurl
+        instaurl
+      }
+    }
+  `);
 
   const getComponentvariant = type => {
     return type
@@ -61,7 +61,7 @@ const SanityTextBlock: FunctionComponent<SanityTextBlockInterface> = ({
             <div className="bp-sectionFollow">
               <div className="bp-sectionFollowBlock">
                 <h3>Follow us</h3>
-                {/* {data && <SocialMenu links={data.brandInfo} />} */}
+                {data && <SocialMenu links={data.brandInfo} />}
               </div>
             </div>
           )}
