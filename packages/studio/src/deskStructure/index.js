@@ -106,6 +106,11 @@ export default () =>
                 .icon(FaSlidersH)
                 .schemaType('productSlider')
                 .child(S.documentTypeList('productSlider').title('Slider for products')),
+              S.listItem()
+                .title('Slider - Authors')
+                .icon(FaSlidersH)
+                .schemaType('authorSlider')
+                .child(S.documentTypeList('authorSlider').title('Slider for authors')),
               S.divider(),
               S.listItem()
                 .title('Text Block')
@@ -126,14 +131,6 @@ export default () =>
                 .child(S.documentTypeList('imageBlock').title('Image Block')),
               S.divider(),
               S.listItem()
-                .title('Before-After Image Block')
-                .icon(MdImage)
-                .schemaType('beforeAfterImageBlock')
-                .child(
-                  S.documentTypeList('beforeAfterImageBlock').title('Before-After Block Type')
-                ),
-              S.divider(),
-              S.listItem()
                 .title('Video Block')
                 .icon(MdVideocam)
                 .schemaType('videoBlock')
@@ -143,7 +140,13 @@ export default () =>
                 .title('Newsletter Block')
                 .icon(MdEmail)
                 .schemaType('newsletterBlock')
-                .child(S.documentTypeList('newsletterBlock').title('Newsletter Block'))
+                .child(S.documentTypeList('newsletterBlock').title('Newsletter Block')),
+              S.divider(),
+              S.listItem()
+                .title('Accordion Block')
+                .icon(MdEmail)
+                .schemaType('accordionBlock')
+                .child(S.documentTypeList('accordionBlock').title('Accordion Block'))
             ])
         ),
       S.listItem()
@@ -270,15 +273,6 @@ export default () =>
                         .schemaType('imageBlockType')
                         .child(S.documentTypeList('imageBlockType').title('Image Block Type')),
                       S.listItem()
-                        .title('Before-After Image Block Type')
-                        .icon(MdImage)
-                        .schemaType('beforeAfterImageBlockType')
-                        .child(
-                          S.documentTypeList('beforeAfterImageBlockType').title(
-                            'Before-After Block Type'
-                          )
-                        ),
-                      S.listItem()
                         .title('Video Block Type')
                         .icon(MdVideocam)
                         .schemaType('videoBlockType')
@@ -328,6 +322,7 @@ export default () =>
             'product',
             'sliderType',
             'articleSlider',
+            'authorSlider',
             'productSlider',
             'tool',
             'navigation',
@@ -348,8 +343,7 @@ export default () =>
             'newsletterBlock',
             'newsletterBlockType',
             'beforeAfterImage',
-            'beforeAfterImageBlock',
-            'beforeAfterImageBlockType'
+            'accordionBlock'
           ].includes(listItem.getId())
       )
       */

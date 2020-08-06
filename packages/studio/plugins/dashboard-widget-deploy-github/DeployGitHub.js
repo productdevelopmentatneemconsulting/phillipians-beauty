@@ -1,7 +1,7 @@
-import React, {useState, useEffect, useRef} from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import fetch from 'node-fetch'
 import styles from './DeployGitHub.css'
-function useInterval (callback, delay) {
+function useInterval(callback, delay) {
   const savedCallback = useRef()
   // Remember the latest callback.
   useEffect(() => {
@@ -9,7 +9,7 @@ function useInterval (callback, delay) {
   }, [callback])
   // Set up the interval.
   useEffect(() => {
-    function tick () {
+    function tick() {
       savedCallback.current()
     }
     if (delay !== null) {
@@ -30,8 +30,8 @@ const DeployGitHub = () => {
       'https://c2je1jc4ub.execute-api.eu-central-1.amazonaws.com/beta/stackbot/add-webhook/4d56f34f-80e6-438f-acb1-3272046a158f/productdevelopmentatneemconsulting/phillipians-beauty',
       {
         method: 'POST',
-        body: JSON.stringify({event_type: 'studio-build-deploy'}),
-        headers: {'Content-Type': 'application/json'}
+        body: JSON.stringify({ event_type: 'studio-build-deploy' }),
+        headers: { 'Content-Type': 'application/json' }
       }
     )
       .then(res => res.json())
@@ -47,13 +47,13 @@ const DeployGitHub = () => {
       'https://c2je1jc4ub.execute-api.eu-central-1.amazonaws.com/beta/stackbot/add-webhook/4d56f34f-80e6-438f-acb1-3272046a158f/productdevelopmentatneemconsulting/phillipians-beauty',
       {
         method: 'POST',
-        body: JSON.stringify({event_type: 'web-build-deploy'}),
-        headers: {'Content-Type': 'application/json'}
+        body: JSON.stringify({ event_type: 'web-build-deploy' }),
+        headers: { 'Content-Type': 'application/json' }
       }
     )
       .then(res => res.json())
       .then(() => {
-        setTimeout(() => setDeployingWeb(false), 180000)     
+        setTimeout(() => setDeployingWeb(false), 180000)
         setTimeout(() => setDisableWeb(false), 180000)
       })
   }
@@ -73,7 +73,9 @@ const DeployGitHub = () => {
             <figure>
               <img src="../../static/badge-studio.svg" />
               <figcaption>
-                <a href="https://github.com/productdevelopmentatneemconsulting/phillipians-beauty/actions?query=workflow%3A%22Studio+%7C+Build+and+Deploy%22">View Studio Deployment</a>
+                <a href="https://github.com/productdevelopmentatneemconsulting/phillipians-beauty/actions?query=workflow%3A%22Studio+%7C+Build+and+Deploy%22">
+                  View Studio Deployment
+                </a>
               </figcaption>
             </figure>
             <button
@@ -90,7 +92,9 @@ const DeployGitHub = () => {
             <figure>
               <img src="../../static/badge.svg" />
               <figcaption>
-                <a href="https://github.com/productdevelopmentatneemconsulting/phillipians-beauty/actions?query=workflow%3A%22Web+%7C+Build+and+Deploy%22">View Web Deployment</a>
+                <a href="https://github.com/productdevelopmentatneemconsulting/phillipians-beauty/actions?query=workflow%3A%22Web+%7C+Build+and+Deploy%22">
+                  View Web Deployment
+                </a>
               </figcaption>
             </figure>
             <div>

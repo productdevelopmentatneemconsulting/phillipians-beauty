@@ -1,7 +1,7 @@
 export default {
   widgets: [
     { name: 'structure-menu' },
-    { name: 'deploy-github', layout: { height: 'auto' , width: 'medium'} },
+    { name: 'deploy-github', layout: { height: 'auto', width: 'medium' } },
     { name: 'project-users', layout: { height: 'auto' } },
     {
       name: 'document-list',
