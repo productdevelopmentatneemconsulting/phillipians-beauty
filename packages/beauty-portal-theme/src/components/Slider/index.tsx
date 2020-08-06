@@ -245,40 +245,42 @@ const Slider: FunctionComponent<SliderInterface> = ({
 
   const renderHeroSlides = (slide, index) => (
     <SwiperSlide className="bp-slider_slide" key={slide.path}>
-      {slide.heroImage && (
-        <figure>
-          {index === 0 && (
-            <link
-              rel="preload"
-              as="image"
-              href={`${urlFor(slide._rawHeroImage)
-                .width(752)
-                .height(423)
-                .quality(80)
-                .fit('max')
-                .auto('format')
-                .url()
-                .toString()}`}
-            />
-          )}
-          <picture
-            className="bp-image__placeholder"
-            style={{
-              paddingTop: '56.25%',
-              background: `url(${slide._rawHeroImage.asset.metadata.lqip})`,
-              backgroundSize: 'cover',
-            }}
-          >
-            <img
-              className="bp-slider_image swiper-lazy"
-              data-srcset={`${urlFor(slide._rawHeroImage)
-                .width(414)
-                .height(232)
-                .fit('max')
-                .auto('format')
-                .quality(80)
-                .url()
-                .toString()} 414w,
+      <Link to={slide.path}>
+        {slide.heroImage && (
+          <>
+            <figure>
+              {index === 0 && (
+                <link
+                  rel="preload"
+                  as="image"
+                  href={`${urlFor(slide._rawHeroImage)
+                    .width(752)
+                    .height(423)
+                    .quality(80)
+                    .fit('max')
+                    .auto('format')
+                    .url()
+                    .toString()}`}
+                />
+              )}
+              <picture
+                className="bp-image__placeholder"
+                style={{
+                  paddingTop: '56.25%',
+                  background: `url(${slide._rawHeroImage.asset.metadata.lqip})`,
+                  backgroundSize: 'cover',
+                }}
+              >
+                <img
+                  className="bp-slider_image swiper-lazy"
+                  data-srcset={`${urlFor(slide._rawHeroImage)
+                    .width(414)
+                    .height(232)
+                    .fit('max')
+                    .auto('format')
+                    .quality(80)
+                    .url()
+                    .toString()} 414w,
                       ${urlFor(slide._rawHeroImage)
                         .width(540)
                         .height(303)
@@ -295,22 +297,32 @@ const Slider: FunctionComponent<SliderInterface> = ({
                         .auto('format')
                         .url()
                         .toString()} 752w`}
-              alt={slide.heroImage.alt}
-            />
-          </picture>
-        </figure>
-      )}
-      {type === 'hero' && (
-        <div className="bp-slider_copy">
-          <div className="bp-slider_copy-content">
-            <div className="bp-slider_copy-type">{slide._type}</div>
-            <h2 className="bp-slider_copy-title">{slide.headline}</h2>
-            <Link className="bp-slider_copy-cta" to={slide.path}>
-              Go to Article
-            </Link>
+                  alt={slide.heroImage.alt}
+                />
+              </picture>
+            </figure>
+            {slide.heroVideo && (
+              <span className="icon icon-play">
+                <PlayVideo />
+                <span hidden>Play Video</span>
+              </span>
+            )}
+          </>
+        )}
+        {type === 'hero' && (
+          <div className="bp-slider_copy">
+            <div className="bp-slider_copy-content">
+              <div className="bp-slider_copy-type">{slide._type}</div>
+              <h2 className="bp-slider_copy-title">
+                <span>{slide.headline}</span>
+              </h2>
+              <Link className="bp-slider_copy-cta" to={slide.path}>
+                Go to Article
+              </Link>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </Link>
     </SwiperSlide>
   );
   return (

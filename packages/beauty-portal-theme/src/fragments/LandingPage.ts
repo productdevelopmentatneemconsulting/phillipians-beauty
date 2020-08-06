@@ -196,6 +196,16 @@ export const query = graphql`
           name
         }
       }
+      ... on SanityTaxonomyBlock {
+        id
+        title: name
+        tags: taxonomyTags {
+          ... on SanityTag {
+            id
+            name
+          }
+        }
+      }
     }
   }
 `;
