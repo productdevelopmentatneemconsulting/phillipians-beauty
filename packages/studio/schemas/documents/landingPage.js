@@ -36,13 +36,9 @@ export default {
           type: 'reference',
           to: [
             { type: 'articleSlider' },
-<<<<<<< HEAD
-            { type: 'productSlider' },
-=======
             { type: 'authorSlider' },
             { type: 'productSlider' },
             { type: 'accordionBlock' },
->>>>>>> df627e8a8fcba5e31d299eae4ef5810f619228e8
             { type: 'textBlock' },
             { type: 'imageBlock' },
             { type: 'videoBlock' },
