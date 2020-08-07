@@ -176,6 +176,11 @@ export const query = graphql`
           }
         }
       }
+      ... on SanityAccordionBlock {
+        id
+        name
+        _rawTextBlockBody
+      }
     }
   }
 `;
