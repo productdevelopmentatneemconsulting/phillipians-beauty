@@ -1,5 +1,8 @@
 .bp-theme {
   &_primary {
     background-color: #b8f0c0;
+    &.editor {
+      background-color: #fff;
+    }
   }
 }

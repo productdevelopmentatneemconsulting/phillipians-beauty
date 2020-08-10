@@ -280,6 +280,18 @@
     }
   }
 
+  &_authorDescription {
+    font-size: 0.675rem;
+    color: white;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    @media (min-width: 768px) {
+      font-size: 0.925rem;
+    }
+  }
+
   .icon-play {
     width: 2.5rem;
     height: 2.5rem;

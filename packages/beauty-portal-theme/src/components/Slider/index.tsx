@@ -4,9 +4,12 @@ import SwiperCore, { Lazy } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useInView } from 'react-intersection-observer';
 import classNames from 'classnames';
+import BlockContent from '@sanity/block-content-to-react';
+import { blockTypeDefaultSerializers } from '../../helpers/sanity';
 import { SliderInterface } from './models';
 import { urlFor } from '../../helpers/imageUrl';
 import { ReactComponent as Next } from '../../images/icons/next.svg';
+import { ReactComponent as NextWhite } from '../../images/icons/next-white.svg';
 import { ReactComponent as PlayVideo } from '../../images/icons/play.svg';
 import './styles.scss';
 
@@ -112,6 +115,70 @@ const Slider: FunctionComponent<SliderInterface> = ({
             <h3 className="bp-slider_caption">
               <span>{slide.headline}</span>
             </h3>
+          </Link>
+        </div>
+      </SwiperSlide>
+    );
+  };
+
+  const renderAuthorSlides = slide => {
+    return (
+      <SwiperSlide key={slide.headline}>
+        <div>
+          <Link className="bp-slider_link" to={slide.path}>
+            <div className="bp-slider_heroImage">
+              <figure>
+                {inView ? (
+                  <picture
+                    className="bp-image__placeholder"
+                    style={{
+                      paddingTop: '100%',
+                    }}
+                  >
+                    <source
+                      media="screen and (min-width: 560px)"
+                      srcSet={`${urlFor(slide._rawImage)
+                        .width(280)
+                        .height(280)
+                        .fit('max')
+                        .auto('format')
+                        .url()
+                        .toString()}`}
+                    />
+                    <source
+                      media="screen and (min-width: 320px)"
+                      srcSet={`${urlFor(slide._rawImage)
+                        .width(160)
+                        .height(160)
+                        .fit('max')
+                        .auto('format')
+                        .url()
+                        .toString()}`}
+                    />
+                    <img
+                      className="bp-slider_image"
+                      src={urlFor(slide._rawImage)
+                        .width(280)
+                        .height(280)
+                        .fit('max')
+                        .url()}
+                      alt={slide.image.alt}
+                    />
+                  </picture>
+                ) : null}
+              </figure>
+            </div>
+            <h3 className="bp-slider_caption">
+              <span>{slide.name}</span>
+            </h3>
+            {slide._rawBio && (
+              <p className="bp-slider_authorDescription">
+                <BlockContent
+                  blocks={slide._rawBio}
+                  serializers={blockTypeDefaultSerializers}
+                />
+              </p>
+            )}
           </Link>
         </div>
       </SwiperSlide>
@@ -271,7 +338,7 @@ const Slider: FunctionComponent<SliderInterface> = ({
           onClick={swiperNext}
           disabled={isLastSlide}
         >
-          <Next />
+          {type === 'author' ? <NextWhite /> : <Next />}
           <span className="srOnly">Next</span>
         </button>
         <Swiper
@@ -291,6 +358,8 @@ const Slider: FunctionComponent<SliderInterface> = ({
               ? renderHeroSlides(slide, index)
               : type === 'tile'
               ? renderTileSlides(slide)
+              : type === 'author'
+              ? renderAuthorSlides(slide)
               : renderProductSlides(slide);
           })}
         </Swiper>
