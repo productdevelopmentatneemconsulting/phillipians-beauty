@@ -231,7 +231,9 @@ const Slider: FunctionComponent<SliderInterface> = ({
                       alt={slide.image.alt}
                     />
                   </picture>
-                ) : null}
+                ) : (
+                  <span>Paras</span>
+                )}
               </figure>
             </div>
             <h3 className="bp-slider_caption">

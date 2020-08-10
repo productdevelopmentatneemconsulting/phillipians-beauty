@@ -120,8 +120,14 @@ figure img {
     max-width: 1160px;
   }
 }
+.pr10 {
+  padding-right: 10px;
+}
 .mb20 {
   margin-bottom: 20px;
+}
+.mr20 {
+  margin-right: 20px;
 }
 .p0 {
   padding: 0;
