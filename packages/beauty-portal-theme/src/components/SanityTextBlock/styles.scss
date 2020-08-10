@@ -15,6 +15,7 @@
     line-height: 1.1;
     margin-top: 0;
     margin-bottom: 10px;
+    text-align: center;
 
     @media (min-width: 768px) {
       font-size: 2.875rem;
@@ -27,7 +28,7 @@
     color: #333;
 
     p {
-      font-size: .875rem;
+      font-size: 0.875rem;
       margin: 0;
 
       @media (min-width: 768px) {
@@ -77,7 +78,7 @@
         position: absolute;
         top: -10px;
         left: 50%;
-        content: "";
+        content: '';
         background-image: url('./quote-left.svg');
         background-repeat: no-repeat;
         background-size: 30px 30px;
@@ -91,7 +92,7 @@
 
       &::after {
         position: absolute;
-        content: "";
+        content: '';
         top: 8px;
         left: 50%;
         transform: translateX(-50%);
@@ -109,6 +110,53 @@
     p {
       width: 80%;
       margin: auto;
+    }
+  }
+  &.typeb {
+    background-color: #f8e6de;
+
+    svg {
+      fill: #000;
+    }
+
+    p {
+      text-align: left;
+    }
+
+    .bp-aboutContainer {
+      display: flex;
+      flex-wrap: wrap;
+      @media (min-width: 768px) {
+        display: flex;
+        flex-wrap: nowrap;
+      }
+
+      & h1 {
+        text-align: center;
+      }
+
+      & div {
+        width: 100%;
+        @media (min-width: 768px) {
+          margin: 10px;
+          padding: 10px;
+        }
+      }
+
+      .bp-sectionFollow {
+        .bp-sectionFollowBlock {
+          background: #fff;
+          padding: 1rem 2rem;
+        }
+
+        h3 {
+          font-size: 1.875rem;
+          @media (min-width: 768px) {
+            margin-bottom: 1rem !important;
+            margin-left: 1rem !important;
+          }
+        }
+      }
     }
   }
 }

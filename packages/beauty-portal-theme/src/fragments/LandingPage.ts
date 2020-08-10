@@ -137,6 +137,36 @@ export const query = graphql`
           name
         }
       }
+      ... on SanityAuthorSlider {
+        id
+        name
+        headline
+        description
+        slideType {
+          name
+        }
+        slides {
+          _type
+          name
+          _rawBio(resolveReferences: { maxDepth: 10 })
+          image {
+            asset {
+              url
+            }
+            alt
+          }
+          _rawImage(resolveReferences: { maxDepth: 10 })
+          slug {
+            current
+          }
+        }
+        searchCtaLabel
+        searchTags {
+          tagCategory {
+            name
+          }
+        }
+      }
       ... on SanityTextBlock {
         id
         name
@@ -175,6 +205,11 @@ export const query = graphql`
             name
           }
         }
+      }
+      ... on SanityAccordionBlock {
+        id
+        name
+        _rawTextBlockBody
       }
     }
   }

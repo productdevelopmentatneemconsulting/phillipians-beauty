@@ -1,0 +1,45 @@
+.bp-section {
+  background-color: white;
+  margin: 'auto';
+  padding-top: 1rem;
+  border-top: 1px solid black;
+  &_button {
+    width: 100%;
+    border: none;
+    position: relative;
+    overflow: visible;
+    background-color: transparent;
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-align: left;
+    letter-spacing: inherit;
+    cursor: pointer;
+  }
+}
+.bp-accordion {
+  cursor: pointer;
+  overflow: hidden;
+  &_header {
+    display: flex;
+    justify-content: space-between;
+    &_up {
+      transition: all 0.2s;
+      transform: rotate(0deg);
+    }
+    &_down {
+      transition: all 0.2s;
+      transform: rotate(180deg);
+    }
+  }
+  &_contentCollapse {
+    max-height: 0;
+    overflow: hidden;
+    font-weight: normal;
+    transition: max-height 0.3s;
+  }
+  &_contentExpand {
+    font-weight: normal;
+    max-height: 100vh;
+    transition: max-height 0.3s;
+  }
+}
