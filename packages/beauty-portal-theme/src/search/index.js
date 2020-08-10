@@ -195,42 +195,46 @@ const Search = props => {
           <section className="search-container-results">
             <header className="search-container-header search-container-options">
               {props.filterProducts !== 'true' && (
-                <SortBy
+                <label aria-label="sort by date">
+                  Sort by{' '}
+                  <SortBy
+                    className="search-container-option"
+                    defaultRefinement={props.indices[0].name}
+                    items={[
+                      { label: 'Default', value: 'howtoArticle' },
+                      {
+                        label: 'Latest',
+                        value: 'howtoArtcile_publishedAt_desc',
+                      },
+                      {
+                        label: 'Oldest',
+                        value: 'howtoArtcile_publishedAt_asc',
+                      },
+                    ]}
+                  />
+                </label>
+              )}
+              <label aria-label="hits per page">
+                Hits per page{' '}
+                <HitsPerPage
                   className="search-container-option"
-                  aria-label="sort by date"
-                  defaultRefinement={props.indices[0].name}
                   items={[
-                    { label: 'Sort by Date', value: 'howtoArticle' },
                     {
-                      label: 'Latest',
-                      value: 'howtoArtcile_publishedAt_desc',
+                      label: '9 hits',
+                      value: 9,
                     },
                     {
-                      label: 'Oldest',
-                      value: 'howtoArtcile_publishedAt_asc',
+                      label: '18 hits',
+                      value: 18,
+                    },
+                    {
+                      label: '27 hits',
+                      value: 27,
                     },
                   ]}
+                  defaultRefinement={9}
                 />
-              )}
-              <HitsPerPage
-                className="search-container-option"
-                aria-label="hits per page"
-                items={[
-                  {
-                    label: '9 hits per page',
-                    value: 9,
-                  },
-                  {
-                    label: '18 hits per page',
-                    value: 18,
-                  },
-                  {
-                    label: '27 hits per page',
-                    value: 27,
-                  },
-                ]}
-                defaultRefinement={9}
-              />
+              </label>
             </header>
 
             <div className="grid">
