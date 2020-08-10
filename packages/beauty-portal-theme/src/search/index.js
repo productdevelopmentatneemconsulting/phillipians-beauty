@@ -197,6 +197,7 @@ const Search = props => {
               {props.filterProducts !== 'true' && (
                 <SortBy
                   className="search-container-option"
+                  aria-label="sort by date"
                   defaultRefinement={props.indices[0].name}
                   items={[
                     { label: 'Sort by Date', value: 'howtoArticle' },
@@ -213,6 +214,7 @@ const Search = props => {
               )}
               <HitsPerPage
                 className="search-container-option"
+                aria-label="hits per page"
                 items={[
                   {
                     label: '9 hits per page',

@@ -6,16 +6,15 @@ import './styles.scss';
 const Autocomplete = ({ hits, currentRefinement, refine }) => (
   <ul className="react-autosuggest__suggestions-container--open">
     <li>
-      <form>
-        <input
-          type="search"
-          value={currentRefinement}
-          className="react-autosuggest__input"
-          placeholder="Search here..."
-          aria-label="Search articles, products & many more"
-          onChange={event => refine(event.currentTarget.value)}
-        />
-      </form>
+      <input
+        type="search"
+        value={currentRefinement}
+        className="react-autosuggest__input"
+        placeholder="Search here..."
+        aria-label="Search articles, products & many more"
+        aria-labelledby="Search"
+        onChange={event => refine(event.currentTarget.value)}
+      />
     </li>
     <ul className="react-autosuggest__suggestions-list">
       {hits.map(hit => (
