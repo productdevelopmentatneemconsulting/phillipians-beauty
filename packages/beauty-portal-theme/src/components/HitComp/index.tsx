@@ -29,15 +29,15 @@ const PostHit = ({ hit }) => {
                 }}
               >
                 <source
-                  media="(min-width: 800px)"
-                  srcSet={`${image.asset.url}?q=80&w=248&h=248&fit=crop&auto=format 1x, ${image.asset.url}?q=80&w=248&h=248&fit=crop&auto=format&dpr=2 2x`}
+                  media="(max-width: 799px)"
+                  srcset={image.asset.fluid.srcWebp}
                 />
                 <source
-                  media="(max-width: 799px)"
-                  srcSet={`${image.asset.url}?q=80&w=180&h=180&fit=crop&auto=format 1x, ${image.asset.url}?q=80&w=180&h=180&fit=crop&auto=format&dpr=2 2x`}
+                  media="(min-width: 800px)"
+                  srcset={image.asset.fluid.srcWebp}
                 />
                 <img
-                  src={`${image.asset.url}`}
+                  src={image.asset.fluid.src}
                   loading="lazy"
                   alt={image.alt}
                 />

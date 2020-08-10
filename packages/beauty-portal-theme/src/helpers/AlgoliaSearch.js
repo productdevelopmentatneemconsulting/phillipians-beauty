@@ -20,7 +20,7 @@ const howToArticleQuery = `{
         subtitle:subheading
         image: heroImage{asset {
         url
-        fluid(maxWidth: 140, maxHeight: 140) {
+        fluid(maxWidth: 240, maxHeight: 240) {
           aspectRatio
           base64
           sizes
@@ -62,7 +62,7 @@ const galleryArticleQuery = `{
         subtitle:subheading
         image: heroImage{asset {
         url
-        fluid(maxWidth: 140, maxHeight: 140) {
+        fluid(maxWidth: 240, maxHeight: 240) {
           aspectRatio
           base64
           sizes
@@ -99,7 +99,7 @@ const featureArticleQuery = `{
         subtitle:subheading
         image: heroImage{asset {
         url
-        fluid(maxWidth: 140, maxHeight: 140) {
+        fluid(maxWidth: 240, maxHeight: 240) {
           aspectRatio
           base64
           sizes
@@ -138,7 +138,7 @@ const productQuery = `{
         image: image{
       asset {
         url
-        fluid(maxWidth: 140, maxHeight: 140) {
+        fluid(maxWidth: 240, maxHeight: 240) {
           aspectRatio
           base64
           sizes
