@@ -14,7 +14,7 @@ const PostHit = ({ hit }) => {
     <article ref={ref} data-inview={inView}>
       <Link
         className={'ais-InfiniteHits-item__link'}
-        to={`/${path}/`}
+        to={path}
         aria-label={title}
       >
         <div className="image-wrapper">

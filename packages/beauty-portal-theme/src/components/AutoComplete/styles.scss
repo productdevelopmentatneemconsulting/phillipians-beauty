@@ -47,6 +47,7 @@
   overflow-y: auto;
   width: 740px;
   background-color: #fff;
+  border: 1px solid #ccc;
   border-top-width: 0;
   z-index: 100;
   @media (max-width: 899px) {
@@ -54,6 +55,7 @@
   }
   li {
     list-style: none outside none;
+    border-bottom: 1px solid #ccc;
     &:first-child {
       a {
         border-top: 1px solid lightgray;
