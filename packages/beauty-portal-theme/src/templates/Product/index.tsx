@@ -1,162 +1,70 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
-import { useInView } from 'react-intersection-observer';
+import { graphql } from 'gatsby';
+
+import OGTags from '../../components/OGTags';
+import Breadcrumb from '../../components/Breadcrumb';
+import ImageBlock from '../../components/ImageBlock';
+import Product from '../../components/Product';
+import SanityArticleSlider from '../../components/SanityArticleSlider';
+import Tags from '../../components/Tags';
 import SEO from '../../components/Seo';
 import Layout from '../../components/Layout';
-import Breadcrumb from '../../components/Breadcrumb';
-import Tags from 'src/components/Tags';
-import RichText from 'src/components/RichText';
-import { urlFor } from '../../helpers/imageUrl';
-import './styles.scss';
+import SanityProductSlider from 'src/components/SanityProductSlider';
 
 const ProductPage = (props: ProductPageProps) => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    rootMargin: '0px 0px',
-  });
   const {
     data: {
       page,
       products: { nodes: productNodes },
+      articles: { nodes: articlesList },
+      brandInfo,
+      imageBlock,
     },
   } = props;
 
   page.seo = page.seo || {};
-
   return (
     <Layout>
       <SEO
-        lang={'en-us'}
-        title={page.name}
-        description={page.description}
-        keywords={page.keywords}
+        lang={'tl-ph'}
+        title={page.seo.metaTitle}
+        description={page.seo.metaDescription}
+        keywords={page.seo.metaKeywords}
       />
-      <Breadcrumb tag={page.tags[0]} pageTitle={page.name} />
-      <div className="bp-container">
-        <div className="bp-productDetail">
-          <div className="col-container">
-            <div className="col col-6">
-              <div className="bp-productDetail_image">
-                <>
-                  <link
-                    rel="preload"
-                    as="image"
-                    href={`${urlFor(page._rawImage)
-                      .width(500)
-                      .height(500)
-                      .fit('crop')
-                      .auto('format')
-                      .quality(80)
-                      .url()
-                      .toString()}`}
-                  />
-                  <figure>
-                    <picture
-                      className="bp-image__placeholder"
-                      style={{
-                        paddingTop: `100%`,
-                        background: `url(${page._rawImage.asset.metadata.lqip})`,
-                        backgroundSize: 'cover',
-                      }}
-                    >
-                      <img
-                        className="bp-slider_image"
-                        srcSet={`${urlFor(page._rawImage)
-                          .width(500)
-                          .height(500)
-                          .fit('crop')
-                          .auto('format')
-                          .quality(80)
-                          .url()
-                          .toString()} 500w`}
-                        src={`${urlFor(page._rawImage)
-                          .width(500)
-                          .height(500)
-                          .quality(80)
-                          .fit('crop')
-                          .auto('format')
-                          .url()
-                          .toString()}`}
-                        alt={page._rawImage.alt}
-                      />
-                    </picture>
-                  </figure>
-                </>
-              </div>
-            </div>
-            <div className="col col-6">
-              <h1 className="bp-productDetail_title h1">{page.name}</h1>
-              <div className="bp-productDetail_desc">
-                {page._rawMarketingDescription && (
-                  <RichText data={page._rawMarketingDescription} />
-                )}
-              </div>
-              <div className="bp-productDetail_usage">
-                {page._rawUsageDetails && (
-                  <RichText data={page._rawUsageDetails} />
-                )}
-              </div>
-              <div className="bp-productDetail_ingredients">
-                {page._rawIngredients && (
-                  <RichText data={page._rawIngredients} />
-                )}
-              </div>
-            </div>
-          </div>
+      <OGTags type={'page'} slug={page.path} data={page} />
+      {page.path !== '/' && <Breadcrumb pageTitle={page.name} />}
+      <Product product={page} metaInfo={{ brandInfo }} />
+      {productNodes.length && (
+        <SanityProductSlider
+          slides={productNodes}
+          headline="Products You Might Also Like"
+          name=""
+        />
+      )}
+      {imageBlock && (
+        <ImageBlock
+          name={imageBlock.name}
+          _rawImage={imageBlock._rawImage}
+          _rawTextBlockBody={imageBlock._rawTextBlockBody}
+          url={imageBlock.url}
+          imageBlockType={imageBlock.imageBlockType}
+        />
+      )}
+      {articlesList.length > 0 && (
+        <SanityArticleSlider
+          name="articles"
+          slides={articlesList}
+          headline="Our Tips & Advice"
+          slideType={{ name: 'tile' }}
+          searchTags={page.tags}
+          searchCtaLabel="See All Articles"
+        />
+      )}
+      {page.tags.length && (
+        <div className="bp-container">
+          <Tags title="Find something else" data={page.tags} />
         </div>
-        <div className="bp-related_products" ref={ref} data-inview={inView}>
-          <h2 className="bp-related_products-title mb20">
-            More Products We Love
-          </h2>
-          {inView && (
-            <div className="col-container">
-              {productNodes.map(item => (
-                <div className="col col-3" key={item.name + item.id}>
-                  <Link className="link txt-bold txt-center" to={item.path}>
-                    <div>
-                      <figure>
-                        <picture
-                          className="bp-image__placeholder"
-                          style={{
-                            paddingTop: `100%`,
-                            background: `url(${item._rawImage.asset.metadata.lqip})`,
-                            backgroundSize: 'cover',
-                          }}
-                        >
-                          <img
-                            className="bp-slider_image"
-                            srcSet={`${urlFor(item._rawImage)
-                              .width(500)
-                              .height(500)
-                              .fit('crop')
-                              .auto('format')
-                              .quality(80)
-                              .url()
-                              .toString()} 250w`}
-                            src={`${urlFor(item._rawImage)
-                              .width(500)
-                              .height(500)
-                              .quality(80)
-                              .fit('crop')
-                              .auto('format')
-                              .url()
-                              .toString()}`}
-                            alt={item._rawImage.alt}
-                          />
-                        </picture>
-                      </figure>
-                    </div>
-                    <p>{item.name}</p>
-                  </Link>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-        {page.tags.length > 0 && (
-          <Tags data={page.tags} title={'Find something else'} />
-        )}
-      </div>
+      )}
     </Layout>
   );
 };
@@ -164,18 +72,79 @@ const ProductPage = (props: ProductPageProps) => {
 export default ProductPage;
 
 export const query = graphql`
-  query($slug: String!, $tags: [String!], $id: [String!]) {
+  query($slug: String!, $tags: [String!]) {
     products: allSanityProduct(
-      filter: { tags: { elemMatch: { name: { in: $tags } } }, id: { nin: $id } }
-      limit: 3
-      sort: { fields: _createdAt, order: DESC }
+      filter: {
+        tags: { elemMatch: { name: { in: $tags } } }
+        id: { nin: [$slug] }
+      }
     ) {
       nodes {
         ...ProductFieldsTile
       }
     }
+
     page: sanityProduct(id: { eq: $slug }) {
       ...ProductFieldsFull
+      tags {
+        name
+        tagCategory {
+          name
+        }
+      }
+    }
+    articles: allSanityHowToArticle(
+      filter: {
+        tags: { elemMatch: { name: { in: $tags } } }
+        id: { nin: [$slug] }
+      }
+      limit: 10
+      sort: { fields: _createdAt, order: DESC }
+    ) {
+      nodes {
+        ...HowToFieldsTile
+      }
+    }
+    tags: allSanityTag(limit: 6) {
+      nodes {
+        id
+        tagCategory {
+          id
+          name
+        }
+        name
+      }
+    }
+    imageBlock: sanityImageBlock {
+      id
+      name
+      _rawImage(resolveReferences: { maxDepth: 10 })
+      image {
+        asset {
+          fluid {
+            base64
+            aspectRatio
+            src
+            srcSet
+            srcWebp
+            srcSetWebp
+            sizes
+          }
+        }
+      }
+      _rawTextBlockBody
+      url
+      imageBlockType {
+        id
+        name
+      }
+    }
+    brandInfo: sanityBrandInfo {
+      pinteresturl
+      twitterurl
+      youtubeurl
+      facebookurl
+      instaurl
     }
   }
 `;
@@ -184,6 +153,9 @@ interface ProductPageProps {
   data: {
     page: any;
     products: any;
+    articles: any;
+    brandInfo: any;
+    imageBlock: any;
   };
   pageContext: {
     slug: string;
