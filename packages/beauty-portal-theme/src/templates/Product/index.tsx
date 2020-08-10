@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 import OGTags from '../../components/OGTags';
 import Breadcrumb from '../../components/Breadcrumb';
 import ImageBlock from '../../components/ImageBlock';
-import Product from '../../components/Product';
+import ProductDetails from '../../components/ProductDetail';
 import SanityArticleSlider from '../../components/SanityArticleSlider';
 import Tags from '../../components/Tags';
 import SEO from '../../components/Seo';
@@ -33,7 +33,7 @@ const ProductPage = (props: ProductPageProps) => {
       />
       <OGTags type={'page'} slug={page.path} data={page} />
       {page.path !== '/' && <Breadcrumb pageTitle={page.name} />}
-      <Product product={page} metaInfo={{ brandInfo }} />
+      <ProductDetails product={page} metaInfo={{brandInfo}}/>
       {productNodes.length && (
         <SanityProductSlider
           slides={productNodes}
