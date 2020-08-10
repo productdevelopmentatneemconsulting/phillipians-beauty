@@ -4,19 +4,19 @@ import { Highlight, connectAutoComplete } from 'react-instantsearch-dom';
 import './styles.scss';
 
 const Autocomplete = ({ hits, currentRefinement, refine }) => (
-  <ul className="react-autosuggest__suggestions-container--open">
+  <ul className="suggestions-container">
     <li>
       <input
         type="search"
         value={currentRefinement}
-        className="react-autosuggest__input"
+        className="suggestions-input"
         placeholder="Search here..."
         aria-label="Search articles, products & many more"
         aria-labelledby="Search"
         onChange={event => refine(event.currentTarget.value)}
       />
     </li>
-    <ul className="react-autosuggest__suggestions-list">
+    <ul className="suggestions-list">
       {hits.map(hit => (
         <li
           style={

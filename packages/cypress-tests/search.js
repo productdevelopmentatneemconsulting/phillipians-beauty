@@ -5,7 +5,9 @@ context("Search results tests", () => {
 
   describe("Search tests", () => {
     it("Looking for search field", () => {
-      cy.find("input").type("hair{enter}");
+      cy.get(".suggestions-container")
+        .find("input")
+        .type("hair{enter}");
     });
   });
 });

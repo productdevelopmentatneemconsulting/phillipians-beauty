@@ -1,4 +1,4 @@
-.react-autosuggest__suggestions-container--open {
+.suggestions-container {
   display: block;
   box-sizing: border-box;
   margin: auto;
@@ -9,7 +9,7 @@
     padding: 0.625rem;
   }
 }
-.react-autosuggest__input {
+.suggestions-input {
   box-shadow: 0 4px 48px 0 rgba(0, 0, 0, 0.2);
   padding: 4px 16px 4px 48px;
   background-color: transparent;
@@ -40,7 +40,7 @@
     border-bottom-right-radius: 0;
   }
 }
-.react-autosuggest__suggestions-list {
+.suggestions-list {
   padding-left: 0px;
   position: absolute;
   max-height: 315px;
