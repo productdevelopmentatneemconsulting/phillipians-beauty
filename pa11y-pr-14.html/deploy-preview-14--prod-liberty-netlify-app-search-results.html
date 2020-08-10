@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="utf-8"/>
+	<title>Accessibility Report For "https://deploy-preview-14--prod-liberty.netlify.app/search-results/" (Mon Aug 10 2020 09:05:25 GMT+0000 (Coordinated Universal Time))</title>
+
+	<style>
+
+		html, body {
+			margin: 0;
+			padding: 0;
+			background-color: #fff;
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			line-height: 22px;
+			color: #333;
+		}
+		li {
+			margin-bottom: 15px;
+		}
+		h1, h2, p, pre, ul {
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+		h1 {
+			margin-bottom: 10px;
+			font-size: 24px;
+			line-height: 24px;
+		}
+		h2 {
+			font-size: 16px;
+		}
+		pre {
+			white-space: pre-wrap;
+			overflow: auto;
+		}
+
+		.page {
+			max-width: 800px;
+			margin: 0 auto;
+			padding: 25px;
+		}
+
+		.counts {
+			margin-top: 30px;
+			font-size: 20px;
+		}
+		.count {
+			display: inline-block;
+			padding: 5px;
+			border-radius: 5px;
+			border: 1px solid #eee;
+		}
+
+		.clean-list {
+			margin-left: 0;
+			padding-left: 0;
+			list-style: none;
+		}
+		.results-list {
+			margin-top: 30px;
+		}
+
+		.result {
+			padding: 10px;
+			border-radius: 5px;
+			border: 1px solid #eee;
+		}
+		.error {
+			background-color: #fdd;
+			border-color: #ff9696;
+		}
+		.warning {
+			background-color: #ffd;
+			border-color: #e7c12b;
+		}
+		.notice {
+			background-color: #eef4ff;
+			border-color: #b6d0ff;
+		}
+
+	</style>
+
+</head>
+<body>
+
+	<div class="page">
+
+		<h1>Accessibility Report For "https://deploy-preview-14--prod-liberty.netlify.app/search-results/"</h1>
+		<p>Generated at: Mon Aug 10 2020 09:05:25 GMT+0000 (Coordinated Universal Time)</p>
+
+		<p class="counts">
+			<span class="count error">6 errors</span>
+			<span class="count warning">0 warnings</span>
+			<span class="count notice">0 notices</span>
+		</p>
+
+		<ul class="clean-list results-list">
+			<li class="result error">
+				<h2>Error: The title element in the head section should be non-empty.</h2>
+				<p>WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.1.EmptyTitle</p>
+				<pre>&lt;title&gt;&lt;/title&gt; (select with "html &gt; head &gt; title")</pre>
+			</li>
+			<li class="result error">
+				<h2>Error: This form does not contain a submit button, which creates issues for those who cannot submit the form using the keyboard. Submit buttons are INPUT elements with type attribute &quot;submit&quot; or &quot;image&quot;, or BUTTON elements with type &quot;submit&quot; or omitted/invalid.</h2>
+				<p>WCAG2AA.Principle3.Guideline3_2.3_2_2.H32.2</p>
+				<pre>&lt;form&gt;&lt;input type=&quot;search&quot; value=&quot;&quot; c...&lt;/form&gt; (select with "#main &gt; div &gt; header &gt; ul &gt; li &gt; form")</pre>
+			</li>
+			<li class="result error">
+				<h2>Error: This select element does not have a name available to an accessibility API. Valid names are: label element, title undefined, aria-label undefined, aria-labelledby undefined.</h2>
+				<p>WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Select.Name</p>
+				<pre>&lt;select class=&quot;ais-SortBy-select&quot;&gt;&lt;option selected=&quot;&quot; class=&quot;ais-...&lt;/select&gt; (select with "#main &gt; div &gt; main &gt; section &gt; header &gt; div:nth-child(1) &gt; select")</pre>
+			</li>
+			<li class="result error">
+				<h2>Error: This form field should be labelled in some way. Use the label element (either with a &quot;for&quot; attribute or wrapped around the form field), or &quot;title&quot;, &quot;aria-label&quot; or &quot;aria-labelledby&quot; attributes as appropriate.</h2>
+				<p>WCAG2AA.Principle1.Guideline1_3.1_3_1.F68</p>
+				<pre>&lt;select class=&quot;ais-SortBy-select&quot;&gt;&lt;option selected=&quot;&quot; class=&quot;ais-...&lt;/select&gt; (select with "#main &gt; div &gt; main &gt; section &gt; header &gt; div:nth-child(1) &gt; select")</pre>
+			</li>
+			<li class="result error">
+				<h2>Error: This select element does not have a name available to an accessibility API. Valid names are: label element, title undefined, aria-label undefined, aria-labelledby undefined.</h2>
+				<p>WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Select.Name</p>
+				<pre>&lt;select class=&quot;ais-HitsPerPage-select&quot;&gt;&lt;option selected=&quot;&quot; class=&quot;ais-...&lt;/select&gt; (select with "#main &gt; div &gt; main &gt; section &gt; header &gt; div:nth-child(2) &gt; select")</pre>
+			</li>
+			<li class="result error">
+				<h2>Error: This form field should be labelled in some way. Use the label element (either with a &quot;for&quot; attribute or wrapped around the form field), or &quot;title&quot;, &quot;aria-label&quot; or &quot;aria-labelledby&quot; attributes as appropriate.</h2>
+				<p>WCAG2AA.Principle1.Guideline1_3.1_3_1.F68</p>
+				<pre>&lt;select class=&quot;ais-HitsPerPage-select&quot;&gt;&lt;option selected=&quot;&quot; class=&quot;ais-...&lt;/select&gt; (select with "#main &gt; div &gt; main &gt; section &gt; header &gt; div:nth-child(2) &gt; select")</pre>
+			</li>
+		</ul>
+
+	</div>
+
+</body>
+</html>
