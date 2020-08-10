@@ -10,6 +10,7 @@ export const query1 = graphql`
     _rawMarketingDescription(resolveReferences: { maxDepth: 10 })
     _rawUsageDetails(resolveReferences: { maxDepth: 10 })
     buyNow
+    learnMore
     name
     tags {
       name

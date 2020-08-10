@@ -35,10 +35,10 @@
 .bp-secondary-button {
   font-size: 1.125rem;
   font-weight: 700;
-  width: 160;
-  height: 40;
+  width: 160px;
+  height: 40px;
   margin-left: -1;
-  cursor: 'pointer';
+  cursor: pointer;
   background-color: black;
   border: 1px solid black;
   color: white;
@@ -62,7 +62,7 @@
   &:hover {
     border-color: var(--primary-color, #ff5c85);
     &::before {
-      transform: 'scaleX(1)';
+      transform: scaleX(1);
     }
   }
 }

@@ -71,7 +71,7 @@ const Product: FunctionComponent<ProductInterface> = ({
             />
           )}
           <div className="col-container bp-product_socialWrapper">
-            <div className="col-6 col-xs-12">
+            <div className="col-6 col-xs-12 pr10">
               <BlockContent
                 blocks={product._rawMarketingDescription}
                 serializers={blockTypeDefaultSerializers}

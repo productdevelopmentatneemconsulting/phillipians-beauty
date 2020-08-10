@@ -5,6 +5,10 @@
   &_image {
     display: block;
     text-align: center;
+
+    img {
+      margin:auto
+    }
   }
 
   &_accordion {
