@@ -162,22 +162,25 @@ const productQuery = `{
   }
 }
 }`;
+
 const settings = {
   attributesForFaceting: [
     `pageType`,
-    `tags.name`,
-    `tags.tagCategory.name`,
+    `author.name`,
+    `tag`,
+    `category`,
+    `brand`,
     `difficulty`,
     `duration`,
   ],
   ranking: ['desc(publishedAt)'],
   hitsPerPage: 10,
   attributesToSnippet: [
-    `featureBody:30`,
-    `galleryBody:30`,
-    `howTobody:30`,
-    `usageBody:30`,
-    `ingredientBody:30`,
+    `featureBody:10`,
+    `galleryBody:10`,
+    `howTobody:10`,
+    `usageBody:10`,
+    `ingredientBody:10`,
   ],
 };
 
@@ -217,6 +220,14 @@ const queries = [
     transformer: ({ data }) =>
       data.allSanityProduct.edges.map(({ node }) => handleProductRawBody(node)),
     indexName: 'howtoArticle',
+    settings,
+    matchFields: ['slug', 'modified'],
+  },
+  {
+    query: productQuery,
+    transformer: ({ data }) =>
+      data.allSanityProduct.edges.map(({ node }) => handleProductRawBody(node)),
+    indexName: 'products',
     settings,
     matchFields: ['slug', 'modified'],
   },
