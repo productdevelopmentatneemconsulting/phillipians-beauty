@@ -24,7 +24,7 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => (
           }
           key={hit.objectID}
         >
-          <Link className={'ais-InfiniteHits-item__link'} to={`/${hit.path}`}>
+          <Link className={'ais-InfiniteHits-item__link'} to={hit.path}>
             <Highlight attribute="title" hit={hit} tagName="mark" />
           </Link>
         </li>
