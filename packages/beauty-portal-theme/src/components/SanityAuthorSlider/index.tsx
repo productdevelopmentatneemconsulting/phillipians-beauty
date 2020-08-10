@@ -3,12 +3,12 @@ import classNames from 'classnames';
 import { SanityAuthorSliderInterface } from './models';
 import TileSlider from '../TileSlider';
 import AuthorSlider from '../AuthorSlider';
-// import GridStacker from '../GridStacker';
+import GridStacker from '../AuthorGridStacker';
 import './styles.scss';
 
 const componentMap = {
   tile: TileSlider,
-  //   grid: GridStacker,
+  grid: GridStacker,
   author: AuthorSlider,
   default: TileSlider,
 };
@@ -25,7 +25,7 @@ const SanityAuthorSlider: FunctionComponent<SanityAuthorSliderInterface> = ({
   console.log('slideType', slideType);
   const getComponentName = (sliderType: any) => {
     sliderType = slideType.name.toLowerCase();
-    // if (sliderType.indexOf('grid') >= 0) return 'grid';
+    if (sliderType.indexOf('grid') >= 0) return 'grid';
     if (sliderType.indexOf('author') >= 0) return 'author';
     if (sliderType.indexOf('tile') >= 0) return 'tile';
 
