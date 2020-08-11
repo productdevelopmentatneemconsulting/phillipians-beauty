@@ -9,12 +9,14 @@ import SanityVideoBlock from '../SanityVideoBlock';
 import ImageBlock from '../ImageBlock';
 import SanityTagsBlock from '../SanityTagsBlock';
 import SanityAccordionBlock from '../SanityAccordionBlock';
+import SanitySearchBlock from '../SanitySearchBlock';
 
 const componentsMap = {
   SanityArticleSlider: SanityArticleSlider,
   SanityProductSlider: SanityProductSlider,
   SanityAuthorSlider: SanityAuthorSlider,
   SanityTextBlock: SanityTextBlock,
+  SanitySearchBlock: SanitySearchBlock,
   SanityNewsletterBlock: NewsletterBlock,
   SanityVideoBlock: SanityVideoBlock,
   SanityImageBlock: ImageBlock,

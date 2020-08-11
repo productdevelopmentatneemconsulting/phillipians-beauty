@@ -36,7 +36,7 @@ const searchStateToURL = searchState => {
   const urlParts =
     (typeof window !== 'undefined' &&
       window.location.href.match(/^(.*?)\/search-results/)) ||
-    window.location.href.match(/^(.*?)\/products-showcase/);
+    window.location.href.match(/^(.*?)\/product-showcase/);
   const baseUrl =
     (urlParts && urlParts[0]) ||
     `${protocol}//${hostname}${portWithPrefix}${pathname}search-results` ||
