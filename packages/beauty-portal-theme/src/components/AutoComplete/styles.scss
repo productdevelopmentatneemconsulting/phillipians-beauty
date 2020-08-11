@@ -47,8 +47,8 @@
   overflow-y: auto;
   width: 740px;
   background-color: #fff;
-  border: 1px solid #ccc;
-  border-top-width: 0;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
   z-index: 100;
   @media (max-width: 899px) {
     width: 300px;

@@ -175,6 +175,15 @@ export const query = graphql`
           name
         }
       }
+      ... on SanitySearchBlock {
+        id
+        name
+        algoliaIndexName {
+          name
+          title
+          hitComp
+        }
+      }
       ... on SanityVideoBlock {
         id
         name

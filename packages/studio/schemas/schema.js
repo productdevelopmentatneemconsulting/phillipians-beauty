@@ -36,6 +36,8 @@ import articleSlider from './documents/articleSlider'
 import authorSlider from './documents/authorSlider'
 import productSlider from './documents/productSlider'
 import accordionBlock from './documents/accordionBlock'
+import searchBlock from './documents/searchBlock'
+import indices from './documents/indices'
 import navBar from './documents/navBar'
 
 // Object types
@@ -97,6 +99,8 @@ export default createSchema({
     newsletterBlock,
     newsletterBlockType,
     accordionBlock,
+    searchBlock,
+    indices,
     tag,
     textBlock,
     tool,

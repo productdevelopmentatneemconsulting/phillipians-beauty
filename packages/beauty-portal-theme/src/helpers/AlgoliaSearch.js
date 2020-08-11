@@ -130,6 +130,7 @@ const productQuery = `{
     {
       node
       {
+        path
         objectID:_id
         slug{current}
         pageType:_type
