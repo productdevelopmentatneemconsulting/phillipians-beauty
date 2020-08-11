@@ -15,10 +15,17 @@
   }
 
   &-item {
-    font-size: .75rem;
+    font-size: 0.75rem;
     white-space: nowrap;
+    padding-left: 2px;
+    &::before {
+      padding-right: 2px;
+      display: 'inline-block';
+      content: '/';
+    }
 
     &:first-child {
+      padding-left: 2px;
       display: block;
 
       &::before {
@@ -41,7 +48,7 @@
 
   .divider {
     padding: 0 8px;
-    font-size: .75rem;
+    font-size: 0.75rem;
   }
 
   &-link {

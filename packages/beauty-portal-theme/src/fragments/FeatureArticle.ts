@@ -40,6 +40,7 @@ export const query1 = graphql`
     }
     author {
       name
+      path
       slug {
         current
       }

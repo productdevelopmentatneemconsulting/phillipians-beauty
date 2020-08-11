@@ -36,11 +36,18 @@ const searchStateToURL = searchState => {
   const urlParts =
     (typeof window !== 'undefined' &&
       window.location.href.match(/^(.*?)\/search-results/)) ||
-    window.location.href.match(/^(.*?)\/product-showcase/);
+    window.location.href.match(/^(.*?)\/product-showcase/) ||
+    window.location.href.match(
+      /^(.*?)\/authors\/(?<!\?.+)(?<=\/)[\w-]+(?=[/\r\n?]|$)/
+    );
+
+  console.log('urlParts', urlParts);
+
   const baseUrl =
     (urlParts && urlParts[0]) ||
     `${protocol}//${hostname}${portWithPrefix}${pathname}search-results` ||
-    `${protocol}//${hostname}${portWithPrefix}${pathname}products-showcase`;
+    `${protocol}//${hostname}${portWithPrefix}${pathname}products-showcase` ||
+    `${protocol}//${hostname}${portWithPrefix}${pathname}authors/`;
 
   const queryParameters = {};
 

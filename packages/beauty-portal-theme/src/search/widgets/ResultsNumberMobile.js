@@ -6,7 +6,7 @@ const ResultsNumberMobile = ({ nbHits, authorName }) => (
   <>
     {authorName ? (
       <span>
-        <strong style={{ fontSize: '2.5rem' }}>
+        <strong className="authorText">
           {authorName}
           {"'s edit"}
         </strong>
