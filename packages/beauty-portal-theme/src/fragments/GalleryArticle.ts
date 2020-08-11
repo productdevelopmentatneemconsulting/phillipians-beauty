@@ -14,6 +14,7 @@ export const query1 = graphql`
     id
     author {
       name
+      path
       slug {
         current
       }

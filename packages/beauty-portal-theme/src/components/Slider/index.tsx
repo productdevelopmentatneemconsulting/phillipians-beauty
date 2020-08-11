@@ -122,6 +122,7 @@ const Slider: FunctionComponent<SliderInterface> = ({
   };
 
   const renderAuthorSlides = slide => {
+    console.log('slide', slide);
     return (
       <SwiperSlide key={slide.headline}>
         <div>

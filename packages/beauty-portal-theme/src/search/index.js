@@ -76,7 +76,8 @@ const Search = props => {
         onSearchStateChange={props.onSearchStateChange}
         root={{ props: { ref } }}
       >
-        {props.indices[0].name === 'products' ? null : (
+        {props.indices[0].name === 'products' ||
+        props.authors === 'true' ? null : (
           <header className="search-header" ref={headerRef}>
             <CustomAutocomplete />
           </header>

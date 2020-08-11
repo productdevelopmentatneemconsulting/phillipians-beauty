@@ -156,6 +156,7 @@ export const query = graphql`
             alt
           }
           _rawImage(resolveReferences: { maxDepth: 10 })
+          path
           slug {
             current
           }

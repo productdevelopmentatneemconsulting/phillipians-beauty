@@ -141,7 +141,9 @@ const ArticleHeader: FunctionComponent<ArticleHeaderInterface> = ({
         <div className="bp-articleHeader_content-info">
           {author && author.name && (
             <div className="bp-articleHeader_author">
+              <Link to={author.path ? author.path : author.slug.current}>
                 <span className="bp-articleHeader_link">{author.name}</span>
+              </Link>
             </div>
           )}
           <span className="divider">|</span>
