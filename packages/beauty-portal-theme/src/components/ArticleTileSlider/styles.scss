@@ -36,13 +36,17 @@
 
   &-link {
     color: black;
-    font-size: .875rem;
+    font-size: 0.875rem;
     font-weight: 700;
 
     align-self: flex-start;
-    background-image: linear-gradient(120deg, var(--primary-color, #ff5c85) 0%, var(--primary-color, #ff5c85) 100%);
+    background-image: linear-gradient(
+      120deg,
+      var(--primary-color, #ff5c85) 0%,
+      var(--primary-color, #ff5c85) 100%
+    );
     background-repeat: no-repeat;
-    background-size: 100% .1875rem;
+    background-size: 100% 0.1875rem;
     background-position: 0 100%;
 
     @media (min-width: 768px) {
