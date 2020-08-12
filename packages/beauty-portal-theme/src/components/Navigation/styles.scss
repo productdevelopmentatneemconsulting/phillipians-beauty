@@ -7,7 +7,7 @@
   background: black;
   z-index: 1;
   height: 0.1%;
-  transition: height .3s ease-in-out;
+  transition: height 0.3s ease-in-out;
 
   @media (min-width: 768px) {
     display: block;
@@ -48,11 +48,11 @@
   &_item {
     position: relative;
 
-    &:hover>a &:focus-within {
+    &:hover > a &:focus-within {
       background-color: var(--primary-color, #ff5c85);
     }
 
-    &:hover>div {
+    &:hover > div {
       height: auto;
     }
   }
@@ -70,18 +70,18 @@
       position: relative;
 
       span {
-        transition: .3s ease-in-out;
+        transition: 0.3s ease-in-out;
         display: block;
         position: absolute;
-        height: .0625rem;
+        height: 0.0625rem;
         width: 100%;
         background-color: white;
         opacity: 1;
         left: 0;
-        top: -.3125rem;
+        top: -0.3125rem;
 
         &:first-child {
-          top: .0625rem;
+          top: 0.0625rem;
         }
 
         &:nth-child(2) {
@@ -104,13 +104,13 @@
       & div {
         & span {
           &:first-child {
-            top: .6875rem;
+            top: 0.6875rem;
             width: 0;
             left: 50%;
           }
 
           &:nth-child(4) {
-            top: .6875rem;
+            top: 0.6875rem;
             width: 0;
             left: 50%;
           }
@@ -149,7 +149,7 @@
     cursor: pointer;
     text-transform: capitalize;
 
-    &:hover+div {
+    &:hover + div {
       height: auto;
     }
 
@@ -166,7 +166,7 @@
         background-color: var(--primary-color, #ff5c85);
       }
 
-      &:focus+div {
+      &:focus + div {
         height: auto;
       }
     }
@@ -184,8 +184,8 @@
     }
 
     svg {
-      width: .75rem;
-      height: .75rem;
+      width: 0.75rem;
+      height: 0.75rem;
       fill: white;
       display: block;
     }
@@ -193,7 +193,7 @@
 
   &_subnav {
     overflow: hidden;
-    transition: height .3s ease-in-out;
+    transition: height 0.3s ease-in-out;
     height: 0.1%;
 
     @media (min-width: 768px) {

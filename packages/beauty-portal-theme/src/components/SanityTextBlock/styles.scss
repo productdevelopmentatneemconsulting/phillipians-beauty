@@ -1,7 +1,7 @@
 .bp-textBlock {
   padding-bottom: 16px;
   padding-top: 16px;
-  background-color: #f8e6de;
+  background-color: #fff;
   min-height: 212px;
 
   @media (min-width: 768px) {
@@ -105,7 +105,7 @@
   }
 
   &.typea {
-    background-color: #f8e6de;
+    background-color: #fff;
 
     p {
       width: 80%;
@@ -113,7 +113,7 @@
     }
   }
   &.typeb {
-    background-color: #f8e6de;
+    background-color: #fff;
 
     svg {
       fill: #000;
