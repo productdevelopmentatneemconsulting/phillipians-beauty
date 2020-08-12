@@ -22,7 +22,6 @@ const SanityAuthorSlider: FunctionComponent<SanityAuthorSliderInterface> = ({
   searchCtaLabel,
   searchTags,
 }) => {
-  console.log('slideType', slideType);
   const getComponentName = (sliderType: any) => {
     sliderType = slideType.name.toLowerCase();
     if (sliderType.indexOf('grid') >= 0) return 'grid';

@@ -24,6 +24,8 @@ const TileSlider: FunctionComponent<TileSliderInterface> = ({
     },
   };
 
+  console.log('Product SLider', searchTags);
+
   return (
     <div className="bp-tileSlider">
       <div className="bp-tileSlider_header">

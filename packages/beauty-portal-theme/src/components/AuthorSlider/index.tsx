@@ -16,7 +16,7 @@ const AuthorSlider: FunctionComponent<AuthorSliderInterface> = ({
     breakpoints: {
       768: {
         slidesPerView: 3,
-        spaceBetween: 30,
+        spaceBetween: 120,
       },
       320: {
         slidesPerView: 1.5,
@@ -29,21 +29,13 @@ const AuthorSlider: FunctionComponent<AuthorSliderInterface> = ({
     <div className="bp-slider_author">
       <div className="bp-slider_author-header">
         <h2 className="bp-slider_author-title">{headline}</h2>
-        {/* {searchCtaLabel && (
-          <Link
-            className="bp-slider_author-link"
-            to={getSearchUrlWithTagsAndCategory(searchTags)}
-          >
-            {searchCtaLabel}
-          </Link>
-        )} */}
         <p className="bp-slider_author-description">{description}</p>
       </div>
 
       <Slider
         type="author"
         slides={slides}
-        spaceBetween={30}
+        spaceBetween={120}
         slidesPerView={3}
         speed={700}
         threshold={5}

@@ -1,6 +1,9 @@
 .bp-theme {
   &_primary {
     background-color: #b8f0c0;
+    &.stacker {
+      background-color: #f8e6de;
+    }
     &.editor {
       background-color: #fff;
     }
