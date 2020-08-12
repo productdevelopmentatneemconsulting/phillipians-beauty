@@ -156,6 +156,7 @@ export const query = graphql`
             alt
           }
           _rawImage(resolveReferences: { maxDepth: 10 })
+          path
           slug {
             current
           }
@@ -173,6 +174,15 @@ export const query = graphql`
         _rawTextBlockBody(resolveReferences: { maxDepth: 10 })
         textBlockType {
           name
+        }
+      }
+      ... on SanitySearchBlock {
+        id
+        name
+        algoliaIndexName {
+          name
+          title
+          hitComp
         }
       }
       ... on SanityVideoBlock {

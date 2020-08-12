@@ -39,6 +39,7 @@ export default {
             { type: 'authorSlider' },
             { type: 'productSlider' },
             { type: 'accordionBlock' },
+            { type: 'searchBlock' },
             { type: 'textBlock' },
             { type: 'imageBlock' },
             { type: 'videoBlock' },

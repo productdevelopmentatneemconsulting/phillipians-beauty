@@ -13,6 +13,14 @@
         }
       }
 
+      .bp-slider_heroImage {
+        &:hover {
+          picture img {
+            transform: scale(1);
+          }
+        }
+      }
+
       .bp-slider_heroImage picture img {
         border-radius: 50%;
       }

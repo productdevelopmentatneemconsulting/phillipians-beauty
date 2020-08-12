@@ -42,7 +42,9 @@ const SanityTextBlock: FunctionComponent<SanityTextBlockInterface> = ({
       )}
     >
       <div className="bp-container">
-        <h1>{name}</h1>
+        {getComponentvariant(textBlockType.name) === 'textblock-type2' && (
+          <h1>{name}</h1>
+        )}
         <div
           className={
             getComponentvariant(textBlockType.name) === 'textblock-type2'

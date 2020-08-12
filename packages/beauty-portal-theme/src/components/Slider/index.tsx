@@ -122,6 +122,7 @@ const Slider: FunctionComponent<SliderInterface> = ({
   };
 
   const renderAuthorSlides = slide => {
+    console.log('slide', slide);
     return (
       <SwiperSlide key={slide.headline}>
         <div>
@@ -371,7 +372,7 @@ const Slider: FunctionComponent<SliderInterface> = ({
           onClick={swiperPrev}
           disabled={isFirstSlide}
         >
-          <Next />
+          {type === 'author' ? <NextWhite /> : <Next />}
           <span className="srOnly">Prev</span>
         </button>
       </div>

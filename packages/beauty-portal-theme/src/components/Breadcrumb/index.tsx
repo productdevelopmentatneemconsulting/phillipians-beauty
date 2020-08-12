@@ -8,6 +8,7 @@ const Breadcrumb: FunctionComponent<BreadcrumbInterface> = ({
   tag,
   pageTitle,
   searchResultPath,
+  authors,
 }) => {
   return (
     <section className="bp-breadcrumb">
@@ -18,9 +19,13 @@ const Breadcrumb: FunctionComponent<BreadcrumbInterface> = ({
               Home
             </Link>
           </li>
-          <li className="divider" aria-hidden="true">
-            /
-          </li>
+          {authors === 'true' && (
+            <li className="bp-breadcrumb-item">
+              <Link to={'/authors'} className="bp-breadcrumb-link">
+                Authors
+              </Link>
+            </li>
+          )}
           {tag && (
             <>
               <li className="bp-breadcrumb-item">

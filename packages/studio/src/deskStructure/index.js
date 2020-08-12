@@ -8,6 +8,7 @@ import {
   MdImage,
   MdTextFields,
   MdViewCompact,
+  MdSearch,
   MdEmail
 } from 'react-icons/md'
 import { FaSitemap, FaTag, FaTags, FaBuffer, FaSlidersH, FaBoxes, FaGlobe } from 'react-icons/fa'
@@ -146,7 +147,19 @@ export default () =>
                 .title('Accordion Block')
                 .icon(MdEmail)
                 .schemaType('accordionBlock')
-                .child(S.documentTypeList('accordionBlock').title('Accordion Block'))
+                .child(S.documentTypeList('accordionBlock').title('Accordion Block')),
+              S.divider(),
+              S.listItem()
+                .title('Search Block')
+                .icon(MdSearch)
+                .schemaType('searchBlock')
+                .child(S.documentTypeList('searchBlock').title('Search Block')),
+              S.divider(),
+              S.listItem()
+                .title('Algolia Indices Block')
+                .icon(MdSearch)
+                .schemaType('indices')
+                .child(S.documentTypeList('indices').title('Algolia Indices Block'))
             ])
         ),
       S.listItem()

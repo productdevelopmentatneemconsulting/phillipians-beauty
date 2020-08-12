@@ -29,6 +29,7 @@ const searchClient = algoliasearch(
 );
 
 const Search = props => {
+  console.log('props', props);
   const containerRef = useRef(null);
   const headerRef = useRef(null);
   const ref = createRef();
@@ -75,9 +76,12 @@ const Search = props => {
         onSearchStateChange={props.onSearchStateChange}
         root={{ props: { ref } }}
       >
-        <header className="search-header" ref={headerRef}>
-          <CustomAutocomplete />
-        </header>
+        {props.indices[0].name === 'products' ||
+        props.authors === 'true' ? null : (
+          <header className="search-header" ref={headerRef}>
+            <CustomAutocomplete />
+          </header>
+        )}
 
         {props.authors === 'true' ? (
           <Configure facetFilters={[`author.name: ${props.slug}`]} />
@@ -138,7 +142,7 @@ const Search = props => {
               </div>
 
               <div className="search-container-body">
-                {props.filterProducts === 'true' ? (
+                {props.indices[0].name === 'products' ? (
                   <>
                     <Panel header="Category">
                       <RefinementList
@@ -194,7 +198,7 @@ const Search = props => {
 
           <section className="search-container-results">
             <header className="search-container-header search-container-options">
-              {props.filterProducts !== 'true' && (
+              {props.indices[0].name !== 'products' && (
                 <label aria-label="sort by date">
                   Sort by{' '}
                   <SortBy
