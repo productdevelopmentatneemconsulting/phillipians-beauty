@@ -372,7 +372,7 @@ const Slider: FunctionComponent<SliderInterface> = ({
           onClick={swiperPrev}
           disabled={isFirstSlide}
         >
-          <Next />
+          {type === 'author' ? <NextWhite /> : <Next />}
           <span className="srOnly">Prev</span>
         </button>
       </div>
