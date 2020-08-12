@@ -1,0 +1,30 @@
+.bp-theme {
+  &_primary {
+    background-color: #b8f0c0;
+    &.author {
+      background-color: #2c5270;
+
+      .bp-slider_author-header {
+        flex-direction: column;
+        text-align: center;
+        .bp-slider_author-title,
+        .bp-slider_author-link {
+          color: #fff;
+        }
+      }
+
+      .bp-slider_heroImage picture img {
+        border-radius: 50%;
+      }
+
+      .bp-slider_caption {
+        color: #fff;
+        text-align: center;
+        margin-top: 15px;
+      }
+    }
+    &.grid {
+      background-color: #2c5270;
+    }
+  }
+}

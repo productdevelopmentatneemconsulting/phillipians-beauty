@@ -137,12 +137,52 @@ export const query = graphql`
           name
         }
       }
+      ... on SanityAuthorSlider {
+        id
+        name
+        headline
+        description
+        slideType {
+          name
+        }
+        slides {
+          _type
+          name
+          _rawBio(resolveReferences: { maxDepth: 10 })
+          image {
+            asset {
+              url
+            }
+            alt
+          }
+          _rawImage(resolveReferences: { maxDepth: 10 })
+          path
+          slug {
+            current
+          }
+        }
+        searchCtaLabel
+        searchTags {
+          tagCategory {
+            name
+          }
+        }
+      }
       ... on SanityTextBlock {
         id
         name
         _rawTextBlockBody(resolveReferences: { maxDepth: 10 })
         textBlockType {
           name
+        }
+      }
+      ... on SanitySearchBlock {
+        id
+        name
+        algoliaIndexName {
+          name
+          title
+          hitComp
         }
       }
       ... on SanityVideoBlock {
@@ -165,6 +205,21 @@ export const query = graphql`
         imageBlockType {
           name
         }
+      }
+      ... on SanityTaxonomyBlock {
+        id
+        title: name
+        tags: taxonomyTags {
+          ... on SanityTag {
+            id
+            name
+          }
+        }
+      }
+      ... on SanityAccordionBlock {
+        id
+        name
+        _rawTextBlockBody
       }
     }
   }

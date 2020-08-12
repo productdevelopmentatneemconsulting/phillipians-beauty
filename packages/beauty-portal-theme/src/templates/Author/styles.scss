@@ -1,0 +1,54 @@
+._editor-header {
+  .wrap {
+    text-align: center;
+    @media (min-width: 768px) {
+      width: 752px;
+      margin: 0 auto;
+    }
+
+    .page-title {
+      margin-bottom: 1.5rem !important;
+      @media (min-width: 768px) {
+        font-size: 2.875rem;
+        margin-top: 0.675rem !important;
+        margin-bottom: 2rem !important;
+      }
+    }
+
+    .name {
+      margin-top: 0.5rem !important;
+      margin-bottom: 0.675rem !important;
+      @media (min-width: 768px) {
+        font-size: 1.875rem;
+        margin-top: 0.5rem !important;
+        margin-bottom: 1rem !important;
+      }
+
+      .bio {
+        margin-bottom: 2rem !important;
+        @media (min-width: 768px) {
+          margin-bottom: 2rem !important;
+        }
+      }
+    }
+  }
+  .img-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center right;
+    img {
+      border-radius: 50%;
+    }
+  }
+}
+
+.d-inline-block {
+  display: inline-block !important;
+}
+
+.rounded-circle {
+  border-radius: 50% !important;
+}

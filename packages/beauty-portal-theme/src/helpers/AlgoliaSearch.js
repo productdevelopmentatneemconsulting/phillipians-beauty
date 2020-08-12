@@ -20,7 +20,7 @@ const howToArticleQuery = `{
         subtitle:subheading
         image: heroImage{asset {
         url
-        fluid(maxWidth: 140, maxHeight: 140) {
+        fluid(maxWidth: 240, maxHeight: 240) {
           aspectRatio
           base64
           sizes
@@ -62,7 +62,7 @@ const galleryArticleQuery = `{
         subtitle:subheading
         image: heroImage{asset {
         url
-        fluid(maxWidth: 140, maxHeight: 140) {
+        fluid(maxWidth: 240, maxHeight: 240) {
           aspectRatio
           base64
           sizes
@@ -99,7 +99,7 @@ const featureArticleQuery = `{
         subtitle:subheading
         image: heroImage{asset {
         url
-        fluid(maxWidth: 140, maxHeight: 140) {
+        fluid(maxWidth: 240, maxHeight: 240) {
           aspectRatio
           base64
           sizes
@@ -130,6 +130,7 @@ const productQuery = `{
     {
       node
       {
+        path
         objectID:_id
         slug{current}
         pageType:_type
@@ -138,7 +139,7 @@ const productQuery = `{
         image: image{
       asset {
         url
-        fluid(maxWidth: 140, maxHeight: 140) {
+        fluid(maxWidth: 240, maxHeight: 240) {
           aspectRatio
           base64
           sizes
@@ -162,22 +163,25 @@ const productQuery = `{
   }
 }
 }`;
+
 const settings = {
   attributesForFaceting: [
     `pageType`,
-    `tags.name`,
-    `tags.tagCategory.name`,
+    `author.name`,
+    `tag`,
+    `category`,
+    `brand`,
     `difficulty`,
     `duration`,
   ],
   ranking: ['desc(publishedAt)'],
   hitsPerPage: 10,
   attributesToSnippet: [
-    `featureBody:30`,
-    `galleryBody:30`,
-    `howTobody:30`,
-    `usageBody:30`,
-    `ingredientBody:30`,
+    `featureBody:10`,
+    `galleryBody:10`,
+    `howTobody:10`,
+    `usageBody:10`,
+    `ingredientBody:10`,
   ],
 };
 
@@ -217,6 +221,14 @@ const queries = [
     transformer: ({ data }) =>
       data.allSanityProduct.edges.map(({ node }) => handleProductRawBody(node)),
     indexName: 'howtoArticle',
+    settings,
+    matchFields: ['slug', 'modified'],
+  },
+  {
+    query: productQuery,
+    transformer: ({ data }) =>
+      data.allSanityProduct.edges.map(({ node }) => handleProductRawBody(node)),
+    indexName: 'products',
     settings,
     matchFields: ['slug', 'modified'],
   },

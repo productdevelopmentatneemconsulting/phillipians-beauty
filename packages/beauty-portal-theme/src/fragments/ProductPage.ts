@@ -10,6 +10,7 @@ export const query1 = graphql`
     _rawMarketingDescription(resolveReferences: { maxDepth: 10 })
     _rawUsageDetails(resolveReferences: { maxDepth: 10 })
     buyNow
+    learnMore
     name
     tags {
       name
@@ -30,11 +31,14 @@ export const query1 = graphql`
 
 export const query2 = graphql`
   fragment ProductFieldsTile on SanityProduct {
-    _rawImage(resolveReferences: { maxDepth: 10 })
     id
     name
+    _rawImage(resolveReferences: { maxDepth: 10 })
     slug {
       current
+    }
+    image {
+      alt
     }
     path
   }

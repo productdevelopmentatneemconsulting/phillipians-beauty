@@ -4,9 +4,12 @@ import SwiperCore, { Lazy } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useInView } from 'react-intersection-observer';
 import classNames from 'classnames';
+import BlockContent from '@sanity/block-content-to-react';
+import { blockTypeDefaultSerializers } from '../../helpers/sanity';
 import { SliderInterface } from './models';
 import { urlFor } from '../../helpers/imageUrl';
 import { ReactComponent as Next } from '../../images/icons/next.svg';
+import { ReactComponent as NextWhite } from '../../images/icons/next-white.svg';
 import { ReactComponent as PlayVideo } from '../../images/icons/play.svg';
 import './styles.scss';
 
@@ -118,6 +121,71 @@ const Slider: FunctionComponent<SliderInterface> = ({
     );
   };
 
+  const renderAuthorSlides = slide => {
+    console.log('slide', slide);
+    return (
+      <SwiperSlide key={slide.headline}>
+        <div>
+          <Link className="bp-slider_link" to={slide.path}>
+            <div className="bp-slider_heroImage">
+              <figure>
+                {inView ? (
+                  <picture
+                    className="bp-image__placeholder"
+                    style={{
+                      paddingTop: '100%',
+                    }}
+                  >
+                    <source
+                      media="screen and (min-width: 560px)"
+                      srcSet={`${urlFor(slide._rawImage)
+                        .width(280)
+                        .height(280)
+                        .fit('max')
+                        .auto('format')
+                        .url()
+                        .toString()}`}
+                    />
+                    <source
+                      media="screen and (min-width: 320px)"
+                      srcSet={`${urlFor(slide._rawImage)
+                        .width(160)
+                        .height(160)
+                        .fit('max')
+                        .auto('format')
+                        .url()
+                        .toString()}`}
+                    />
+                    <img
+                      className="bp-slider_image"
+                      src={urlFor(slide._rawImage)
+                        .width(280)
+                        .height(280)
+                        .fit('max')
+                        .url()}
+                      alt={slide.image.alt}
+                    />
+                  </picture>
+                ) : null}
+              </figure>
+            </div>
+            <h3 className="bp-slider_caption">
+              <span>{slide.name}</span>
+            </h3>
+            {slide._rawBio && (
+              <p className="bp-slider_authorDescription">
+                <BlockContent
+                  blocks={slide._rawBio}
+                  serializers={blockTypeDefaultSerializers}
+                />
+              </p>
+            )}
+          </Link>
+        </div>
+      </SwiperSlide>
+    );
+  };
+
   const renderProductSlides = slide => {
     return (
       <SwiperSlide key={slide.headline}>
@@ -164,7 +232,9 @@ const Slider: FunctionComponent<SliderInterface> = ({
                       alt={slide.image.alt}
                     />
                   </picture>
-                ) : null}
+                ) : (
+                  <span>Paras</span>
+                )}
               </figure>
             </div>
             <h3 className="bp-slider_caption">
@@ -178,40 +248,42 @@ const Slider: FunctionComponent<SliderInterface> = ({
 
   const renderHeroSlides = (slide, index) => (
     <SwiperSlide className="bp-slider_slide" key={slide.path}>
-      {slide.heroImage && (
-        <figure>
-          {index === 0 && (
-            <link
-              rel="preload"
-              as="image"
-              href={`${urlFor(slide._rawHeroImage)
-                .width(752)
-                .height(423)
-                .quality(80)
-                .fit('max')
-                .auto('format')
-                .url()
-                .toString()}`}
-            />
-          )}
-          <picture
-            className="bp-image__placeholder"
-            style={{
-              paddingTop: '56.25%',
-              background: `url(${slide._rawHeroImage.asset.metadata.lqip})`,
-              backgroundSize: 'cover',
-            }}
-          >
-            <img
-              className="bp-slider_image swiper-lazy"
-              data-srcset={`${urlFor(slide._rawHeroImage)
-                .width(414)
-                .height(232)
-                .fit('max')
-                .auto('format')
-                .quality(80)
-                .url()
-                .toString()} 414w,
+      <Link to={slide.path}>
+        {slide.heroImage && (
+          <>
+            <figure>
+              {index === 0 && (
+                <link
+                  rel="preload"
+                  as="image"
+                  href={`${urlFor(slide._rawHeroImage)
+                    .width(752)
+                    .height(423)
+                    .quality(80)
+                    .fit('max')
+                    .auto('format')
+                    .url()
+                    .toString()}`}
+                />
+              )}
+              <picture
+                className="bp-image__placeholder"
+                style={{
+                  paddingTop: '56.25%',
+                  background: `url(${slide._rawHeroImage.asset.metadata.lqip})`,
+                  backgroundSize: 'cover',
+                }}
+              >
+                <img
+                  className="bp-slider_image swiper-lazy"
+                  data-srcset={`${urlFor(slide._rawHeroImage)
+                    .width(414)
+                    .height(232)
+                    .fit('max')
+                    .auto('format')
+                    .quality(80)
+                    .url()
+                    .toString()} 414w,
                       ${urlFor(slide._rawHeroImage)
                         .width(540)
                         .height(303)
@@ -228,22 +300,32 @@ const Slider: FunctionComponent<SliderInterface> = ({
                         .auto('format')
                         .url()
                         .toString()} 752w`}
-              alt={slide.heroImage.alt}
-            />
-          </picture>
-        </figure>
-      )}
-      {type === 'hero' && (
-        <div className="bp-slider_copy">
-          <div className="bp-slider_copy-content">
-            <div className="bp-slider_copy-type">{slide._type}</div>
-            <h2 className="bp-slider_copy-title">{slide.headline}</h2>
-            <Link className="bp-slider_copy-cta" to={slide.path}>
-              Go to Article
-            </Link>
+                  alt={slide.heroImage.alt}
+                />
+              </picture>
+            </figure>
+            {slide.heroVideo && (
+              <span className="icon icon-play">
+                <PlayVideo />
+                <span hidden>Play Video</span>
+              </span>
+            )}
+          </>
+        )}
+        {type === 'hero' && (
+          <div className="bp-slider_copy">
+            <div className="bp-slider_copy-content">
+              <div className="bp-slider_copy-type">{slide._type}</div>
+              <h2 className="bp-slider_copy-title">
+                <span>{slide.headline}</span>
+              </h2>
+              <Link className="bp-slider_copy-cta" to={slide.path}>
+                Go to Article
+              </Link>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </Link>
     </SwiperSlide>
   );
   return (
@@ -259,7 +341,7 @@ const Slider: FunctionComponent<SliderInterface> = ({
           onClick={swiperNext}
           disabled={isLastSlide}
         >
-          <Next />
+          {type === 'author' ? <NextWhite /> : <Next />}
           <span className="srOnly">Next</span>
         </button>
         <Swiper
@@ -279,6 +361,8 @@ const Slider: FunctionComponent<SliderInterface> = ({
               ? renderHeroSlides(slide, index)
               : type === 'tile'
               ? renderTileSlides(slide)
+              : type === 'author'
+              ? renderAuthorSlides(slide)
               : renderProductSlides(slide);
           })}
         </Swiper>

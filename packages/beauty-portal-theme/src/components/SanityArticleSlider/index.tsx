@@ -4,12 +4,15 @@ import { SanityArticleSliderInterface } from './models';
 import ArticleTileSlider from '../ArticleTileSlider';
 import HeroSlider from '../HeroSlider';
 import TileStacker from '../TileStacker';
+import ArticleStacker from '../ArticleStacker';
+
 import './styles.scss';
 
 const componentMap = {
   tile: ArticleTileSlider,
+  editor: ArticleTileSlider,
   hero: HeroSlider,
-  stacker: TileStacker,
+  stacker: ArticleStacker,
   default: TileStacker,
 };
 
@@ -24,9 +27,10 @@ const SanityArticleSlider: FunctionComponent<SanityArticleSliderInterface> = ({
   // @todo we should take presentationType from props;
   const getComponentName = (sliderType: string) => {
     sliderType = slideType.name.toLowerCase();
+    if (sliderType.indexOf('stacker') >= 0) return 'stacker';
     if (sliderType.indexOf('hero') >= 0) return 'hero';
     if (sliderType.indexOf('tile') >= 0) return 'tile';
-    if (sliderType.indexOf('stacker') >= 0) return 'stacker';
+    if (sliderType.indexOf('editor') >= 0) return 'editor';
 
     return 'default';
   };

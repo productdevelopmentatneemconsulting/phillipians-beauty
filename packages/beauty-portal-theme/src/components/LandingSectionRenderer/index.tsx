@@ -2,18 +2,26 @@ import React, { FunctionComponent } from 'react';
 import { LandingSectionRendererInterface } from './models';
 import SanityArticleSlider from '../SanityArticleSlider';
 import SanityProductSlider from '../SanityProductSlider';
+import SanityAuthorSlider from '../SanityAuthorSlider';
 import SanityTextBlock from '../SanityTextBlock';
 import NewsletterBlock from '../NewsletterBlock';
 import SanityVideoBlock from '../SanityVideoBlock';
 import ImageBlock from '../ImageBlock';
+import SanityTagsBlock from '../SanityTagsBlock';
+import SanityAccordionBlock from '../SanityAccordionBlock';
+import SanitySearchBlock from '../SanitySearchBlock';
 
 const componentsMap = {
   SanityArticleSlider: SanityArticleSlider,
   SanityProductSlider: SanityProductSlider,
+  SanityAuthorSlider: SanityAuthorSlider,
   SanityTextBlock: SanityTextBlock,
+  SanitySearchBlock: SanitySearchBlock,
   SanityNewsletterBlock: NewsletterBlock,
   SanityVideoBlock: SanityVideoBlock,
   SanityImageBlock: ImageBlock,
+  SanityTaxonomyBlock: SanityTagsBlock,
+  SanityAccordionBlock: SanityAccordionBlock,
 };
 
 const LandingSectionRenderer: FunctionComponent<LandingSectionRendererInterface> = ({
