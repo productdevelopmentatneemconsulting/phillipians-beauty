@@ -21,12 +21,16 @@
 
   &_link {
     color: black;
-    font-size: .875rem;
+    font-size: 0.875rem;
     font-weight: 700;
     align-self: flex-start;
-    background-image: linear-gradient(120deg, var(--primary-color) 0%, var(--primary-color) 100%);
+    background-image: linear-gradient(
+      120deg,
+      var(--primary-color) 0%,
+      var(--primary-color) 100%
+    );
     background-repeat: no-repeat;
-    background-size: 100% .1875rem;
+    background-size: 100% 0.1875rem;
     background-position: 0 100%;
 
     @media (min-width: 768px) {
@@ -47,10 +51,20 @@
   }
 
   .swiper-scrollbar-drag {
-    background-color: rgba(0, 0, 0, .2);
+    background-color: rgba(0, 0, 0, 0.2);
   }
 
-  .swiper-container-horizontal>.swiper-scrollbar {
+  .swiper-slide {
+    opacity: 0.25;
+  }
+  .swiper-container {
+    overflow: visible;
+  }
+  .swiper-slide-visible {
+    opacity: 1;
+  }
+
+  .swiper-container-horizontal > .swiper-scrollbar {
     width: 100%;
     height: 5px;
 
