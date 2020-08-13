@@ -1,11 +1,11 @@
 .bp-slider_author {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 1.6rem;
+  padding-bottom: 1.6rem;
   position: relative;
 
   @media (min-width: 768px) {
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 3.25rem;
+    padding-bottom: 3.25rem;
   }
 
   &-header {
@@ -62,12 +62,11 @@
   }
 
   &-description {
+    width: 50rem;
     font-size: 0.875rem;
-    letter-spacing: 0;
     text-align: center;
-    margin: 0;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
     color: #fff;
 
     @media (min-width: 768px) {

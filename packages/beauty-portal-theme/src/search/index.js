@@ -29,7 +29,6 @@ const searchClient = algoliasearch(
 );
 
 const Search = props => {
-  console.log('props', props);
   const containerRef = useRef(null);
   const headerRef = useRef(null);
   const ref = createRef();

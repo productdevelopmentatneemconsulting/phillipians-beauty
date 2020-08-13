@@ -122,7 +122,6 @@ const Slider: FunctionComponent<SliderInterface> = ({
   };
 
   const renderAuthorSlides = slide => {
-    console.log('slide', slide);
     return (
       <SwiperSlide key={slide.headline}>
         <div>
@@ -169,7 +168,7 @@ const Slider: FunctionComponent<SliderInterface> = ({
                 ) : null}
               </figure>
             </div>
-            <h3 className="bp-slider_caption">
+            <h3 className="bp-slider_underline_caption">
               <span>{slide.name}</span>
             </h3>
             {slide._rawBio && (

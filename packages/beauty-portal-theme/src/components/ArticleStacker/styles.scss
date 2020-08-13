@@ -40,23 +40,23 @@
     background-color: white;
     padding-left: 1rem;
     padding-right: 1rem;
-    padding-top: 0.5rem;
-    min-height: 80px;
-    max-height: 80px;
+    padding-top: 1rem;
+    min-height: 100px;
+    max-height: 100px;
   }
   &_type {
-    background-color: white;
-    font-size: 0.625rem;
+    font-size: 0.725rem;
     font-weight: 600;
-    line-height: 1.1;
+    line-height: 1.125rem;
     letter-spacing: 0.08em;
-    color: black;
+    color: #2c5270;
     z-index: 1;
     text-transform: uppercase;
     letter-spacing: 1;
   }
   &_headline {
-    font-size: 0.875rem;
+    font-size: 1.075rem;
+    line-height: 1.225rem;
     font-weight: 600;
     color: black;
   }
