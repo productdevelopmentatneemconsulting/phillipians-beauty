@@ -370,6 +370,7 @@
 
 .swiper-slide {
   opacity: 0.25;
+  pointer-events: none;
 }
 .swiper-container {
   overflow: visible;
@@ -377,4 +378,5 @@
 .swiper-slide-visible,
 .swiper-slide-active {
   opacity: 1;
+  pointer-events: auto;
 }

@@ -12,6 +12,7 @@ import { ReactComponent as Next } from '../../images/icons/next.svg';
 import { ReactComponent as NextWhite } from '../../images/icons/next-white.svg';
 import { ReactComponent as PlayVideo } from '../../images/icons/play.svg';
 import './styles.scss';
+import getType from '../../helpers/getType';
 
 SwiperCore.use([Lazy]);
 
@@ -60,7 +61,9 @@ const Slider: FunctionComponent<SliderInterface> = ({
     return (
       <SwiperSlide key={slide.headline}>
         <div>
-          {slide._type && <span className="bp-slider_type">{slide._type}</span>}
+          {slide._type && (
+            <span className="bp-slider_type">{getType(slide._type)}</span>
+          )}
           <Link className="bp-slider_link" to={slide.path}>
             <div className="bp-slider_heroImage">
               <figure>
@@ -314,7 +317,7 @@ const Slider: FunctionComponent<SliderInterface> = ({
         {type === 'hero' && (
           <div className="bp-slider_copy">
             <div className="bp-slider_copy-content">
-              <div className="bp-slider_copy-type">{slide._type}</div>
+              <div className="bp-slider_copy-type">{getType(slide._type)}</div>
               <h2 className="bp-slider_copy-title">
                 <span>{slide.headline}</span>
               </h2>
