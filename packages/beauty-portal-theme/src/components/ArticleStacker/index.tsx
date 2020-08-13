@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { Link } from 'gatsby';
 import { urlFor } from '../../helpers/imageUrl';
+import getType from '../../helpers/getType';
 import { useInView } from 'react-intersection-observer';
 
 import { TileStackerInterface } from './models';
@@ -55,7 +56,9 @@ const TileStacker: FunctionComponent<TileStackerInterface> = ({
                 </figure>
               )}
               <div className="bp-article-stacker_footer">
-                <span className="bp-article-stacker_type">{slide._type}</span>
+                <span className="bp-article-stacker_type">
+                  {getType(slide._type)}
+                </span>
                 <h6 className="bp-article-stacker_headline">
                   <span>{slide.headline}</span>
                 </h6>

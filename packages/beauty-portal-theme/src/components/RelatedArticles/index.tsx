@@ -4,6 +4,7 @@ import { useInView } from 'react-intersection-observer';
 import classNames from 'classnames';
 import { urlFor } from '../../helpers/imageUrl';
 import './styles.scss';
+import getType from 'src/helpers/getType';
 
 const RelatedArticles: FunctionComponent<RelatedArticlesInterface> = ({
   articles,
@@ -182,7 +183,7 @@ const RelatedArticles: FunctionComponent<RelatedArticlesInterface> = ({
             </div>
 
             <div className="bp-related_copy">
-              <span className="bp-related_type">{article._type}</span>
+              <span className="bp-related_type">{getType(article._type)}</span>
               <h3 className="bp-related_titlef">
                 <span>{article.headline}</span>
               </h3>
