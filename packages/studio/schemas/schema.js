@@ -39,6 +39,7 @@ import accordionBlock from './documents/accordionBlock'
 import searchBlock from './documents/searchBlock'
 import indices from './documents/indices'
 import navBar from './documents/navBar'
+import articleBlock from './documents/singleArticleBlock'
 
 // Object types
 import navLink from './objects/navLink'
@@ -60,6 +61,7 @@ import siteSettings from './documents/siteSettings'
 import excerptPortableText from './objects/excerptPortableText'
 import mainImage from './objects/mainImage'
 import beforeAfterImage from './objects/beforeAfterImage'
+import singleArticleBlock from './documents/singleArticleBlock'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -105,6 +107,7 @@ export default createSchema({
     textBlock,
     tool,
     author,
+    singleArticleBlock,
 
     navLink,
     navItem,
