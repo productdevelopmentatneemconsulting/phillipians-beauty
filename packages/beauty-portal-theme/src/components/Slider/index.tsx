@@ -12,7 +12,7 @@ import { ReactComponent as Next } from '../../images/icons/next.svg';
 import { ReactComponent as NextWhite } from '../../images/icons/next-white.svg';
 import { ReactComponent as PlayVideo } from '../../images/icons/play.svg';
 import './styles.scss';
-import getType from 'src/helpers/getType';
+import getType from '../../helpers/getType';
 
 SwiperCore.use([Lazy]);
 

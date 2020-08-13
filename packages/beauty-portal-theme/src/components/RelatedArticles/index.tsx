@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer';
 import classNames from 'classnames';
 import { urlFor } from '../../helpers/imageUrl';
 import './styles.scss';
-import getType from 'src/helpers/getType';
+import getType from '../../helpers/getType';
 
 const RelatedArticles: FunctionComponent<RelatedArticlesInterface> = ({
   articles,
