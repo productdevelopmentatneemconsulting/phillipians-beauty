@@ -103,6 +103,10 @@ export const query = graphql`
         id
         name
         headline
+        searchCtaLabel
+        searchTags {
+          name
+        }
         slides {
           _type
           name

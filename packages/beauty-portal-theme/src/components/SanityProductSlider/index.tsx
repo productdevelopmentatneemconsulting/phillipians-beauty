@@ -4,14 +4,20 @@ import TileSlider from '../TileSlider';
 import './styles.scss';
 
 const SanityProductSlider: FunctionComponent<SanityProductSliderInterface> = ({
-  name,
   slides,
   headline,
+  searchCtaLabel,
+  searchTags,
 }) => {
   return (
     <section className="bp-productSlider">
       <div className="bp-container">
-        <TileSlider name={name} slides={slides} headline={headline} />
+        <TileSlider
+          slides={slides}
+          headline={headline}
+          searchCtaLabel={searchCtaLabel}
+          searchTags={searchTags}
+        />
       </div>
     </section>
   );

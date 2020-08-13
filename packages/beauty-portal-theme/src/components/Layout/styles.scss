@@ -1,5 +1,8 @@
 .bp-page {
   margin-top: 60px;
+  @media (min-width: 768px) {
+    margin-top: 160px;
+  }
   overflow: hidden;
 }
 
@@ -9,7 +12,7 @@
   z-index: 4;
   color: black;
   background: white;
-  border: .0625rem solid black;
+  border: 0.0625rem solid black;
   white-space: nowrap;
 
   &:not(:focus) {
