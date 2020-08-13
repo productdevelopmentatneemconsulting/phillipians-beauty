@@ -66,7 +66,7 @@ const HowtoArticlePage = (props: HowtoArticlePageProps) => {
             )}
             {page.productList && (
               <ProductList
-                data={page._rawProductList}
+                data={page.productList}
                 title={sectionTitles.productName}
               />
             )}
