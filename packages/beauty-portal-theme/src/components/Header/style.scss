@@ -11,7 +11,7 @@
   align-items: center;
   @media (min-width: 768px) {
     flex-direction: column;
-    height: 160px;
+    height: 200px;
   }
   background-color: var(--black-color, black);
 
@@ -35,8 +35,8 @@
     background-color: white;
 
     & svg {
-      width: 100px;
-      height: 100px;
+      width: 140px;
+      height: 140px;
     }
   }
 
