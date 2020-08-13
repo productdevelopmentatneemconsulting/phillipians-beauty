@@ -1,0 +1,122 @@
+.modal-window {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.6);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+  @media (min-width: 899px) {
+    width: 100%;
+    height: 100%;
+    outline: 0;
+  }
+  & > div.modal-dialog {
+    position: relative;
+    width: auto;
+    margin: 0.5rem;
+    pointer-events: none;
+    transform: none;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    min-height: calc(100% - 1rem);
+    top: 50%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+    max-height: none;
+    overflow: hidden;
+    @media (min-width: 899px) {
+      max-height: calc(100% - 3.5rem);
+      margin: 1.75rem auto;
+    }
+    & > div.modal-content {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      pointer-events: auto;
+      background-color: #2c5270;
+      border: 0;
+      border-radius: 0;
+
+      @media (min-width: 899px) {
+        width: 500px;
+        border: 1.25rem solid #2c5270;
+        border-top-width: 1rem;
+      }
+      .modal-header {
+        display: flex;
+        flex-shrink: 0;
+        align-items: flex-start;
+        justify-content: space-between;
+        padding: 1rem;
+        background-color: #2c5270;
+        border: 0;
+        border-radius: 0;
+      }
+      .modal-body {
+        overflow-y: auto;
+        position: relative;
+        flex: 1 1 auto;
+        padding: 1rem;
+        background-color: #fff;
+      }
+    }
+  }
+
+  header {
+    font-weight: bold;
+  }
+  h1 {
+    font-size: 150%;
+    margin: 0 0 15px;
+  }
+}
+
+.visible-modal {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-close {
+  background-color: transparent;
+  border: 0;
+  color: #fff;
+  font-size: 1.25rem;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  text-decoration: none;
+  cursor: pointer;
+  &:hover {
+    color: black;
+  }
+}
+
+.follow-title {
+  font-size: 1.125rem;
+  align-self: center;
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.5rem !important;
+}
+
+.follow-links {
+  ul {
+    max-width: 280px;
+    margin: 0 auto 0.625rem !important;
+    justify-content: space-between !important;
+    flex-wrap: wrap;
+  }
+}

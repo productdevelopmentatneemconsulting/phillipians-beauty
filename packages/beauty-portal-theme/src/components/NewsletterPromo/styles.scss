@@ -28,6 +28,25 @@
     }
   }
 
+  &_cta {
+    font-size: 1.125rem;
+    font-weight: 700;
+    width: 160px;
+    height: 2.5rem;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    color: black;
+    position: relative;
+    transition: all 0.3s ease-out;
+
+    &:hover {
+      border-color: black;
+      background-color: black;
+      color: white;
+    }
+  }
+
   &_link {
     font-size: 1.125rem;
     font-weight: 700;
@@ -44,7 +63,7 @@
     margin: auto;
 
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       z-index: -1;
       top: 0;
@@ -67,4 +86,7 @@
       }
     }
   }
+}
+.no-padding {
+  padding: 0;
 }
