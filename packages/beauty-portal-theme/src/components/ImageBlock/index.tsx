@@ -94,7 +94,7 @@ const ImageBlock: FunctionComponent<ImageBlockInterface> = ({
         'bp-imageBlock',
         getComponentvariant(imageBlockType.name) === 'imageblocktypeb'
           ? 'typeb'
-          : null
+          : 'typea'
       )}
     >
       <div className="bp-container">

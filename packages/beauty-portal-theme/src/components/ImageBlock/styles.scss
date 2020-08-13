@@ -9,7 +9,7 @@
       h2 span {
         background-image: linear-gradient(120deg, #b8f0c0 0%, #b8f0c0 100%);
         background-repeat: no-repeat;
-        background-size: 100% .1875rem;
+        background-size: 100% 0.1875rem;
         background-position: 0 100%;
       }
 
@@ -26,11 +26,15 @@
     line-height: 1.2;
 
     span {
-      transition: .15s;
+      transition: 0.15s;
       display: inline;
-      background-image: linear-gradient(120deg, rgba(184, 240, 192, 0) 0%, rgba(184, 240, 192, 0) 100%);
+      background-image: linear-gradient(
+        120deg,
+        rgba(184, 240, 192, 0) 0%,
+        rgba(184, 240, 192, 0) 100%
+      );
       background-repeat: no-repeat;
-      background-size: 100% .1875rem;
+      background-size: 100% 0.1875rem;
       background-position: 0 100%;
     }
 
@@ -73,7 +77,6 @@
     top: -18px;
     position: relative;
 
-
     @media (min-width: 768px) {
       order: 1;
       align-self: center;
@@ -85,7 +88,7 @@
 
     p {
       margin: 0;
-      font-size: .875rem;
+      font-size: 0.875rem;
 
       @media (min-width: 768px) {
         font-size: 1.125rem;
@@ -102,6 +105,15 @@
 
     .copyText {
       right: 10px;
+    }
+  }
+
+  &.typea {
+    .bp-imageBlock_copy {
+      @media (min-width: 768px) {
+        order: 2;
+        left: -15px;
+      }
     }
   }
 }

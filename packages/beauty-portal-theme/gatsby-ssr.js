@@ -1,5 +1,5 @@
 const React = require('react');
-
+const { MyProvider } = require('./src/context/Context');
 const headComponents = [];
 
 headComponents.push(
@@ -73,3 +73,5 @@ headComponents.push(
 exports.onRenderBody = ({ setHeadComponents }) => {
   setHeadComponents(headComponents);
 };
+
+exports.wrapRootElement = ({ element }) => <MyProvider>{element}</MyProvider>;
