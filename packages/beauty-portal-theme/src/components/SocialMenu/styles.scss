@@ -29,3 +29,51 @@
     fill: var(--primary-color, #ff5c85);
   }
 }
+
+.bp-social-footer {
+  display: block;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: -3rem;
+  margin-bottom: 1rem;
+  ul {
+    max-width: 280px;
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap !important;
+    justify-content: space-between !important;
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: inline-block;
+      font-size: 1.5rem;
+      height: 3.125rem;
+      position: relative;
+      transition: 0.2s;
+      width: 3.125rem;
+    }
+  }
+
+  svg {
+    width: 32px;
+    height: 32px;
+    fill: white;
+    transition: all 0.3s;
+  }
+
+  a:hover svg {
+    fill: var(--primary-color, #ff5c85);
+  }
+
+  a {
+    bottom: 0;
+    display: inline-block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+  }
+}

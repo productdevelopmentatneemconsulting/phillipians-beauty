@@ -5,6 +5,7 @@ import Form from '../../components/Form';
 import { Fieldset, InputText } from '../../components/FormElements';
 import { NewsletterPromoInterface } from './models';
 import { ReactComponent as Bell } from '../../images/icons/bell.svg';
+import { ReactComponent as Arrow } from '../../images/icons/right-arrow.svg';
 import { blockTypeDefaultSerializers } from '../../helpers/sanity';
 import './styles.scss';
 
@@ -13,6 +14,7 @@ const NewsletterPromo: FunctionComponent<NewsletterPromoInterface> = ({
   _rawBody,
   ctaLabel,
   popup,
+  footer,
   onFormSubmission,
   isFormSubmitted,
 }) => {
@@ -47,17 +49,24 @@ const NewsletterPromo: FunctionComponent<NewsletterPromoInterface> = ({
     setvalidEmail(event.target.value.length > 0);
     setEmail(event.target.value);
   };
+
   return (
-    <section className={'bp-newsletter ' + (popup ? 'no-padding' : '')}>
-      <h1 className="bp-newsletter_title">{headline}</h1>
+    <section
+      className={'bp-newsletter ' + (popup || footer ? 'no-padding' : '')}
+    >
       <div className="bp-newsletter_content">
-        {_rawBody && (
-          <p className="bp-signup_desc">
-            <BlockContent
-              serializers={blockTypeDefaultSerializers}
-              blocks={_rawBody}
-            />
-          </p>
+        {!footer && !popup && (
+          <>
+            <p className="bp-signup_desc">
+              <BlockContent
+                serializers={blockTypeDefaultSerializers}
+                blocks={_rawBody}
+              />
+            </p>
+            <Link to="/subscribe/" className="bp-newsletter_link">
+              {ctaLabel}
+            </Link>
+          </>
         )}
 
         {isFormSubmitted && (
@@ -72,32 +81,71 @@ const NewsletterPromo: FunctionComponent<NewsletterPromoInterface> = ({
           </div>
         )}
 
-        {popup ? (
-          <Form onsubmit={handleFormSubmit}>
-            <Fieldset legend="Personal Information">
-              <InputText
-                label="Email"
-                type="email"
-                id="email"
-                required={true}
-                value={email}
-                onChange={handleEmailChange}
-                valid={isValidEmail}
-                validate={hasSubmitted}
+        {footer && (
+          <>
+            <h2 className="bp-newsletter_footer-title">{headline}</h2>
+            <p className="bp-newsletter_footer-desc">
+              <BlockContent
+                serializers={blockTypeDefaultSerializers}
+                blocks={_rawBody}
               />
-            </Fieldset>
-            <input
-              type="submit"
-              name="submit"
-              value={ctaLabel}
-              onClick={handleFormSubmit}
-              className="bp-newsletter_cta"
-            />
-          </Form>
-        ) : (
-          <Link to="/subscribe/" className="bp-newsletter_link">
-            {ctaLabel}
-          </Link>
+            </p>
+            <Form onsubmit={handleFormSubmit} footer={footer}>
+              <Fieldset legend="Personal Information">
+                <InputText
+                  label="Email"
+                  type="email"
+                  id="email"
+                  required={true}
+                  value={email}
+                  onChange={handleEmailChange}
+                  valid={isValidEmail}
+                  validate={hasSubmitted}
+                />
+              </Fieldset>
+              <button
+                type="submit"
+                name="submit"
+                onClick={handleFormSubmit}
+                className="bp-newsletter_footer-cta"
+              >
+                <Arrow />
+              </button>
+            </Form>
+          </>
+        )}
+
+        {popup && (
+          <>
+            <h1 className="bp-newsletter_title">{headline}</h1>
+            <p className="bp-signup_desc">
+              <BlockContent
+                serializers={blockTypeDefaultSerializers}
+                blocks={_rawBody}
+              />
+            </p>
+            <Form onsubmit={handleFormSubmit} footer="">
+              <Fieldset legend="Personal Information">
+                <InputText
+                  label="Email"
+                  type="email"
+                  id="email"
+                  required={true}
+                  value={email}
+                  onChange={handleEmailChange}
+                  valid={isValidEmail}
+                  validate={hasSubmitted}
+                />
+              </Fieldset>
+              <input
+                type="submit"
+                name="submit"
+                value={ctaLabel}
+                onClick={handleFormSubmit}
+                className="bp-newsletter_cta"
+              />
+            </Form>
+          </>
         )}
       </div>
     </section>
