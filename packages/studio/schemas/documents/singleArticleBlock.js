@@ -1,7 +1,7 @@
 import { FaNewspaper } from 'react-icons/fa'
 
 export default {
-  name: 'singleArticleBLock',
+  name: 'singleArticleBlock',
   type: 'document',
   icon: FaNewspaper,
   title: 'Article Block',
@@ -43,7 +43,7 @@ export default {
   preview: {
     select: {
       title: 'name',
-      subtitle: 'imageBlockType.name',
+      subtitle: 'singleArticleBLock.name',
       media: 'image'
     }
   }
