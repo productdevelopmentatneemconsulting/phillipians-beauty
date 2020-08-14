@@ -115,6 +115,13 @@ figure img {
   padding-left: 10px;
   padding-right: 10px;
 }
+.bp-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between !important;
+  margin-right: -10px;
+  margin-left: -10px;
+}
 @media (min-width: 1200px) {
   .bp-container {
     max-width: 1160px;
@@ -128,6 +135,11 @@ figure img {
 }
 .mr20 {
   margin-right: 20px;
+}
+@media (min-width: 768px) {
+  .mb-5 {
+    margin-bottom: 1rem !important;
+  }
 }
 .p0 {
   padding: 0;
@@ -171,6 +183,10 @@ figure img {
     max-width: 8.333333%;
     flex-basis: 8.333333%;
   }
+  .col-2 {
+    max-width: 16.666666%;
+    flex-basis: 16.666666%;
+  }
   .col-3 {
     max-width: 25%;
     flex-basis: 25%;
@@ -178,6 +194,10 @@ figure img {
   .col-4 {
     max-width: 33.333333%;
     flex-basis: 33.333333%;
+  }
+  .col-5 {
+    max-width: 41.666666%;
+    flex-basis: 41.666666%;
   }
   .col-6 {
     max-width: 50%;
@@ -187,9 +207,25 @@ figure img {
     max-width: 58.333333%;
     flex-basis: 58.333333%;
   }
+  .col-8 {
+    max-width: 66.666666%;
+    flex-basis: 66.666666%;
+  }
   .col-9 {
     max-width: 75%;
     flex-basis: 75%;
+  }
+  .col-10 {
+    max-width: 83.333333%;
+    flex-basis: 83.333333%;
+  }
+  .col-11 {
+    max-width: 91.666666%;
+    flex-basis: 91.666666%;
+  }
+  .col-12 {
+    max-width: 100%;
+    flex-basis: 100%;
   }
 }
 .bp-preloader {
