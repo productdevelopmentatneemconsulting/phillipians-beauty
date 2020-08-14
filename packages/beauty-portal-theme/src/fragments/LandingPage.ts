@@ -180,6 +180,82 @@ export const query = graphql`
           name
         }
       }
+      ... on SanitySingleArticleBlock {
+        id
+        name
+        article {
+          ... on SanityFeatureArticle {
+            _type
+            id
+            headline
+            subheading
+            _rawHeroImage(resolveReferences: { maxDepth: 10 })
+            heroImage {
+              asset {
+                url
+              }
+              alt
+            }
+            heroVideo {
+              url
+              youTubeCaption
+            }
+            path
+            slug {
+              current
+            }
+          }
+          ... on SanityGalleryArticle {
+            _type
+            id
+            headline
+            subheading
+            _rawHeroImage(resolveReferences: { maxDepth: 10 })
+            heroImage {
+              asset {
+                url
+              }
+              alt
+            }
+            path
+            slug {
+              current
+            }
+          }
+          ... on SanityHowToArticle {
+            _type
+            id
+            headline
+            subheading
+            _rawHeroImage(resolveReferences: { maxDepth: 10 })
+            heroImage {
+              asset {
+                url
+              }
+              alt
+            }
+            heroVideo {
+              url
+              youTubeCaption
+            }
+            path
+            slug {
+              current
+            }
+          }
+        }
+        imageBlockType {
+          name
+        }
+      }
+      ... on SanityTextBlock {
+        id
+        name
+        _rawTextBlockBody(resolveReferences: { maxDepth: 10 })
+        textBlockType {
+          name
+        }
+      }
       ... on SanitySearchBlock {
         id
         name
@@ -188,6 +264,7 @@ export const query = graphql`
           title
           hitComp
         }
+        _type
       }
       ... on SanityVideoBlock {
         id

@@ -7,4 +7,5 @@ export interface ImageBlockInterface {
   imageBlockType: any;
   _rawTextBlockBody: any;
   preferPerformance: boolean;
+  type?: string;
 }
