@@ -10,6 +10,7 @@ import ImageBlock from '../ImageBlock';
 import SanityTagsBlock from '../SanityTagsBlock';
 import SanityAccordionBlock from '../SanityAccordionBlock';
 import SanitySearchBlock from '../SanitySearchBlock';
+import SanitySingleArticle from '../SanitySingleArticle';
 
 const componentsMap = {
   SanityArticleSlider: SanityArticleSlider,
@@ -22,6 +23,7 @@ const componentsMap = {
   SanityImageBlock: ImageBlock,
   SanityTaxonomyBlock: SanityTagsBlock,
   SanityAccordionBlock: SanityAccordionBlock,
+  SanitySingleArticleBlock: SanitySingleArticle,
 };
 
 const LandingSectionRenderer: FunctionComponent<LandingSectionRendererInterface> = ({

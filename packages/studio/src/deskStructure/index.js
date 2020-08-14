@@ -11,7 +11,16 @@ import {
   MdSearch,
   MdEmail
 } from 'react-icons/md'
-import { FaSitemap, FaTag, FaTags, FaBuffer, FaSlidersH, FaBoxes, FaGlobe } from 'react-icons/fa'
+import {
+  FaSitemap,
+  FaTag,
+  FaTags,
+  FaBuffer,
+  FaSlidersH,
+  FaBoxes,
+  FaGlobe,
+  FaNewspaper
+} from 'react-icons/fa'
 import { GiSpray, GiCherish, GiHairStrands, GiStopSign } from 'react-icons/gi'
 // ran npm install react
 // ran npm install font-awesome
@@ -148,6 +157,12 @@ export default () =>
                 .icon(MdEmail)
                 .schemaType('accordionBlock')
                 .child(S.documentTypeList('accordionBlock').title('Accordion Block')),
+              S.divider(),
+              S.listItem()
+                .title('Single Article Block')
+                .icon(FaNewspaper)
+                .schemaType('singleArticleBlock')
+                .child(S.documentTypeList('singleArticleBlock').title('Single Article Block')),
               S.divider(),
               S.listItem()
                 .title('Search Block')

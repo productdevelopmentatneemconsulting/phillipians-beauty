@@ -36,6 +36,7 @@ import articleSlider from './documents/articleSlider'
 import authorSlider from './documents/authorSlider'
 import productSlider from './documents/productSlider'
 import accordionBlock from './documents/accordionBlock'
+import singleArticleBlock from './documents/singleArticleBlock'
 import searchBlock from './documents/searchBlock'
 import indices from './documents/indices'
 import navBar from './documents/navBar'
@@ -105,6 +106,7 @@ export default createSchema({
     textBlock,
     tool,
     author,
+    singleArticleBlock,
 
     navLink,
     navItem,

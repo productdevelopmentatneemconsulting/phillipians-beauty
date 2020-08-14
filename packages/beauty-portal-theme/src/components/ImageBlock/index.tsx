@@ -3,6 +3,7 @@ import { Link } from 'gatsby';
 import classNames from 'classnames';
 import { useInView } from 'react-intersection-observer';
 import { urlFor } from '../../helpers/imageUrl';
+import getType from '../../helpers/getType';
 import BlockContent from '@sanity/block-content-to-react';
 import { ImageBlockInterface } from './models';
 import { blockTypeDefaultSerializers } from '../../helpers/sanity';
@@ -15,6 +16,7 @@ const ImageBlock: FunctionComponent<ImageBlockInterface> = ({
   _rawImage,
   url,
   imageBlockType,
+  type,
 }) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -102,14 +104,21 @@ const ImageBlock: FunctionComponent<ImageBlockInterface> = ({
           <div className="bp-imageBlock_content">
             <div className="bp-imageBlock_image">{Image}</div>
             <div className="bp-imageBlock_copy">
+              {type && (
+                <span className="bp-imageBlock_type">{getType('Article')}</span>
+              )}
               <h2 className="bp-imageBlock_title">
                 <span>{name}</span>
               </h2>
-              {_rawTextBlockBody && (
-                <BlockContent
-                  serializers={blockTypeDefaultSerializers}
-                  blocks={_rawTextBlockBody}
-                />
+              {type == 'article' ? (
+                <p>{_rawTextBlockBody}</p>
+              ) : (
+                _rawTextBlockBody && (
+                  <BlockContent
+                    serializers={blockTypeDefaultSerializers}
+                    blocks={_rawTextBlockBody}
+                  />
+                )
               )}
             </div>
           </div>
