@@ -9,9 +9,9 @@ import './styles.scss';
 
 const ProductDetails: FunctionComponent<ProductInterface> = ({
   product,
-  metaInfo
+  metaInfo,
 }) => {
-  const {brandInfo} = metaInfo;
+  const { brandInfo } = metaInfo;
   const [accordion, toggleAccordion] = useState(false);
 
   return (
@@ -52,7 +52,9 @@ const ProductDetails: FunctionComponent<ProductInterface> = ({
             </picture>
           </figure>
           {product.tags.length > 0 && (
-            <span className="bp-product-detail_category">{product.tags[0].name}</span>
+            <span className="bp-product-detail_category">
+              {product.tagLine}
+            </span>
           )}
         </div>
         <div className="col-6 col-xs-12">

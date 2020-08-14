@@ -9,6 +9,7 @@ import SanityArticleSlider from '../../components/SanityArticleSlider';
 import Tags from '../../components/Tags';
 import SEO from '../../components/Seo';
 import Layout from '../../components/Layout';
+import SingleArticle from '../../components/SanitySingleArticle';
 import SanityProductSlider from 'src/components/SanityProductSlider';
 
 const ProductPage = (props: ProductPageProps) => {
@@ -18,10 +19,10 @@ const ProductPage = (props: ProductPageProps) => {
       products: { nodes: productNodes },
       articles: { nodes: articlesList },
       brandInfo,
-      imageBlock,
+      articleBlock,
     },
   } = props;
-
+  console.log(articleBlock);
   page.seo = page.seo || {};
   return (
     <Layout>
@@ -33,7 +34,7 @@ const ProductPage = (props: ProductPageProps) => {
       />
       <OGTags type={'page'} slug={page.path} data={page} />
       {page.path !== '/' && <Breadcrumb pageTitle={page.name} />}
-      <ProductDetails product={page} metaInfo={{brandInfo}}/>
+      <ProductDetails product={page} metaInfo={{ brandInfo }} />
       {productNodes.length && (
         <SanityProductSlider
           slides={productNodes}
@@ -41,15 +42,7 @@ const ProductPage = (props: ProductPageProps) => {
           name=""
         />
       )}
-      {imageBlock && (
-        <ImageBlock
-          name={imageBlock.name}
-          _rawImage={imageBlock._rawImage}
-          _rawTextBlockBody={imageBlock._rawTextBlockBody}
-          url={imageBlock.url}
-          imageBlockType={imageBlock.imageBlockType}
-        />
-      )}
+      {articleBlock && <SingleArticle {...articleBlock} />}
       {articlesList.length > 0 && (
         <SanityArticleSlider
           name="articles"
@@ -115,27 +108,15 @@ export const query = graphql`
         name
       }
     }
-    imageBlock: sanityImageBlock {
+    articleBlock: sanitySingleArticleBlock {
       id
       name
-      _rawImage(resolveReferences: { maxDepth: 10 })
-      image {
-        asset {
-          fluid {
-            base64
-            aspectRatio
-            src
-            srcSet
-            srcWebp
-            srcSetWebp
-            sizes
-          }
-        }
+      article {
+        ...GalleryFieldsFull
+        ...HowToFieldsFull
+        ...FeatureFieldsFull
       }
-      _rawTextBlockBody
-      url
       imageBlockType {
-        id
         name
       }
     }
@@ -155,7 +136,7 @@ interface ProductPageProps {
     products: any;
     articles: any;
     brandInfo: any;
-    imageBlock: any;
+    articleBlock: any;
   };
   pageContext: {
     slug: string;

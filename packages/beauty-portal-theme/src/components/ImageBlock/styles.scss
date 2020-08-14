@@ -19,6 +19,14 @@
     }
   }
 
+  &_type {
+    color: #2c5270;
+    font-weight: bold;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
   &_title {
     color: black;
     margin-top: 10px;
