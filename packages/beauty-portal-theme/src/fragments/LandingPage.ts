@@ -88,6 +88,7 @@ export const query = graphql`
       }
       ... on SanityNewsletterBlock {
         id
+        _type
         name
         ctaLabel
         headline

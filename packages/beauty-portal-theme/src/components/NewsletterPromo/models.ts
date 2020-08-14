@@ -5,4 +5,5 @@ export interface NewsletterPromoInterface {
   onFormSubmission?: any;
   isFormSubmitted?: boolean;
   popup?: boolean;
+  footer: string;
 }

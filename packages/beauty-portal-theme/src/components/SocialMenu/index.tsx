@@ -7,7 +7,10 @@ import { ReactComponent as Facebook } from '../../images/icons/facebook.svg';
 import { ReactComponent as Share } from '../../images/icons/facebook.svg';
 import './styles.scss';
 
-const SocialMenu: FunctionComponent<SocialMenuInterface> = ({ links }) => {
+const SocialMenu: FunctionComponent<SocialMenuInterface> = ({
+  links,
+  footer,
+}) => {
   const socialIcons: { [char: string]: any } = {
     facebook: Facebook,
     insta: Instagram,
@@ -34,7 +37,7 @@ const SocialMenu: FunctionComponent<SocialMenuInterface> = ({ links }) => {
   if (!links) return null;
 
   return (
-    <div className="bp-social">
+    <div className={footer === 'Footer' ? 'bp-social-footer' : 'bp-social'}>
       <ul>{renderItems()}</ul>
     </div>
   );
@@ -42,6 +45,7 @@ const SocialMenu: FunctionComponent<SocialMenuInterface> = ({ links }) => {
 
 interface SocialMenuInterface {
   links: any;
+  footer: string;
 }
 
 export default SocialMenu;
