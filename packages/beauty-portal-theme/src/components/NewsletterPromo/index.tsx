@@ -106,6 +106,7 @@ const NewsletterPromo: FunctionComponent<NewsletterPromoInterface> = ({
               <button
                 type="submit"
                 name="submit"
+                aria-label="Subscribe us"
                 onClick={handleFormSubmit}
                 className="bp-newsletter_footer-cta"
               >
