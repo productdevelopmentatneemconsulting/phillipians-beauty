@@ -252,20 +252,6 @@ const Slider: FunctionComponent<SliderInterface> = ({
         {slide.heroImage && (
           <>
             <figure>
-              {index === 0 && (
-                <link
-                  rel="preload"
-                  as="image"
-                  href={`${urlFor(slide._rawHeroImage)
-                    .width(752)
-                    .height(423)
-                    .quality(80)
-                    .fit('max')
-                    .auto('format')
-                    .url()
-                    .toString()}`}
-                />
-              )}
               <picture
                 className="bp-image__placeholder"
                 style={{
@@ -274,32 +260,17 @@ const Slider: FunctionComponent<SliderInterface> = ({
                   backgroundSize: 'cover',
                 }}
               >
+                <source
+                  media="(max-width: 799px)"
+                  srcSet={`${slide.heroImage.asset.url}?q=80&w=414&h=232&fit=crop&auto=format`}
+                />
+                <source
+                  media="(min-width: 800px)"
+                  srcSet={`${slide.heroImage.asset.url}?q=80&w=752&h=423&fit=crop&auto=format`}
+                />
                 <img
-                  className="bp-slider_image swiper-lazy"
-                  data-srcset={`${urlFor(slide._rawHeroImage)
-                    .width(414)
-                    .height(232)
-                    .fit('max')
-                    .auto('format')
-                    .quality(80)
-                    .url()
-                    .toString()} 414w,
-                      ${urlFor(slide._rawHeroImage)
-                        .width(540)
-                        .height(303)
-                        .quality(80)
-                        .fit('max')
-                        .auto('format')
-                        .url()
-                        .toString()} 540w,
-                      ${urlFor(slide._rawHeroImage)
-                        .width(752)
-                        .height(423)
-                        .quality(80)
-                        .fit('max')
-                        .auto('format')
-                        .url()
-                        .toString()} 752w`}
+                  src={`${slide.heroImage.asset.url}?q=80&w=752&h=423&fit=crop&auto=format`}
+                  loading="lazy"
                   alt={slide.heroImage.alt}
                 />
               </picture>
