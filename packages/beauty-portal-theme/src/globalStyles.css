@@ -105,6 +105,12 @@ figure img {
   white-space: nowrap;
 }
 
+.bp-container-fluid {
+  width: 98%;
+  margin: auto;
+  display: block;
+}
+
 /* Responsive Container / GRID */
 .bp-container {
   width: 100%;
