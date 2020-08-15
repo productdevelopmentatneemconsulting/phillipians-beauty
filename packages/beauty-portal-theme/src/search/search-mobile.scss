@@ -19,7 +19,7 @@
     border-radius: 16px;
     left: 0;
     max-width: initial;
-    padding-bottom: 4rem;
+    padding-bottom: 8rem;
     position: fixed;
     top: 0;
     transform: translateY(120vh);
@@ -39,8 +39,11 @@
       display: none;
     }
     .search-container-filters {
-      position: absolute;
-      transform: translateY(4rem);
+      position: fixed;
+      transform: translateY(3rem);
+      z-index: 2;
+      overflow: auto;
+      max-height: 100vh;
     }
     .search-container-filters-footer {
       background-color: #fff;
@@ -115,6 +118,7 @@
     min-width: 112px;
     position: fixed;
     transform: translateX(-50%);
+    z-index: 2;
     svg {
       height: 14px;
       margin-right: 8px;
@@ -134,10 +138,8 @@
     }
   }
   .ais-RefinementList-list {
-    display: grid;
-    grid-auto-flow: column;
-    grid-gap: 0 1.5rem;
-    grid-template-rows: repeat(3, 1fr);
+    display: flex;
+    flex-direction: column;
   }
   .ais-RefinementList-item {
     flex: 50%;
