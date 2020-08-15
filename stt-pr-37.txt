@@ -1,0 +1,348 @@
+Tests
+
+  Metatags 
+    •  x-ua-compatible
+        └─ ie=edge
+    •  viewport
+        └─ width=device-width, initial-scale=1, shrink-to-fit=no
+    •  generator
+        └─ Gatsby 2.24.2
+    •  description
+        └─ Learn how to do a Dutch braid in under 15 minutes with our easy step-by-step guide. Then take a look at our inspiration gallery. 
+    •  twitter:card
+        └─ summary
+    •  twitter:creator
+        └─ platform.liberty
+    •  twitter:title
+        └─ 	
+How to do a Dutch Braid in 6 Easy Steps 
+    •  twitter:description
+        └─ Learn how to do a Dutch braid in under 15 minutes with our easy step-by-step guide. Then take a look at our inspiration gallery. 
+    •  keywords
+        └─ braid, dutch, perform easily  
+    •  og:type
+        └─ article
+    •  og:url
+        └─ https://liberty-portal.netlify.app//hair-style/how-to-do-a-dutch-braid-in-six-easy-steps//
+    •  og:title
+        └─ 	
+How to do a Dutch Braid in 6 Easy Steps 
+    •  og:site_name
+        └─ All Things Beautiful
+    •  twitter:site
+        └─ All Things Beautiful
+    •  og:locale
+        └─ EN-GB
+    •  article:published_time
+        └─ May 3, 2020
+    •  article:modified_time
+        └─ May 3, 2020
+    •  article:author
+        └─ Sharan
+    •  article:tag
+        └─ braid
+    •  og:description
+        └─ Learn how to do a Dutch braid in under 15 minutes with our easy step-by-step guide. Then take a look at our inspiration gallery. 
+    •  twitter:image
+        └─ https://cdn.sanity.io/images/xmpcmhrn/production/2b6b4d1fc5552b58670056e3f4394d3af452ef39-782x439.jpg
+    •  twitter:image:alt
+        └─  Dutch Braid in 6 Easy Steps
+    •  og:image
+        └─ https://cdn.sanity.io/images/xmpcmhrn/production/2b6b4d1fc5552b58670056e3f4394d3af452ef39-782x439.jpg
+    •  og:image:width
+        └─ 782
+    •  og:image:height
+        └─ 439
+    •  og:image:alt
+        └─  Dutch Braid in 6 Easy Steps
+    •  og:video
+        └─ https://youtu.be/V_VrtBUhjLw
+    •  article:section
+        └─ Hair Style
+    •  theme-color
+        └─ #b8f0c0
+
+  Schema.org > WebSite - 100% (1 passed, 0 failed)
+    ✓  schema in jsonld
+        └─ [Object]
+    •  @context
+        └─ http://schema.org
+    •  @type
+        └─ WebSite
+    •  mainEntityOfPage.@type
+        └─ WebPage
+    •  mainEntityOfPage.@id
+        └─ https://liberty-portal.netlify.app/
+    •  inLanguage
+        └─ EN-GB
+    •  publisher.@type
+        └─ Organization
+    •  publisher.name
+        └─ All Things Beautiful
+    •  publisher.url
+        └─ https://www.allthingsbeautiful.com/
+    •  publisher.sameAs[0]
+        └─ https://www.youtube.com/user/allthingshairPH
+    •  publisher.sameAs[1]
+        └─ https://twitter.com/AllThingsHairuk
+    •  publisher.sameAs[2]
+        └─ https://www.pinterest.com/AllThingsHair/
+    •  publisher.sameAs[3]
+        └─ https://www.facebook.com/AllThingsHairPH/
+    •  publisher.sameAs[4]
+        └─ https://www.instagram.com/allthingshairuk/
+    •  publisher.logo.@type
+        └─ ImageObject
+    •  publisher.logo.url
+        └─ https://liberty-portal.netlify.app/unilever-logo.png
+    •  name
+        └─ All Things Beautiful
+
+  Schema.org > HowTo - 100% (1 passed, 0 failed)
+    ✓  schema in jsonld
+        └─ [Object]
+    •  @context
+        └─ http://schema.org
+    •  @type
+        └─ HowTo
+    •  step[0].@type
+        └─ HowToStep
+    •  step[0].url
+        └─ https://liberty-portal.netlify.app//hair-style/how-to-do-a-dutch-braid-in-six-easy-steps//
+    •  step[0].name
+        └─ Apply Dry Shampoo
+    •  step[0].itemListElement[0].@type
+        └─ HowToDirection
+    •  step[0].itemListElement[0].text
+        └─ Start by spraying your hair with some dry shampoo. This will help give the hair grip and texture, making the braid last longer.
+    •  step[0].image.@type
+        └─ ImageObject
+    •  step[0].image.url
+        └─ https://cdn.sanity.io/images/xmpcmhrn/production/6df06351d77209ac6b6e26f8d9ddbd14a23c8d61-683x1024.jpg
+    •  step[0].image.height
+        └─ 1024
+    •  step[0].image.width
+        └─ 683
+    •  step[1].@type
+        └─ HowToStep
+    •  step[1].url
+        └─ https://liberty-portal.netlify.app//hair-style/how-to-do-a-dutch-braid-in-six-easy-steps//
+    •  step[1].name
+        └─ Divide a Section of Hair Into 3.
+    •  step[1].itemListElement[0].@type
+        └─ HowToDirection
+    •  step[1].itemListElement[0].text
+        └─ Using your fingers, take a small section of hair from just above the crown and divide it into three equal sections.
+    •  step[1].itemListElement[1].@type
+        └─ HowToDirection
+    •  step[1].itemListElement[1].text
+        └─ This will form the start of your braid.
+    •  step[1].image.@type
+        └─ ImageObject
+    •  step[1].image.url
+        └─ https://cdn.sanity.io/images/xmpcmhrn/production/5110bd41dfff463a142a554654be6f57c6475d6e-683x1024.jpg
+    •  step[1].image.height
+        └─ 1024
+    •  step[1].image.width
+        └─ 683
+    •  step[2].@type
+        └─ HowToStep
+    •  step[2].url
+        └─ https://liberty-portal.netlify.app//hair-style/how-to-do-a-dutch-braid-in-six-easy-steps//
+    •  step[2].name
+        └─ Start Braiding.
+    •  step[2].itemListElement[0].@type
+        └─ HowToDirection
+    •  step[2].itemListElement[0].text
+        └─ Start your Dutch braid by doing a regular 3 strand braid but remember to cross the strands under the middle strand rather than over.
+    •  step[2].itemListElement[1].@type
+        └─ HowToDirection
+    •  step[2].itemListElement[1].text
+        └─ Do this by crossing the right strand under the middle strand and then bringing the left strand under the middle strand.
+    •  step[2].itemListElement[2].@type
+        └─ HowToDirection
+    •  step[2].itemListElement[2].text
+        └─ Then continue this process, pulling in more hair from the sides as you bring the strands into the center.
+    •  step[2].image.@type
+        └─ ImageObject
+    •  step[2].image.url
+        └─ https://cdn.sanity.io/images/xmpcmhrn/production/dad8eca3cba3192153fc2506c483673ed561fdfe-683x1024.jpg
+    •  step[2].image.height
+        └─ 1024
+    •  step[2].image.width
+        └─ 683
+    •  step[3].@type
+        └─ HowToStep
+    •  step[3].url
+        └─ https://liberty-portal.netlify.app//hair-style/how-to-do-a-dutch-braid-in-six-easy-steps//
+    •  step[3].name
+        └─ Secure the Braid.
+    •  step[3].itemListElement[0].@type
+        └─ HowToDirection
+    •  step[3].itemListElement[0].text
+        └─ Once you have come to the end of the braid, leave a small section loose at the end and tie it with a hair tie or clear elastic.
+    •  step[3].image.@type
+        └─ ImageObject
+    •  step[3].image.url
+        └─ https://cdn.sanity.io/images/xmpcmhrn/production/491740b4be3b3fec151d13e9a58d0aaa34b58c14-683x1024.jpg
+    •  step[3].image.height
+        └─ 1024
+    •  step[3].image.width
+        └─ 683
+    •  step[4].@type
+        └─ HowToStep
+    •  step[4].url
+        └─ https://liberty-portal.netlify.app//hair-style/how-to-do-a-dutch-braid-in-six-easy-steps//
+    •  step[4].name
+        └─ Apply Hairspray.
+    •  step[4].itemListElement[0].@type
+        └─ HowToDirection
+    •  step[4].itemListElement[0].text
+        └─ Once you’re happy with your braid, lock it in place with the ,VO5 Invisible Ultimate Hold Hairspray,.
+    •  step[4].itemListElement[1].@type
+        └─ HowToDirection
+    •  step[4].itemListElement[1].text
+        └─ Mist the hair from front to back, smoothing down any flyaways or shorter layers that are sticking out.
+    •  step[4].image.@type
+        └─ ImageObject
+    •  step[4].image.url
+        └─ https://cdn.sanity.io/images/xmpcmhrn/production/8271ea34695dae860aed032c53630b73e11d8a54-683x1024.jpg
+    •  step[4].image.height
+        └─ 1024
+    •  step[4].image.width
+        └─ 683
+    •  step[5].@type
+        └─ HowToStep
+    •  step[5].url
+        └─ https://liberty-portal.netlify.app//hair-style/how-to-do-a-dutch-braid-in-six-easy-steps//
+    •  step[5].name
+        └─ Final Look.
+    •  step[5].itemListElement[0].@type
+        └─ HowToDirection
+    •  step[5].itemListElement[0].text
+        └─ And that’s it!
+    •  step[5].image.@type
+        └─ ImageObject
+    •  step[5].image.url
+        └─ https://cdn.sanity.io/images/xmpcmhrn/production/2fe735c57f867c82b531d56e392ce32c6e95a504-683x1024.jpg
+    •  step[5].image.height
+        └─ 1024
+    •  step[5].image.width
+        └─ 683
+    •  totalTime
+        └─ PT15M
+    •  supply[0].@type
+        └─ HowToSupply
+    •  supply[0].name
+        └─ Cream Silk Triple Keratin Rescue Ultimate Repair & Shine
+    •  supply[0].image
+        └─ https://cdn.sanity.io/images/xmpcmhrn/production/df8a9c0a248dc5a2d30ec04ce51a50a2e9d2a982-310x277.png
+    •  supply[0].url
+        └─ https://liberty-portal.netlify.app//hair-style/how-to-do-a-dutch-braid-in-six-easy-steps///product-showcase/cream-silk-triple-keratin-rescue-ultimate-repair-and-shine/
+    •  supply[1].@type
+        └─ HowToSupply
+    •  supply[1].name
+        └─ TONI&GUY Illuminating Hair Perfume
+    •  supply[1].image
+        └─ https://cdn.sanity.io/images/xmpcmhrn/production/74abce9d811a9a742edeb3ae84418f8dcaad0007-500x500.jpg
+    •  supply[1].url
+        └─ https://liberty-portal.netlify.app//hair-style/how-to-do-a-dutch-braid-in-six-easy-steps///product-showcase/toni-and-guy-illuminating-hair-perfume/
+    •  video.@type
+        └─ VideoObject
+    •  video.name
+        └─ women showing off a video how to dutch Braid in 6 Easy Steps
+    •  video.contentUrl
+        └─ https://liberty-portal.netlify.app//hair-style/how-to-do-a-dutch-braid-in-six-easy-steps//
+    •  video.thumbnailUrl
+        └─ https://cdn.sanity.io/images/xmpcmhrn/production/2b6b4d1fc5552b58670056e3f4394d3af452ef39-782x439.jpg
+    •  video.embedUrl
+        └─ https://youtu.be/V_VrtBUhjLw
+    •  video.description
+        └─ The Dutch braid tutorial you've been waiting for.
+    •  video.uploadDate
+        └─ May 3, 2020
+    •  tool[0].@type
+        └─ HowToTool
+    •  tool[0].name
+        └─ Bobby Pins
+    •  tool[1].@type
+        └─ HowToTool
+    •  tool[1].name
+        └─ Tail Comb
+    •  tool[2].@type
+        └─ HowToTool
+    •  tool[2].name
+        └─ Elastic
+    •  tool[3].@type
+        └─ HowToTool
+    •  tool[3].name
+        └─ Sectioning Clip
+    •  name
+        └─ How To Do a Dutch Braid in 6 Easy Steps 
+    •  description
+        └─ The Dutch braid tutorial you've been waiting for.
+    •  image.@type
+        └─ ImageObject
+    •  image.url
+        └─ https://cdn.sanity.io/images/xmpcmhrn/production/2b6b4d1fc5552b58670056e3f4394d3af452ef39-782x439.jpg
+    •  image.height
+        └─ 439
+    •  image.width
+        └─ 782
+
+  Facebook - 100% (8 passed, 0 failed)
+    ✓  must have page title
+        └─ 	
+How to do a Dutch Braid in 6 Easy Steps 
+    ✓  must have page type
+        └─ article
+    ✓  must have url
+        └─ https://liberty-portal.netlify.app//hair-style/how-to-do-a-dutch-braid-in-six-easy-steps//
+    ✓  must have image url
+        └─ https://cdn.sanity.io/images/xmpcmhrn/production/2b6b4d1fc5552b58670056e3f4394d3af452ef39-782x439.jpg
+    ✓  must have image alt text
+        └─  Dutch Braid in 6 Easy Steps
+    ✓  should have page description
+        └─ Learn how to do a Dutch braid in under 15 minutes with our easy step-by-step guide. Then take a look at our inspiration gallery. 
+    ✓  should have account username
+        └─ All Things Beautiful
+    ✓  should have locale
+        └─ EN-GB
+
+  Twitter - 100% (7 passed, 0 failed)
+    ✓  must have card type
+        └─ summary
+    ✓  must have title
+        └─ 	
+How to do a Dutch Braid in 6 Easy Steps 
+    ✓  must have description
+        └─ Learn how to do a Dutch braid in under 15 minutes with our easy step-by-step guide. Then take a look at our inspiration gallery. 
+    ✓  must have image url
+        └─ https://cdn.sanity.io/images/xmpcmhrn/production/2b6b4d1fc5552b58670056e3f4394d3af452ef39-782x439.jpg
+    ✓  must have image alt text
+        └─  Dutch Braid in 6 Easy Steps
+    ✓  should have account username
+        └─ All Things Beautiful
+    ✓  should have username of content creator
+        └─ platform.liberty
+
+Statistics
+
+  Number of Metatags: 30
+  Schemas in JSON-LD: 2
+     Schemas in HTML: 0
+      Schema in RDFa: 0
+  Schema.org schemas: WebSite, HowTo
+       Other schemas: 0
+     Test groups run: 5
+  Optional tests run: 139
+ Pass/Fail tests run: 17
+
+Results
+
+    Passed: 17 	(100%)
+  Warnings: 0 	(0%)
+    Failed: 0 	(0%)
+
+  ✓ 17 tests passed with 0 warnings.
+
