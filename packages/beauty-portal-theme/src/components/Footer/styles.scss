@@ -5,7 +5,9 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding-top: 48px;
+  @media (min-width: 768px) {
+    padding-top: 48px;
+  }
 
   &_wrapper {
     padding-left: 0.675rem !important;

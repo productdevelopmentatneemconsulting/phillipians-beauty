@@ -41,7 +41,7 @@ a[class^='ais-'] {
   .ais-InfiniteHits-item {
     justify-content: center;
     flex: auto;
-    width: calc(100% / 2.225);
+    width: calc(100% / 3.225);
     margin: 0 10px;
     margin-bottom: 10px;
 
@@ -82,10 +82,64 @@ a[class^='ais-'] {
     }
   }
 
+  .ais-InfiniteHits-item__buyNowLink {
+    font-size: 0.825rem;
+    font-weight: 700;
+    width: 6rem;
+    height: 2rem;
+    margin-left: -1;
+    cursor: pointer;
+    background-color: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
+    color: var(--black-color);
+    position: relative;
+    transform: perspective(1px) translateZ(0);
+    @media (min-width: 768px) {
+      font-size: 1.125rem;
+      width: 8rem;
+      height: 2.5rem;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--black-color);
+      color: var(--white-color);
+      transform: scaleX(0);
+      transform-origin: 0 50%;
+      transition-property: transform;
+      transition-duration: 0.3s;
+      transition-timing-function: ease-out;
+    }
+    &:hover {
+      color: var(--white-color);
+      border-color: var(--black-color);
+      &::before {
+        transform: scaleX(1);
+      }
+    }
+  }
+
   .ais-InfiniteHits-item__copy {
-    padding: 10px 50px;
+    padding: 0px;
+    padding-top: 5px;
 
     @media (min-width: 768px) {
+      text-align: center;
+      padding: 10px 50px;
+    }
+  }
+
+  .ais-InfiniteHits-item__tagline {
+    background: linear-gradient(to bottom, #fff 40%, #b8f0c0 5%, #b8f0c0 95%);
+    font-weight: 700 !important;
+
+    @media (min-width: 768px) {
+      font-size: 1.125rem;
       text-align: center;
     }
   }

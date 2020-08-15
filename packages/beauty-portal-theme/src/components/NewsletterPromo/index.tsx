@@ -54,101 +54,85 @@ const NewsletterPromo: FunctionComponent<NewsletterPromoInterface> = ({
     <section
       className={'bp-newsletter ' + (popup || footer ? 'no-padding' : '')}
     >
-      <div className="bp-newsletter_content">
-        {!footer && !popup && (
-          <>
-            <p className="bp-signup_desc">
-              <BlockContent
-                serializers={blockTypeDefaultSerializers}
-                blocks={_rawBody}
-              />
-            </p>
-            <Link to="/subscribe/" className="bp-newsletter_link">
-              {ctaLabel}
-            </Link>
-          </>
-        )}
+      {isFormSubmitted && (
+        <div className="bp-signup_thanks">
+          <Bell />
+          <h2>Thankyou for signing up!</h2>
+          <p>
+            You will be the first to know about articles, products, tutorials,
+            helpful tips &amp; contests. You will get updates that are most
+            important to you.
+          </p>
+        </div>
+      )}
 
-        {isFormSubmitted && (
-          <div className="bp-signup_thanks">
-            <Bell />
-            <h2>Thankyou for signing up!</h2>
-            <p>
-              You will be the first to know about articles, products, tutorials,
-              helpful tips &amp; contests. You will get updates that are most
-              important to you.
-            </p>
-          </div>
-        )}
+      {footer && (
+        <>
+          <h2 className="bp-newsletter_footer-title">{headline}</h2>
+          <p className="bp-newsletter_footer-desc">
+            <BlockContent
+              serializers={blockTypeDefaultSerializers}
+              blocks={_rawBody}
+            />
+          </p>
+          <Form onsubmit={handleFormSubmit} footer={footer}>
+            <Fieldset legend="Personal Information">
+              <InputText
+                label="Email"
+                type="email"
+                id="email"
+                required={true}
+                value={email}
+                onChange={handleEmailChange}
+                valid={isValidEmail}
+                validate={hasSubmitted}
+              />
+            </Fieldset>
+            <button
+              type="submit"
+              name="submit"
+              aria-label="Subscribe us"
+              onClick={handleFormSubmit}
+              className="bp-newsletter_footer-cta"
+            >
+              <Arrow />
+            </button>
+          </Form>
+        </>
+      )}
 
-        {footer && (
-          <>
-            <h2 className="bp-newsletter_footer-title">{headline}</h2>
-            <p className="bp-newsletter_footer-desc">
-              <BlockContent
-                serializers={blockTypeDefaultSerializers}
-                blocks={_rawBody}
+      {popup && (
+        <>
+          <h1 className="bp-newsletter_title">{headline}</h1>
+          <p className="bp-signup_desc">
+            <BlockContent
+              serializers={blockTypeDefaultSerializers}
+              blocks={_rawBody}
+            />
+          </p>
+          <Form onsubmit={handleFormSubmit} footer="">
+            <Fieldset legend="Personal Information">
+              <InputText
+                label="Email"
+                type="email"
+                id="email"
+                required={true}
+                value={email}
+                onChange={handleEmailChange}
+                valid={isValidEmail}
+                validate={hasSubmitted}
               />
-            </p>
-            <Form onsubmit={handleFormSubmit} footer={footer}>
-              <Fieldset legend="Personal Information">
-                <InputText
-                  label="Email"
-                  type="email"
-                  id="email"
-                  required={true}
-                  value={email}
-                  onChange={handleEmailChange}
-                  valid={isValidEmail}
-                  validate={hasSubmitted}
-                />
-              </Fieldset>
-              <button
-                type="submit"
-                name="submit"
-                aria-label="Subscribe us"
-                onClick={handleFormSubmit}
-                className="bp-newsletter_footer-cta"
-              >
-                <Arrow />
-              </button>
-            </Form>
-          </>
-        )}
-
-        {popup && (
-          <>
-            <h1 className="bp-newsletter_title">{headline}</h1>
-            <p className="bp-signup_desc">
-              <BlockContent
-                serializers={blockTypeDefaultSerializers}
-                blocks={_rawBody}
-              />
-            </p>
-            <Form onsubmit={handleFormSubmit} footer="">
-              <Fieldset legend="Personal Information">
-                <InputText
-                  label="Email"
-                  type="email"
-                  id="email"
-                  required={true}
-                  value={email}
-                  onChange={handleEmailChange}
-                  valid={isValidEmail}
-                  validate={hasSubmitted}
-                />
-              </Fieldset>
-              <input
-                type="submit"
-                name="submit"
-                value={ctaLabel}
-                onClick={handleFormSubmit}
-                className="bp-newsletter_cta"
-              />
-            </Form>
-          </>
-        )}
-      </div>
+            </Fieldset>
+            <input
+              type="submit"
+              name="submit"
+              value={ctaLabel}
+              onClick={handleFormSubmit}
+              className="bp-newsletter_cta"
+            />
+          </Form>
+        </>
+      )}
     </section>
   );
 };

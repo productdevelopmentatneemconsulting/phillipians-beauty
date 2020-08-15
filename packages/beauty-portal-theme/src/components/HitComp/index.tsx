@@ -8,7 +8,8 @@ const PostHit = ({ hit }) => {
     triggerOnce: true,
     rootMargin: '5px 0px',
   });
-  const { path, title, image } = hit;
+  const { pageType, path, title, subtitle, buyNowLink, image } = hit;
+  const product = pageType.toLowerCase();
 
   return (
     <article ref={ref} data-inview={inView}>
@@ -30,14 +31,14 @@ const PostHit = ({ hit }) => {
               >
                 <source
                   media="(max-width: 799px)"
-                  srcset={image.asset.fluid.srcWebp}
+                  srcSet={`${image.asset.url}?q=80&w=160&h=160&fit=crop&auto=format`}
                 />
                 <source
                   media="(min-width: 800px)"
-                  srcset={image.asset.fluid.srcWebp}
+                  srcSet={`${image.asset.url}?q=80&w=240&h=240&fit=crop&auto=format`}
                 />
                 <img
-                  src={image.asset.fluid.src}
+                  src={`${image.asset.url}?q=80&w=240&h=240&fit=crop&auto=format`}
                   loading="lazy"
                   alt={image.alt}
                 />
@@ -47,19 +48,29 @@ const PostHit = ({ hit }) => {
         </div>
 
         <div className="ais-InfiniteHits-item__copy">
+          {product.indexOf('product') >= 0 && subtitle && (
+            <h4 className="ais-InfiniteHits-item__tagline">
+              <Highlight attribute="subtitle" hit={hit} tagName="mark" />
+            </h4>
+          )}
+
           <h4>
             <Highlight attribute="title" hit={hit} tagName="mark" />
           </h4>
-          {/* <p className="ais-InfiniteHits-item__desc">
-            <Snippet attribute="ingredientBody" hit={hit} tagName="mark" />
-            <Snippet attribute="usageBody" hit={hit} tagName="mark" />
-            <Snippet attribute="galleryBody" hit={hit} tagName="mark" />
-            <Snippet attribute="howTobody" hit={hit} tagName="mark" />
-            <Snippet attribute="featureBody" hit={hit} tagName="mark" />
-            <span>{' [...]'}</span>
-          </p> */}
         </div>
       </Link>
+      {buyNowLink && (
+        <div className="textCenter">
+          <a target="_blank" rel="noreferrer" href={buyNowLink}>
+            <button
+              className="ais-InfiniteHits-item__buyNowLink"
+              aria-label="Buy Now"
+            >
+              Buy Now
+            </button>
+          </a>
+        </div>
+      )}
     </article>
   );
 };
