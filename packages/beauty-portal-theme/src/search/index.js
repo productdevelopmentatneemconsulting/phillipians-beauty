@@ -223,19 +223,19 @@ const Search = props => {
                   className="search-container-option"
                   items={[
                     {
-                      label: '9 hits',
-                      value: 9,
+                      label: '10 hits',
+                      value: 10,
                     },
                     {
-                      label: '18 hits',
-                      value: 18,
+                      label: '20 hits',
+                      value: 20,
                     },
                     {
-                      label: '27 hits',
-                      value: 27,
+                      label: '30 hits',
+                      value: 30,
                     },
                   ]}
-                  defaultRefinement={9}
+                  defaultRefinement={10}
                 />
               </label>
             </header>

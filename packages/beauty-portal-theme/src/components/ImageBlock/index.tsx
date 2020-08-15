@@ -36,8 +36,8 @@ const ImageBlock: FunctionComponent<ImageBlockInterface> = ({
             rel="preload"
             as="image"
             href={`${urlFor(_rawImage)
-              .width(559)
-              .height(314)
+              .width(426)
+              .height(240)
               .quality(80)
               .fit('max')
               .auto('format')
@@ -66,8 +66,8 @@ const ImageBlock: FunctionComponent<ImageBlockInterface> = ({
             <source
               media="screen and (min-width: 320px)"
               srcSet={`${urlFor(_rawImage)
-                .width(559)
-                .height(314)
+                .width(426)
+                .height(240)
                 .quality(80)
                 .fit('max')
                 .auto('format')
