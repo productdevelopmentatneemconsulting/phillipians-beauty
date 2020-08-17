@@ -62,7 +62,7 @@
   }
 
   &-description {
-    width: 50rem;
+    width: auto;
     font-size: 0.875rem;
     text-align: center;
     margin-top: 1.25rem;
@@ -70,6 +70,7 @@
     color: #fff;
 
     @media (min-width: 768px) {
+      width: 50rem;
       font-size: 1.25rem;
     }
   }
