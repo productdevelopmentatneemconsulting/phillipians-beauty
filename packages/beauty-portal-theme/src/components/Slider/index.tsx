@@ -62,7 +62,7 @@ const Slider: FunctionComponent<SliderInterface> = ({
       <SwiperSlide key={slide.headline}>
         <div>
           {slide._type && (
-            <span className="bp-slider_type">{getType(slide._type)}</span>
+            <span className="bp-slider_type">{slide.heroVideo ? "Video" : getType(slide._type)}</span>
           )}
           <Link className="bp-slider_link" to={slide.path}>
             <div className="bp-slider_heroImage">
@@ -315,7 +315,7 @@ const Slider: FunctionComponent<SliderInterface> = ({
         {type === 'hero' && (
           <div className="bp-slider_copy">
             <div className="bp-slider_copy-content">
-              <div className="bp-slider_copy-type">{getType(slide._type)}</div>
+              <div className="bp-slider_copy-type">{slide.heroVideo ? "Video" : getType(slide._type)}</div>
               <h2 className="bp-slider_copy-title">
                 <span>{slide.headline}</span>
               </h2>

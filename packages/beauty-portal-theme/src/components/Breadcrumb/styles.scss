@@ -17,12 +17,6 @@
   &-item {
     font-size: 0.75rem;
     white-space: nowrap;
-    padding-right: 5px;
-    &::before {
-      padding-right: 5px;
-      display: 'inline-block';
-      content: '/';
-    }
 
     &:first-child {
       padding-left: 5px;
@@ -31,6 +25,12 @@
 
       &::before {
         display: none;
+      }
+      
+      &::after {
+        content: '/';
+        padding-left: 5px;
+        padding-right: 5px;
       }
     }
 
