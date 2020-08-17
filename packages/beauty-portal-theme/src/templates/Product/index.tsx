@@ -38,8 +38,10 @@ const ProductPage = (props: ProductPageProps) => {
       {productNodes.length && (
         <SanityProductSlider
           slides={productNodes}
-          headline="Products You Might Also Like"
           name=""
+          headline="Products You Might Also Like"
+          searchCtaLabel="See All"
+          searchTags={page.tags}
         />
       )}
       {articleBlock && <SingleArticle {...articleBlock} />}

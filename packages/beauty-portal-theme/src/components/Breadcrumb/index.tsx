@@ -12,7 +12,7 @@ const Breadcrumb: FunctionComponent<BreadcrumbInterface> = ({
 }) => {
   return (
     <section className="bp-breadcrumb">
-      <div className="bp-container">
+      <div className="bp-container-fluid">
         <ul className="bp-breadcrumb-items">
           <li className="bp-breadcrumb-item">
             <Link to={'/'} className="bp-breadcrumb-link">
