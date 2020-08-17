@@ -20,6 +20,26 @@
     }
   }
 
+  .is-valid {
+    input + label {
+      transform: scale(0.85) translateY(-33px);
+    }
+  }
+
+  .is-error {
+    input {
+      outline: red auto 1px;
+    }
+
+    input:focus {
+      outline: red auto 1px;
+
+      & + label {
+        color: red;
+      }
+    }
+  }
+
   & fieldset {
     width: 70%;
     @media (min-width: 768px) {
