@@ -2,12 +2,6 @@
 
 .bp-slider {
   position: relative;
-  @media (max-width: 768px) {
-    .swiper-container {
-      display: flex;
-      overflow-x: auto;
-    }
-  }
   @media (min-width: 768px) {
     margin: 0;
   }
@@ -384,4 +378,72 @@
 .swiper-slide-active {
   opacity: 1;
   pointer-events: auto;
+}
+
+/* Scrollbar */
+.swiper-scrollbar {
+  border-radius: 10px;
+  position: relative;
+  -ms-touch-action: none;
+  background: rgba(0, 0, 0, 0.1);
+  .swiper-container-horizontal > & {
+    position: absolute;
+    left: 0;
+    bottom: -0.8rem;
+    z-index: 50;
+    height: 5px;
+    width: 98%;
+    @media (min-width: 960px) {
+      height: 10px;
+      bottom: -1.5rem;
+    }
+  }
+  .swiper-container-vertical > & {
+    position: absolute;
+    right: 3px;
+    top: 1%;
+    z-index: 50;
+    width: 5px;
+    height: 98%;
+  }
+}
+.swiper-scrollbar-drag {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  left: 0;
+  top: 0;
+}
+.swiper-scrollbar-cursor-drag {
+  cursor: move;
+}
+.swiper-scrollbar-lock {
+  display: none;
+}
+
+.swiper-pagination {
+  @media (max-width: 768px) {
+    bottom: -2rem;
+  }
+}
+
+.hero {
+  div > .swiper-scrollbar {
+    display: none;
+  }
+  div > .swiper-pagination {
+    display: none;
+    @media (max-width: 768px) {
+      display: block;
+      bottom: -2rem;
+    }
+  }
+}
+.tile,
+.bp-productSlider {
+  div > .swiper-pagination {
+    display: none;
+  }
 }
