@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
 import { Link } from 'gatsby';
-import SwiperCore, { Lazy } from 'swiper';
+import SwiperCore, { Lazy, Scrollbar, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useInView } from 'react-intersection-observer';
 import classNames from 'classnames';
@@ -14,7 +14,7 @@ import { ReactComponent as PlayVideo } from '../../images/icons/play.svg';
 import './styles.scss';
 import getType from '../../helpers/getType';
 
-SwiperCore.use([Lazy]);
+SwiperCore.use([Lazy, Scrollbar, Pagination]);
 
 const Slider: FunctionComponent<SliderInterface> = ({
   type,
@@ -62,7 +62,9 @@ const Slider: FunctionComponent<SliderInterface> = ({
       <SwiperSlide key={slide.headline}>
         <div>
           {slide._type && (
-            <span className="bp-slider_type">{slide.heroVideo ? "Video" : getType(slide._type)}</span>
+            <span className="bp-slider_type">
+              {slide.heroVideo ? 'Video' : getType(slide._type)}
+            </span>
           )}
           <Link className="bp-slider_link" to={slide.path}>
             <div className="bp-slider_heroImage">
@@ -286,7 +288,9 @@ const Slider: FunctionComponent<SliderInterface> = ({
         {type === 'hero' && (
           <div className="bp-slider_copy">
             <div className="bp-slider_copy-content">
-              <div className="bp-slider_copy-type">{slide.heroVideo ? "Video" : getType(slide._type)}</div>
+              <div className="bp-slider_copy-type">
+                {slide.heroVideo ? 'Video' : getType(slide._type)}
+              </div>
               <h2 className="bp-slider_copy-title">
                 <span>{slide.headline}</span>
               </h2>
@@ -320,6 +324,8 @@ const Slider: FunctionComponent<SliderInterface> = ({
           slidesPerView={slidesPerView}
           speed={speed}
           threshold={threshold}
+          scrollbar={{ draggable: true }}
+          pagination={{ clickable: true }}
           onSwiper={updateSwiper}
           lazy={lazy}
           preloadImages={preloadImages}
