@@ -3,9 +3,10 @@
 .bp-slider {
   position: relative;
   @media (max-width: 768px) {
-    flex-wrap: nowrap;
+    display: flex;
+    padding-bottom: 0.5rem;
+    margin: 0 auto;
     overflow-x: auto;
-    width: auto;
   }
   @media (min-width: 768px) {
     margin: 0;
