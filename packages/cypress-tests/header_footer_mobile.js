@@ -7,8 +7,7 @@ context("Header and Footer Mobile Tests", () => {
   describe("Header tests", () => {
     it("Header is present and has Navigation bar", () => {
       cy.get("header")
-        .find("div")
-        .first()
+        .find("div.bp-container")
         .find("span")
         .should("be.visible")
         .contains("Toggle Navigation")
