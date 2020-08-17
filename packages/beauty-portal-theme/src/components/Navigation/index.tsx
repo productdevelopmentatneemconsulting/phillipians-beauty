@@ -4,6 +4,7 @@ import { useStaticQuery, graphql, Link } from 'gatsby';
 import classNames from 'classnames';
 
 import './styles.scss';
+import NavigationList from '../NavigationList';
 
 const SiteNavigation: FunctionComponent = () => {
   const data = useStaticQuery(graphql`
@@ -43,18 +44,7 @@ const SiteNavigation: FunctionComponent = () => {
     setActiveNav(!activeNav);
   };
 
-  const getUrl = (navItem: NavItemInterface) => {
-    let url;
-    if (navItem.path) {
-      url = navItem.path;
-    } else if (navItem.landingPage) {
-      url = navItem.landingPage.path;
-    } else {
-      url = '#';
-    }
-
-    return url;
-  };
+  
 
   return (
     <React.Fragment>
@@ -76,50 +66,15 @@ const SiteNavigation: FunctionComponent = () => {
         <div className="bp-nav_content" id="nav">
           <ul className="bp-nav_items">
             {data.sanityNavBar.navItems.map(
-              (
-                navItem: {
-                  navL1: NavItemInterface;
-                  navL2: [NavItemInterface];
-                },
-                index: number
-              ) => (
-                <li className="bp-nav_item" key={navItem.navL1.name}>
-                  <a href={getUrl(navItem.navL1)} className="bp-nav_link">
-                    {navItem.navL1.name}
-                    {navItem.navL2.length ? (
-                      <span aria-hidden="true" className="bp-nav_icon">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 20 20"
-                          svg-inline=""
-                          role="presentation"
-                          focusable="false"
-                        >
-                          <path d="M0 6a.5.5 0 01.853-.354l8.646 8.646 8.646-8.646a.5.5 0 01.707.707l-9 9a.5.5 0 01-.707 0l-9-9a.498.498 0 01-.146-.354z"></path>
-                        </svg>
-                      </span>
-                    ) : null}
-                  </a>
-                  {navItem.navL2.length ? (
-                    <div className="bp-nav_subnav">
-                      <ul className="bp-nav_subnav-items">
-                        {navItem.navL2.map((navItem: any) => (
-                          <li key={navItem.name}>
-                            <Link
-                              tabIndex="0"
-                              to={getUrl(navItem)}
-                              className="bp-nav_subnav-link"
-                            >
-                              {navItem.name}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ) : null}
-                </li>
-              )
-            )}
+    (
+      navItem: {
+        navL1: NavItemInterface;
+        navL2: [NavItemInterface];
+      },
+      index: number
+    ) => <NavigationList nav={navItem} key={index} />)
+    }
+            
           </ul>
         </div>
       </nav>
