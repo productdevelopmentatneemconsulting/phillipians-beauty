@@ -24,7 +24,7 @@ const Header: FunctionComponent = () => {
   return (
     <header className="bp-header" role="banner" aria-label="header">
       <div className="bp-header_logo">
-        <Link to="/">
+        <Link to="/" id="logo">
           <Logo />
         </Link>
       </div>
