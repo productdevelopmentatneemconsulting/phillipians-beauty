@@ -246,7 +246,7 @@ const Slider: FunctionComponent<SliderInterface> = ({
     );
   };
 
-  const renderHeroSlides = (slide, index) => (
+  const renderHeroSlides = slide => (
     <SwiperSlide className="bp-slider_slide" key={slide.path}>
       <Link to={slide.path}>
         {slide.heroImage && (
@@ -327,9 +327,9 @@ const Slider: FunctionComponent<SliderInterface> = ({
           watchSlidesVisibility={watchSlidesVisibility}
           {...breakpoints}
         >
-          {slides.map((slide: any, index: number) => {
+          {slides.map((slide: any) => {
             return type === 'hero'
-              ? renderHeroSlides(slide, index)
+              ? renderHeroSlides(slide)
               : type === 'tile'
               ? renderTileSlides(slide)
               : type === 'author'

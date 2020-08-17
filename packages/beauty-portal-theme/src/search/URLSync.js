@@ -41,8 +41,6 @@ const searchStateToURL = searchState => {
       /^(.*?)\/authors\/(?<!\?.+)(?<=\/)[\w-]+(?=[/\r\n?]|$)/
     );
 
-  console.log('urlParts', urlParts);
-
   const baseUrl =
     (urlParts && urlParts[0]) ||
     `${protocol}//${hostname}${portWithPrefix}${pathname}search-results` ||
