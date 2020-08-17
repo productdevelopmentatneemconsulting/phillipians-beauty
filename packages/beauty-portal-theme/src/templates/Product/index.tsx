@@ -33,13 +33,15 @@ const ProductPage = (props: ProductPageProps) => {
         keywords={page.seo.metaKeywords}
       />
       <OGTags type={'page'} slug={page.path} data={page} />
-      {page.path !== '/' && <Breadcrumb pageTitle={page.name} />}
+      {page.path !== '/' && <Breadcrumb pageTitle={page.name} authors="" />}
       <ProductDetails product={page} metaInfo={{ brandInfo }} />
       {productNodes.length && (
         <SanityProductSlider
           slides={productNodes}
-          headline="Products You Might Also Like"
           name=""
+          headline="Products You Might Also Like"
+          searchCtaLabel="See All"
+          searchTags={page.tags}
         />
       )}
       {articleBlock && <SingleArticle {...articleBlock} />}

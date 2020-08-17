@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { Link } from 'gatsby';
 import { useInView } from 'react-intersection-observer';
 import { urlFor } from '../../helpers/imageUrl';
+import getType from '../../helpers/getType';
 import './styles.scss';
 
 const ReadNext: FunctionComponent<ReadNextInterface> = ({ data, title }) => {
@@ -52,7 +53,7 @@ const ReadNext: FunctionComponent<ReadNextInterface> = ({ data, title }) => {
             </figure>
           </div>
           <div className="bp-readNext_copy">
-            <span className="bp-readNext_type">{_type}</span>
+            <span className="bp-readNext_type">{getType(_type)}</span>
             <p className="bp-readNext_subTitle">
               <span>{headline}</span>
             </p>

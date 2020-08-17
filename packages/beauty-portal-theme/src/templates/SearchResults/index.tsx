@@ -12,7 +12,7 @@ const SearchResults: FunctionComponent = () => {
   return (
     <Layout>
       <SEO lang={'en-us'} title="Search" description="" keywords="" />
-      <Breadcrumb pageTitle="Search Results" />
+      <Breadcrumb pageTitle="Search Results" authors="" />
       <Search indices={searchIndices} />
     </Layout>
   );

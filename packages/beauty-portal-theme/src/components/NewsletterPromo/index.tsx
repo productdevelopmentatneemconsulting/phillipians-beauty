@@ -51,9 +51,7 @@ const NewsletterPromo: FunctionComponent<NewsletterPromoInterface> = ({
   };
 
   return (
-    <section
-      className={'bp-newsletter ' + (popup || footer ? 'no-padding' : '')}
-    >
+    <>
       {isFormSubmitted && (
         <div className="bp-signup_thanks">
           <Bell />
@@ -67,7 +65,7 @@ const NewsletterPromo: FunctionComponent<NewsletterPromoInterface> = ({
       )}
 
       {footer && (
-        <>
+        <section className={'bp-newsletter_footer'}>
           <h2 className="bp-newsletter_footer-title">{headline}</h2>
           <p className="bp-newsletter_footer-desc">
             <BlockContent
@@ -98,11 +96,11 @@ const NewsletterPromo: FunctionComponent<NewsletterPromoInterface> = ({
               <Arrow />
             </button>
           </Form>
-        </>
+        </section>
       )}
 
       {popup && (
-        <>
+        <section className={'bp-newsletter '}>
           <h1 className="bp-newsletter_title">{headline}</h1>
           <p className="bp-signup_desc">
             <BlockContent
@@ -131,9 +129,9 @@ const NewsletterPromo: FunctionComponent<NewsletterPromoInterface> = ({
               className="bp-newsletter_cta"
             />
           </Form>
-        </>
+        </section>
       )}
-    </section>
+    </>
   );
 };
 

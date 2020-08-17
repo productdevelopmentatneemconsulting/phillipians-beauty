@@ -1,8 +1,14 @@
 .bp-newsletter {
   position: relative;
-  padding-bottom: 32px;
-  padding-top: 32px;
   text-align: center;
+
+  &_footer {
+    padding: 1rem;
+    margin: 0;
+    @media (min-width: 768px) {
+      padding: 0;
+    }
+  }
 
   &_content {
     position: relative;
@@ -135,12 +141,5 @@
         transform: scaleX(1);
       }
     }
-  }
-}
-.no-padding {
-  padding-left: 1rem;
-  margin: 0;
-  @media (min-width: 768px) {
-    padding: 0;
   }
 }

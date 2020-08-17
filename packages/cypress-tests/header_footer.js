@@ -6,8 +6,7 @@ context("Header and Footer", () => {
   describe("Header tests", () => {
     it("Header is present and has Navigation bar", () => {
       cy.get("header")
-        .find("div")
-        .first()
+        .find("div.bp-container")
         .find("nav")
         .should("be.visible")
         .find("ul")
@@ -27,8 +26,7 @@ context("Header and Footer", () => {
   describe("Footer tests", () => {
     it("Footer has Socials", () => {
       cy.get("footer")
-        .find("div")
-        .first()
+        .find("div.bp-container")
         .find("ul")
         .should("be.visible")
         .find("li")
