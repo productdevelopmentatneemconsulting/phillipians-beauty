@@ -46,10 +46,14 @@
       display: none;
     }
 
+    &-icon {
+      margin-right: 5px;
+    }
+
     &-link {
       display: flex;
       align-items: center;
-      font-size: 1.6rem;
+      font-size: 1.2rem;
       font-weight: 500;
       color: var(--primary-color, #ff5c85);
 
