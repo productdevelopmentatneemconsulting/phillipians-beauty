@@ -33,7 +33,7 @@ const ProductPage = (props: ProductPageProps) => {
         keywords={page.seo.metaKeywords}
       />
       <OGTags type={'page'} slug={page.path} data={page} />
-      {page.path !== '/' && <Breadcrumb pageTitle={page.name} />}
+      {page.path !== '/' && <Breadcrumb pageTitle={page.name} authors="" />}
       <ProductDetails product={page} metaInfo={{ brandInfo }} />
       {productNodes.length && (
         <SanityProductSlider

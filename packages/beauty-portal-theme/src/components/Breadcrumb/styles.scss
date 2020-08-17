@@ -12,6 +12,8 @@
     margin: 0;
     padding: 0;
     display: flex;
+    flex-wrap: wrap;
+    padding-left: 5px;
   }
 
   &-item {
@@ -19,29 +21,19 @@
     white-space: nowrap;
 
     &:first-child {
-      padding-left: 5px;
       font-weight: 500;
       display: block;
 
       &::before {
         display: none;
       }
-      
+
       &::after {
         content: '/';
         padding-left: 5px;
         padding-right: 5px;
       }
     }
-
-    &:last-child {
-      display: none;
-
-      @media (min-width: 768px) {
-        display: block;
-      }
-    }
-
     &.is-active {
       color: #333;
     }

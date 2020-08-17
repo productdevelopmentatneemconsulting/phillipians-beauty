@@ -38,7 +38,7 @@ const HowtoArticlePage = (props: HowtoArticlePageProps) => {
         description={page.seo.metaDescription}
         keywords={page.seo.metaKeywords}
       />
-      <Breadcrumb tag={page.tags[0]} pageTitle={page.headline} />
+      <Breadcrumb tag={page.tags[0]} pageTitle={page.headline} authors="" />
       <PageSchema
         type={'HowTo'}
         name={page.headline}
