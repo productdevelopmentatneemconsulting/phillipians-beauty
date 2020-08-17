@@ -32,7 +32,8 @@ const Header: FunctionComponent = () => {
         <div className="bp-header_content">
           <div className="bp-logo">
             <Link className="bp-logo-link" to="/">
-              <LogoIcon width="40" />
+              <LogoIcon className="bp-logo-icon" width="30" />
+              Beauty <span>Portal</span>
             </Link>
           </div>
           <SiteNavigation />
