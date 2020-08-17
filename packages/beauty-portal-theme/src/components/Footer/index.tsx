@@ -44,8 +44,6 @@ const Footer: FunctionComponent = () => {
     }
   `);
 
-  console.log('data', data);
-
   const externalLinkAttributes = {
     target: '_blank',
     rel: 'noopener noreferrer',

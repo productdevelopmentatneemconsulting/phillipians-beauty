@@ -12,7 +12,7 @@ const NewsletterFollow: FunctionComponent<NewsletterFollowInterface> = ({
         <Follow />
         <div className="bp-follow_popup">
           <div className="p20">
-            <SocialMenu links={links} />
+            <SocialMenu links={links} footer="" />
             <div className="bp-newsletter">
               <a className="bp-newsletter_button" href="/subscribe">
                 {label}

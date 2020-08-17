@@ -137,6 +137,10 @@
       fill: white;
     }
 
+    a:hover svg {
+      fill: var(--primary-color, #ff5c85);
+    }
+
     @media (min-width: 768px) {
       right: 80px;
     }
