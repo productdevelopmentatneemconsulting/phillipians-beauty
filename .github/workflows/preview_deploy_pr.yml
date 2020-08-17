@@ -225,7 +225,7 @@ jobs:
         run: |
           npm install -g pa11y-ci
           npm install -g pa11y-ci-reporter-html
-          pa11y-ci --sitemap https://liberty-portal.netlify.app/sitemap.xml --sitemap-find https://liberty-portal.netlify.app --sitemap-replace  ${{ needs.deploy_preview.outputs.url }} --json  > pa11y-ci-results.json
+          pa11y-ci --sitemap https://prod-liberty.netlify.app/sitemap.xml --sitemap-find https://prod-liberty.netlify.app --sitemap-replace  ${{ needs.deploy_preview.outputs.url }} --json  > pa11y-ci-results.json
       - if: ${{ always() }}
         name: Generate HTML for pa11y report
         run: pa11y-ci-reporter-html -s pa11y-ci-results.json -d output/pa11y-pr-${{ github.event.number }}.html
