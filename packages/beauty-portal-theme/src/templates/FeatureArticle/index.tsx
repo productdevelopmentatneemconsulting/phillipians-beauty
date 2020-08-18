@@ -51,7 +51,7 @@ const FeatureArticle = (props: FeatureArticleProps) => {
         data={page}
       />
       <OGTags type={'article'} slug={page.path} data={page} />
-      <Breadcrumb
+ <Breadcrumb
         tag={page.tags[0]}
         parentPageTitle=""
         pageTitle={page.headline}

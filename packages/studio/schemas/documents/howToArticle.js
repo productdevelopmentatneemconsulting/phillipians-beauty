@@ -1,4 +1,4 @@
-import {FaNewspaper} from 'react-icons/fa'
+import { FaNewspaper } from 'react-icons/fa'
 
 export default {
   name: 'howToArticle',
@@ -45,9 +45,9 @@ export default {
       description: 'A concept used to indicate the technical difficulty of a task or skill.',
       options: {
         list: [
-          {title: 'Easy', value: 'easy'},
-          {title: 'Medium', value: 'medium'},
-          {title: 'Difficult', value: 'difficult'}
+          { title: 'Easy', value: 'easy' },
+          { title: 'Medium', value: 'medium' },
+          { title: 'Difficult', value: 'difficult' }
         ], // <-- predefined values
         layout: 'radio' // <-- defaults to 'dropdown'
       }
@@ -59,9 +59,10 @@ export default {
       of: [
         {
           type: 'reference',
-          to: [{type: 'product'}]
+          to: [{ type: 'product' }]
         }
       ],
+      validation: Rule => Rule.unique(),
       description: 'List products used in tutorial'
     },
     {
@@ -71,7 +72,7 @@ export default {
       of: [
         {
           type: 'reference',
-          to: [{type: 'tool'}]
+          to: [{ type: 'tool' }]
         }
       ],
       description: 'List tools used in tutorial'
@@ -112,7 +113,7 @@ export default {
       title: 'Read Next',
       type: 'reference',
       description: 'Editorial recommendation for next article to read',
-      to: [{type: 'howToArticle'}, {type: 'featureArticle'}, {type: 'galleryArticle'}]
+      to: [{ type: 'howToArticle' }, { type: 'featureArticle' }, { type: 'galleryArticle' }]
     },
 
     {

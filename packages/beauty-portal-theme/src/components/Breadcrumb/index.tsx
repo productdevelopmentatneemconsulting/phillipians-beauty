@@ -76,6 +76,7 @@ interface BreadcrumbInterface {
   pageTitle: string;
   parentPageTitle: any;
   searchResultPath?: string;
+  authors: any;
 }
 
 export default Breadcrumb;
