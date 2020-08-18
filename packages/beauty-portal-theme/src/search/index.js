@@ -153,6 +153,13 @@ const Search = props => {
                     <Panel header="All brands">
                       <RefinementList attribute="brand" />
                     </Panel>
+                    <Panel header="All Ingredients">
+                      <RefinementList
+                        attribute="ingredient"
+                        limit={6}
+                        showMore={true}
+                      />
+                    </Panel>
                   </>
                 ) : (
                   <>
