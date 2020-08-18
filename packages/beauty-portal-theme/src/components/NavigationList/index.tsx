@@ -19,14 +19,16 @@ const NavigationList: FunctionComponent<{nav: any}> = ({nav}) => {
     return url;
   };
 
-  function handleNav(e: any) {
-    e.preventDefault();
-    toggle(!isOpen)
+  function handleNav(e: any, isSubnav: boolean) {
+    if(isSubnav) { 
+      e.preventDefault();
+      toggle(!isOpen)
+    }
   }
 
   return (
       <li className="bp-nav-item">
-        <a href={getUrl(nav.navL1)} onClick={handleNav} className="bp-nav-item_link">
+        <Link to={getUrl(nav.navL1)} onClick={(e) => handleNav(e,!!nav.navL2.length)} className="bp-nav-item_link">
           {nav.navL1.name}
           {nav.navL2.length ? (
             <span aria-hidden="true" className={isOpen ? "bp-nav-item_icon_open": "bp-nav-item_icon_close"}>
@@ -41,7 +43,7 @@ const NavigationList: FunctionComponent<{nav: any}> = ({nav}) => {
               </svg>
             </span>
           ) : null}
-        </a>
+        </Link>
         {nav.navL2.length ? (
           isOpen && <div className="bp-nav-item_subnav">
             <ul className="bp-nav-item_subnav-items">
