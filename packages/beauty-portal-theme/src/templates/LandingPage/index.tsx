@@ -40,7 +40,9 @@ const LandingPage = (props: LandingPageProps) => {
         data={page}
       />
       <OGTags type={'page'} slug={page.path} data={page} />
-      {page.path !== '/' && <Breadcrumb pageTitle={page.name} />}
+      {page.path !== '/' && (
+        <Breadcrumb parentPageTitle="" pageTitle={page.name} />
+      )}
       {(page.headline || page._rawIntroduction) && (
         <div className="bp-container">
           <div className="bp-page_section">
