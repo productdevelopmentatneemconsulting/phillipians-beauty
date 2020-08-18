@@ -15,14 +15,15 @@ const searchIndices = [
 
 const AuthorPage = (props: AuthorPageProps) => {
   const { data } = props;
-  console.log('data', data);
-  const { name, slug, _rawBio, image } = data.page.nodes[0];
+  const { name, slug, parentPage, _rawBio, image } = data.page.nodes[0];
 
   return (
     <Layout>
       <SEO lang={'tl-ph'} title={name} description={name} keywords={[' ']} />
       <OGTags type={'page'} slug={slug} data={data.page} />
-      {slug !== '/' && <Breadcrumb authors="true" pageTitle={name} />}
+      {slug !== '/' && (
+        <Breadcrumb parentPageTitle={parentPage} pageTitle={name} />
+      )}
       <div className="_editor-header">
         <div className="wrap">
           <h1 className="page-title">Meet the Editor </h1>
@@ -82,8 +83,13 @@ export const query = graphql`
           }
           alt
         }
+        path
         slug {
           current
+        }
+        parentPage {
+          name
+          path
         }
         _rawBio(resolveReferences: { maxDepth: 10 })
       }
