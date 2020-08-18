@@ -46,7 +46,11 @@ const GalleryArticlePage = (props: GalleryArticlePageProps) => {
         data={page}
       />
       <OGTags type={'article'} slug={page.path} data={page} />
-      <Breadcrumb tag={page.tags[0]} pageTitle={page.headline} authors="" />
+      <Breadcrumb
+        tag={page.tags[0]}
+        parentPageTitle=""
+        pageTitle={page.headline}
+      />
       <div className="bp-container">
         <ArticleHeader
           article={page}

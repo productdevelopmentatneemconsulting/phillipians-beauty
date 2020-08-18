@@ -7,9 +7,10 @@ import './styles.scss';
 const Breadcrumb: FunctionComponent<BreadcrumbInterface> = ({
   tag,
   pageTitle,
+  parentPageTitle,
   searchResultPath,
-  authors,
 }) => {
+  console.log('parentPageTitle', parentPageTitle);
   return (
     <section className="bp-breadcrumb">
       <div className="bp-container-fluid">
@@ -19,12 +20,17 @@ const Breadcrumb: FunctionComponent<BreadcrumbInterface> = ({
               Home
             </Link>
           </li>
-          {authors === 'true' && (
-            <li className="bp-breadcrumb-item">
-              <Link to={'/authors'} className="bp-breadcrumb-link">
-                Authors
-              </Link>
-            </li>
+          {parentPageTitle && (
+            <>
+              <li className="bp-breadcrumb-item">
+                <Link to={parentPageTitle.path} className="bp-breadcrumb-link">
+                  {parentPageTitle.name}
+                </Link>
+              </li>
+              <li className="divider" aria-hidden="true">
+                /
+              </li>
+            </>
           )}
           {tag && (
             <>
@@ -68,6 +74,7 @@ const Breadcrumb: FunctionComponent<BreadcrumbInterface> = ({
 interface BreadcrumbInterface {
   tag?: any;
   pageTitle: string;
+  parentPageTitle: any;
   searchResultPath?: string;
   authors: any;
 }

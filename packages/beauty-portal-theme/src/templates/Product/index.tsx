@@ -22,7 +22,7 @@ const ProductPage = (props: ProductPageProps) => {
       articleBlock,
     },
   } = props;
-  console.log(articleBlock);
+  console.log('page', page);
   page.seo = page.seo || {};
   return (
     <Layout>
@@ -33,7 +33,9 @@ const ProductPage = (props: ProductPageProps) => {
         keywords={page.seo.metaKeywords}
       />
       <OGTags type={'page'} slug={page.path} data={page} />
-      {page.path !== '/' && <Breadcrumb pageTitle={page.name} authors="" />}
+      {page.path !== '/' && (
+        <Breadcrumb parentPageTitle={page.parentPage} pageTitle={page.name} />
+      )}
       <ProductDetails product={page} metaInfo={{ brandInfo }} />
       {productNodes.length && (
         <SanityProductSlider
@@ -81,6 +83,11 @@ export const query = graphql`
 
     page: sanityProduct(id: { eq: $slug }) {
       ...ProductFieldsFull
+      path
+      parentPage {
+        name
+        path
+      }
       tags {
         name
         tagCategory {
