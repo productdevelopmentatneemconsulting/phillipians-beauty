@@ -437,15 +437,40 @@
 }
 
 .hero {
+  div > .swiper-slide-next,
+  .swiper-slide-prev {
+    opacity: 0;
+    pointer-events: none;
+  }
+  div > .swiper-slide-active {
+    opacity: 1;
+    pointer-events: auto;
+  }
   div > .swiper-scrollbar {
     display: none;
   }
   div > .swiper-pagination {
-    display: none;
+    bottom: -3rem;
     @media (max-width: 768px) {
       display: block;
       bottom: -2rem;
     }
+  }
+  div
+    > .swiper-container-horizontal
+    > .swiper-pagination-bullets
+    .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    @media (min-width: 960px) {
+      width: 20px;
+      height: 20px;
+      margin: 0 10px;
+    }
+  }
+
+  div > .swiper-pagination-bullet-active {
+    background-color: var(--black-color, black);
   }
 }
 .tile,
