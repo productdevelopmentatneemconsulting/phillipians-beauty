@@ -13,9 +13,10 @@ const handleProductRawBody = node => {
       .toString();
   }
   if (_rawIngredients) {
-    record.ingredientBody = _rawUsageDetails
+    record.ingredient = _rawIngredients
       .map(temp => temp.children && temp.children.map(temp1 => temp1.text))
-      .toString();
+      .toString()
+      .split(',');
   }
 
   return record;
