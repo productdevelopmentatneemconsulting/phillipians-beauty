@@ -60,6 +60,11 @@ export default {
         source: 'name',
         maxLength: 96
       }
+    },
+    {
+      title: 'SEO',
+      name: 'seo',
+      type: 'seo'
     }
   ],
   preview: {

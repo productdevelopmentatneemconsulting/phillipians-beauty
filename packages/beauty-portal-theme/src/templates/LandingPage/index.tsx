@@ -29,8 +29,8 @@ const LandingPage = (props: LandingPageProps) => {
       <SEO
         lang={'en-us'}
         title={page.name}
-        description={site.description}
-        keywords={site.keywords}
+        description={page.seo.metaDescription}
+        keywords={page.seo.metaKeywords}
       />
       <PageSchema
         type={'WebPage'}
