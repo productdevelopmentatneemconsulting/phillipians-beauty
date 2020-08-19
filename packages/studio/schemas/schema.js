@@ -57,7 +57,6 @@ import bioPortableText from './objects/bioPortableText'
 import authorBioPortableText from './objects/authorBioPortableText'
 import landingpagesPortableText from './objects/landingpagesPortableText'
 
-import siteSettings from './documents/siteSettings'
 import excerptPortableText from './objects/excerptPortableText'
 import mainImage from './objects/mainImage'
 import beforeAfterImage from './objects/beforeAfterImage'
@@ -127,7 +126,6 @@ export default createSchema({
     beforeAfterImage,
 
     // Old Stuff to be deleted
-    siteSettings,
     mainImage,
     bioPortableText,
     excerptPortableText

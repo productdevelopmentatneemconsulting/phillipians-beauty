@@ -8,6 +8,11 @@ export const query = graphql`
     slug {
       current
     }
+    seo {
+      metaDescription
+      metaKeywords
+      metaTitle
+    }
     headline
     _rawIntroduction(resolveReferences: { maxDepth: 10 })
     landingSections {
