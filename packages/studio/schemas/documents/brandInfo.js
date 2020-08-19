@@ -1,4 +1,4 @@
-import {MdSettings} from 'react-icons/md'
+import { MdSettings } from 'react-icons/md'
 
 export default {
   name: 'brandInfo',
@@ -20,6 +20,16 @@ export default {
       description:
         'Introduction to your business, and aims to tell an audience about your products or services.',
       validation: Rule => Rule.required()
+    },
+    {
+      name: 'keywords',
+      type: 'array',
+      title: 'Keywords',
+      description: 'Add keywords that will help users to find you well on internet.',
+      of: [{ type: 'string' }],
+      options: {
+        layout: 'tags'
+      }
     },
     {
       title: 'Facebook Channel',

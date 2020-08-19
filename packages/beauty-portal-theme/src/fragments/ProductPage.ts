@@ -18,6 +18,11 @@ export const query1 = graphql`
         name
       }
     }
+    seo {
+      metaDescription
+      metaKeywords
+      metaTitle
+    }
     name
     tagLine
     tags {

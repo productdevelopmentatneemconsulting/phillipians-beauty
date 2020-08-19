@@ -28,7 +28,7 @@ const ProductPage = (props: ProductPageProps) => {
     <Layout>
       <SEO
         lang={'tl-ph'}
-        title={page.seo.metaTitle}
+        title={page.name}
         description={page.seo.metaDescription}
         keywords={page.seo.metaKeywords}
       />

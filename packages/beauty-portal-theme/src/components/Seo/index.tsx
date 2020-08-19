@@ -4,7 +4,7 @@ import { StaticQuery, graphql } from 'gatsby';
 
 const detailsQuery = graphql`
   query DefaultSEOQuery {
-    site: sanitySiteSettings(_id: { eq: "siteSettings" }) {
+    site: sanityBrandInfo {
       title
       description
       keywords
@@ -21,7 +21,8 @@ function Index({ description, lang, keywords, title }: SeoProps) {
           description || (data.site && data.site.description) || '';
         const siteTitle = (data.site && data.site.title) || '';
         const siteAuthor =
-          (data.site && data.site.author && data.site.author.name) || 'platform.liberty';
+          (data.site && data.site.author && data.site.author.name) ||
+          'platform.liberty';
 
         return (
           <Helmet

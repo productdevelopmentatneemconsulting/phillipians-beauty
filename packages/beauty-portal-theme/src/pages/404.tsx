@@ -6,7 +6,7 @@ import '../styles/notFound.scss';
 
 export const query = graphql`
   query NotFoundPageQuery {
-    site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
+    site: sanityBrandInfo {
       title
       description
       keywords
@@ -15,6 +15,7 @@ export const query = graphql`
 `;
 
 const NotFound = ({ data: { site } }: NotFoundProps) => {
+  console.log('site', site);
   return (
     <Layout>
       <SEO
