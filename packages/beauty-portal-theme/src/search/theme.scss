@@ -449,6 +449,10 @@ a[class^='ais-'] {
   }
 }
 
+.ais-InfiniteHits-loadMore--disabled {
+  display: none;
+}
+
 .show-results {
   display: flex;
   margin-top: 6%;
