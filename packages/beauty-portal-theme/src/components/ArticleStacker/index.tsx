@@ -59,9 +59,9 @@ const TileStacker: FunctionComponent<TileStackerInterface> = ({
                 <span className="bp-article-stacker_type">
                   {getType(slide._type)}
                 </span>
-                <h6 className="bp-article-stacker_headline">
+                <p className="bp-article-stacker_headline">
                   <span>{slide.headline}</span>
-                </h6>
+                </p>
               </div>
             </Link>
           </div>
