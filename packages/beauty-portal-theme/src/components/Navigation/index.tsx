@@ -139,6 +139,7 @@ const SiteNavigation: FunctionComponent = searchResultPath => {
           <ul
             className={'menu menu-bar ' + (activeNav ? 'is-active' : null)}
             aria-label="submenu"
+            id="nav"
           >
             {data.sanityNavBar.navItems.map(
               (navItem: {
