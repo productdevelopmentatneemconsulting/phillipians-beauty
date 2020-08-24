@@ -51,7 +51,7 @@ const Breadcrumb: FunctionComponent<BreadcrumbInterface> = ({
               </li>
               <li className="bp-breadcrumb-item">
                 <Link
-                  to={getSearchUrl(searchResultPath, tag.name, 'tags.name')}
+                  to={getSearchUrl(searchResultPath, tag.name, 'tag')}
                   className="bp-breadcrumb-link"
                 >
                   {tag.name}
