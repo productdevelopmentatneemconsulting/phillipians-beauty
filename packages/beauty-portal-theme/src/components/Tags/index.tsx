@@ -45,7 +45,7 @@ const Tags: FunctionComponent<TagsInterface> = ({
           <li className="bp-tags_item" key={tag.name}>
             <Link
               className="bp-tags_link"
-              to={getSearchUrl(searchResultPath, tag.name, 'tags.name')}
+              to={getSearchUrl(searchResultPath, tag.name, 'tag')}
             >
               {tag.name}
             </Link>
