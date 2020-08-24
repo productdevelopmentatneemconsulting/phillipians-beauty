@@ -8,16 +8,45 @@ export default {
       type: 'navLink',
       title: 'Primary Navigation'
     },
-
+    // {
+    //   name: 'navL2',
+    //   title: 'Secondary Navigation',
+    //   type: 'array',
+    //   of: [
+    //     {
+    //       type: 'navLink'
+    //     }
+    //   ]
+    // },
     {
-      name: 'navL2',
+      name: 'navCategory',
       title: 'Secondary Navigation',
       type: 'array',
       of: [
         {
-          type: 'navLink'
+          type: 'reference',
+          to: {
+            type: 'tagCategory'
+          }
         }
       ]
+    },
+    {
+      name: 'article',
+      title: 'Related Article',
+      type: 'reference',
+      to: [
+        {
+          type: 'howToArticle'
+        },
+        {
+          type: 'featureArticle'
+        },
+        {
+          type: 'galleryArticle'
+        }
+      ],
+      description: 'Add related article in the dropdown'
     }
   ],
   preview: {

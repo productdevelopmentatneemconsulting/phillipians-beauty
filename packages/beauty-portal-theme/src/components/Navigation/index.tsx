@@ -1,12 +1,10 @@
 import React, { FunctionComponent, useState } from 'react';
 import { useStaticQuery, graphql, Link } from 'gatsby';
-
-import classNames from 'classnames';
-
+import getType from '../../helpers/getType';
+import { getSearchUrl } from '../../helpers/searchUrl';
 import './styles.scss';
-import NavigationList from '../NavigationList';
 
-const SiteNavigation: FunctionComponent = () => {
+const SiteNavigation: FunctionComponent = searchResultPath => {
   const data = useStaticQuery(graphql`
     query siteNavigation {
       sanityNavBar(name: { eq: "Header" }) {
@@ -22,16 +20,88 @@ const SiteNavigation: FunctionComponent = () => {
             name
             path
           }
-          navL2 {
-            landingPage {
-              name
+          navCategory {
+            name
+          }
+          article {
+            ... on SanityFeatureArticle {
+              _type
+              id
+              headline
+              subheading
+              _rawHeroImage(resolveReferences: { maxDepth: 10 })
+              heroImage {
+                asset {
+                  url
+                  fluid {
+                    base64
+                  }
+                }
+                alt
+              }
+              heroVideo {
+                url
+                youTubeCaption
+              }
               path
               slug {
                 current
               }
             }
+            ... on SanityGalleryArticle {
+              _type
+              id
+              headline
+              subheading
+              _rawHeroImage(resolveReferences: { maxDepth: 10 })
+              heroImage {
+                asset {
+                  url
+                  fluid {
+                    base64
+                  }
+                }
+                alt
+              }
+              path
+              slug {
+                current
+              }
+            }
+            ... on SanityHowToArticle {
+              _type
+              id
+              headline
+              subheading
+              _rawHeroImage(resolveReferences: { maxDepth: 10 })
+              heroImage {
+                asset {
+                  url
+                  fluid {
+                    base64
+                  }
+                }
+                alt
+              }
+              heroVideo {
+                url
+                youTubeCaption
+              }
+              path
+              slug {
+                current
+              }
+            }
+          }
+        }
+      }
+      tags: allSanityTag {
+        edges {
+          node {
             name
-            path
+            tagCategory {
+              name
+            }
           }
         }
       }
@@ -44,47 +114,197 @@ const SiteNavigation: FunctionComponent = () => {
     setActiveNav(!activeNav);
   };
 
-  
+  const {
+    tags: { edges },
+  } = data;
+  const tags = edges.map(tag => tag.node); // the variable you want to filter for
 
   return (
     <React.Fragment>
-      <button className="bp-nav_toggle" type="button" onClick={handleNav}>
-        <span className="srOnly">Toggle Navigation</span>
-        <div aria-hidden="true" className="bp-nav_toggle-icon">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </button>
-      <nav
-        role="navigation"
-        aria-label="Main Navigation"
-        className={classNames('bp-nav', activeNav ? 'is-active' : null)}
-      >
-        <span className="srOnly">Primary Navigation</span>
-        <div className="bp-nav_content" id="nav">
-          <ul className="bp-nav_items">
+      <div className="primary-navbar">
+        <nav role="navigation" aria-label="Main Navigation">
+          <a
+            href="javascript:void(0);"
+            className="mobile-menu-trigger"
+            onClick={handleNav}
+          >
+            <span className="srOnly">Toggle Navigation</span>
+            <div aria-hidden="true" className="bp-nav_toggle-icon">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </a>
+          <ul
+            className={'menu menu-bar ' + (activeNav ? 'is-active' : null)}
+            aria-label="submenu"
+          >
             {data.sanityNavBar.navItems.map(
-    (
-      navItem: {
-        navL1: NavItemInterface;
-        navL2: [NavItemInterface];
-      },
-      index: number
-    ) => <NavigationList nav={navItem} key={index} />)
-    }
-            
+              (navItem: {
+                navL1: NavItemInterfaceV1;
+                navCategory: [NavItemInterfaceV1];
+                article: NavItemInterfaceV1;
+              }) => {
+                const getUrl = (navItem: NavItemInterfaceV1) => {
+                  let url;
+                  if (navItem.path) {
+                    url = navItem.path;
+                  } else if (navItem.landingPage) {
+                    url = navItem.landingPage.path;
+                  } else {
+                    url = '#';
+                  }
+
+                  return url;
+                };
+                return (
+                  <>
+                    <li>
+                      <Link
+                        to="#"
+                        className="menu-link menu-bar-link"
+                        aria-haspopup={
+                          navItem.navCategory.length ? 'true' : 'false'
+                        }
+                      >
+                        {navItem.navL1.name}
+                      </Link>
+                      {navItem.navCategory.length ? (
+                        <ul className="mega-menu mega-menu--flat">
+                          <li>
+                            <Link
+                              to={getUrl(navItem.navL1)}
+                              className="menu-link mega-menu-link mega-menu-header see-all"
+                            >
+                              See all {navItem.navL1.name}
+                            </Link>
+                          </li>
+                          {navItem.navCategory.map((tagCategory: any) => (
+                            <li>
+                              <Link
+                                to="/"
+                                className="menu-link mega-menu-link mega-menu-header"
+                              >
+                                {tagCategory.name}
+                              </Link>
+                              {tags.length &&
+                                tags
+                                  .filter(
+                                    (tag: any) =>
+                                      tag.tagCategory.name == tagCategory.name
+                                  )
+                                  .slice(0, 4)
+                                  .map((subCategory: any) => {
+                                    return (
+                                      <ul className="menu menu-list">
+                                        <li key={subCategory.name}>
+                                          <a
+                                            href={getSearchUrl(
+                                              '/search-results',
+                                              subCategory.name,
+                                              'tag'
+                                            )}
+                                            className="menu-link menu-list-link"
+                                          >
+                                            {subCategory.name &&
+                                              subCategory.name}
+                                          </a>
+                                        </li>
+                                      </ul>
+                                    );
+                                  })}
+                            </li>
+                          ))}
+                          <li>
+                            <Link
+                              to={navItem.article.path}
+                              className="menu-link mega-menu-link mega-menu-header"
+                            >
+                              Trending
+                            </Link>
+                            <ul className="menu menu-list">
+                              <div className="menu-list-article-card">
+                                <Link to={navItem.article.path}>
+                                  <div className="menu-list-article-card-item">
+                                    {navItem.article.heroImage && (
+                                      <div className="menu-list-article-card-image">
+                                        <picture
+                                          className="bp-image__placeholder"
+                                          style={{
+                                            paddingTop: '100%',
+                                            background: `url(${navItem.article.heroImage.asset.fluid.base64})`,
+                                            backgroundSize: 'cover',
+                                          }}
+                                        >
+                                          <source
+                                            media="(max-width: 799px)"
+                                            srcSet={`${navItem.article.heroImage.asset.url}?q=80&w=350&h=350&fit=crop&auto=format`}
+                                          />
+                                          <source
+                                            media="(min-width: 800px)"
+                                            srcSet={`${navItem.article.heroImage.asset.url}?q=80&w=176&h=176&fit=crop&auto=format`}
+                                          />
+                                          <img
+                                            src={`${navItem.article.heroImage.asset.url}?q=80&w=200&h=200&fit=crop&auto=format`}
+                                            loading="lazy"
+                                            alt={navItem.article.heroImage.alt}
+                                          />
+                                        </picture>
+                                      </div>
+                                    )}
+                                    <div className="menu-list-article-card-info">
+                                      {navItem.article._type && (
+                                        <span className="menu-list-article-type">
+                                          {navItem.article.heroVideo
+                                            ? 'Video'
+                                            : getType(navItem.article._type)}
+                                        </span>
+                                      )}
+                                      <h3 className="menu-list-article-description">
+                                        <span>{navItem.article.headline}</span>
+                                      </h3>
+                                    </div>
+                                  </div>
+                                </Link>
+                              </div>
+                            </ul>
+                          </li>
+                          <li className="mobile-menu-back-item">
+                            <a
+                              href="javascript:void(0);"
+                              className="menu-link mobile-menu-back-link"
+                            >
+                              Back
+                            </a>
+                          </li>
+                        </ul>
+                      ) : null}
+                    </li>
+                  </>
+                );
+              }
+            )}
+            <li className="mobile-menu-header">
+              <Link to="/" className="menu-link menu-bar-link">
+                <span>Home</span>
+              </Link>
+            </li>
           </ul>
-        </div>
-      </nav>
+        </nav>
+      </div>
     </React.Fragment>
   );
 };
 
-interface NavItemInterface {
+interface NavItemInterfaceV1 {
+  _type: string;
   name: string;
   path: string;
+  headline: string;
+  heroImage: any;
+  heroVideo: any;
+  article: any;
   landingPage?: {
     name: string;
     path: string;
