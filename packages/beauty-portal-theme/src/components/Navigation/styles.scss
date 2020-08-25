@@ -152,6 +152,8 @@
     color: #000;
     font-weight: lighter;
     font-size: 1rem;
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
 
   .mega-menu:hover {
@@ -161,6 +163,10 @@
   .mega-menu a:hover {
     background: #dceced;
     color: #000;
+  }
+
+  .see-all {
+    margin-top: -2rem;
   }
 
   .mega-menu-header {
@@ -216,7 +222,7 @@
   // }
 
   .mega-menu--flat > * {
-    flex: 1 0 25%;
+    flex: 1 0 20%;
   }
 
   .mega-menu--flat > li:first-child {
