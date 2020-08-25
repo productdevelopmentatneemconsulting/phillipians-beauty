@@ -123,6 +123,10 @@
     display: flex;
   }
 
+  .menu-bar > li > [aria-haspopup='true'] {
+    pointer-events: none;
+  }
+
   .menu-bar > li > [aria-haspopup='true']:focus,
   .menu-bar > li:focus-within > [aria-haspopup='true'],
   .menu-bar > li:hover > a {
