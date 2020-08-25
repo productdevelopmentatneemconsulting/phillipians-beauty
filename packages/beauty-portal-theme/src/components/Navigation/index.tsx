@@ -163,7 +163,11 @@ const SiteNavigation: FunctionComponent = searchResultPath => {
                   <>
                     <li>
                       <Link
-                        to="#"
+                        to={
+                          navItem.navCategory.length
+                            ? '#'
+                            : getUrl(navItem.navL1)
+                        }
                         className="menu-link menu-bar-link"
                         aria-haspopup={
                           navItem.navCategory.length ? 'true' : 'false'
@@ -273,6 +277,7 @@ const SiteNavigation: FunctionComponent = searchResultPath => {
                           </li>
                           <li className="mobile-menu-back-item">
                             <a
+                              rel="nofollow"
                               href="javascript:void(0);"
                               className="menu-link mobile-menu-back-link"
                             >
@@ -287,9 +292,9 @@ const SiteNavigation: FunctionComponent = searchResultPath => {
               }
             )}
             <li className="mobile-menu-header">
-              <Link to="/" className="menu-link menu-bar-link">
+              <a href="/" className="menu-link menu-bar-link">
                 <span>Home</span>
-              </Link>
+              </a>
             </li>
           </ul>
         </nav>
