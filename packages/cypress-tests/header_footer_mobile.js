@@ -14,7 +14,7 @@ context("Header and Footer Mobile Tests", () => {
         .parent()
         .wait(1000)
         .click()
-        .find("ul")
+        .find("#nav")
         .should("contain", "Hair")
         .and("be.visible")
         .should("contain", "Skin")
