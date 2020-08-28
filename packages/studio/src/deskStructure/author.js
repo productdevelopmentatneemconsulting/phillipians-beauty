@@ -4,9 +4,9 @@ import S from '@sanity/desk-tool/structure-builder'
 import { MdPerson } from 'react-icons/md'
 import { FaEye } from 'react-icons/fa'
 
-const remoteURL = 'https://sanity-gatsby-blog-web-3d35kyw2.netlify.app'
+const remoteURL = 'http://localhost:8080/previews'
 const localURL = 'http://localhost:8000/previews'
-const previewURL = window.location.hostname === 'localhost' ? localURL : remoteURL
+const previewURL = 'http://localhost:8080/previews'
 
 export default () =>
   S.listItem()

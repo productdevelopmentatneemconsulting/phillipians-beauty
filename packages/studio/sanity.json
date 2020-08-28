@@ -1,7 +1,8 @@
 {
   "root": true,
   "project": {
-    "name": "phillipians-beauty"
+    "name": "phillipians-beauty",
+    "basePath": "/"
   },
   "api": {
     "projectId": "xmpcmhrn",

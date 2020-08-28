@@ -1,22 +1,22 @@
-// const env = process.env.NODE_ENV || 'development'
-const baseUrl = 'http://localhost:8000'
+// // const env = process.env.NODE_ENV || 'development'
+// const baseUrl = 'http://localhost:8000'
 
-export default function resolvePreviewUrl(document) {
-  switch (document._type) {
-    case 'landingPage':
-      return `${baseUrl}/${document.slug.current}`
-    case 'featureArticle':
-      return `${baseUrl}/hair-style/${document.slug.current}`
-    case 'product':
-      return `${baseUrl}/${document.slug.current}`
-    case 'author':
-      return `${baseUrl}/previews/${document.slug.current}`
-    case 'brandInformation':
-      if (document._id === 'frontpage' || document._id === 'drafts.frontpage') {
-        return baseUrl
-      }
-      return null
-    default:
-      return null
-  }
-}
+// export default function resolvePreviewUrl(document) {
+//   switch (document._type) {
+//     case 'landingPage':
+//       return `${baseUrl}/${document.slug.current}`
+//     case 'featureArticle':
+//       return `${baseUrl}/hair-style/${document.slug.current}`
+//     case 'product':
+//       return `${baseUrl}/${document.slug.current}`
+//     case 'author':
+//       return `${baseUrl}/previews/${document.slug.current}`
+//     case 'brandInformation':
+//       if (document._id === 'frontpage' || document._id === 'drafts.frontpage') {
+//         return baseUrl
+//       }
+//       return null
+//     default:
+//       return null
+//   }
+// }

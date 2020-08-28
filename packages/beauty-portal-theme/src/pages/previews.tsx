@@ -1,55 +1,41 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Router } from '@reach/router';
-import Pico from 'picosanity-graphql';
+import Layout from '../components/Layout';
 import { AuthorComponent } from '../templates/Author/index';
-import { useEditState } from '@sanity/react-hooks';
+import sanityClient from '@sanity/client';
 
-const client = new Pico({
+const client = sanityClient({
   projectId: 'xmpcmhrn',
   dataset: 'production',
   useCdn: false,
 });
 
 const PreviewPage = ({ document }: { document: string }) => {
-  const [data, setData] = useState({});
+  const [data, setData] = useState(null);
+
+  const queryPreviewPage = ` 
+  *[_type == 'author' && slug.current == '${document}' ]{name, image{alt, asset->{url}},parentPage->{slug}, bio, slug}
+`;
 
   useEffect(() => {
-    client
-      .fetch(
-        `query($slug: String) {
-            page: allAuthor(where: {slug : {current: {eq: $slug}}}) {  
-              _id
-              name
-              parentPage {
-                name
-              }
-              image {
-                asset {
-                  url
-                }
-              }
-              slug {
-                current
-              }
-              bioRaw
-          }
-        }
-        `,
-        { slug: document }
-      )
-      .then(res => setData(res.data.page[0]))
-      .catch(err => console.error('Oh noes: %s', err.message));
+    client.fetch(queryPreviewPage).then(result => {
+      console.log(result);
+      setData(result[0]);
+    });
   }, []);
+
   return !data ? (
-    <h1>Loading</h1>
+    <h1>Loading...</h1>
   ) : (
-    <AuthorComponent
-      name={data.name}
-      parentPage={data.parentPage}
-      image={data.image}
-      slug={data.slug}
-      _rawBio={data.bioRaw}
-    />
+    <Layout>
+      <AuthorComponent
+        name={data.name}
+        parentPage={data.parentPage}
+        image={data.image}
+        slug={data.slug}
+        _rawBio={data.bioRaw}
+      />
+    </Layout>
   );
 };
 
