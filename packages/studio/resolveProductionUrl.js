@@ -10,7 +10,7 @@ export default function resolvePreviewUrl(document) {
     case 'product':
       return `${baseUrl}/${document.slug.current}`
     case 'author':
-      return `${baseUrl}/${document.slug.current}`
+      return `${baseUrl}/previews/${document.slug.current}`
     case 'brandInformation':
       if (document._id === 'frontpage' || document._id === 'drafts.frontpage') {
         return baseUrl

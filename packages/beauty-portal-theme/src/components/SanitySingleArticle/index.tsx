@@ -8,7 +8,6 @@ const SingleArticle: FunctionComponent<SanitySingleArticleInterface> = ({
   article,
   imageBlockType,
 }) => {
-  console.log(name, article, imageBlockType);
   return (
     <ImageBlock
       type={'article'}

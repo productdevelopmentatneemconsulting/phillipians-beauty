@@ -27,10 +27,11 @@ import { GiSpray, GiCherish, GiHairStrands, GiStopSign } from 'react-icons/gi'
 
 import IframePreview from '../previews/IframePreview'
 import article from './article'
+import author from './author'
 
 // Web preview configuration
 const remoteURL = 'https://sanity-gatsby-blog-web-3d35kyw2.netlify.app'
-const localURL = 'http://localhost:8000'
+const localURL = 'http://localhost:8000/previews'
 const previewURL = window.location.hostname === 'localhost' ? localURL : remoteURL
 
 export const getDefaultDocumentNode = props => {
@@ -85,13 +86,7 @@ export default () =>
         .icon(GiHairStrands)
         .schemaType('tool')
         .child(S.documentTypeList('tool').title('tools')),
-
-      S.listItem()
-        .title('Authors')
-        .icon(MdPerson)
-        .schemaType('author')
-        .child(S.documentTypeList('author').title('Author')),
-
+      author(previewURL),
       S.divider(),
 
       S.listItem()

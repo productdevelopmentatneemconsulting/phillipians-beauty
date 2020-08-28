@@ -15,7 +15,7 @@ const searchIndices = [
 
 const AuthorPage = (props: AuthorPageProps) => {
   const { data } = props;
-  const { name, slug, parentPage, _rawBio, image } = data.page.nodes[0];
+  const { name, slug, parentPage } = data.page.nodes[0];
 
   return (
     <Layout>
@@ -24,6 +24,21 @@ const AuthorPage = (props: AuthorPageProps) => {
       {slug !== '/' && (
         <Breadcrumb parentPageTitle={parentPage} pageTitle={name} />
       )}
+      <AuthorComponent {...data.page.nodes[0]} />
+    </Layout>
+  );
+};
+
+export const AuthorComponent = (props: {
+  name: any;
+  image: any;
+  slug: any;
+  _rawBio: any;
+  parentPage: any;
+}) => {
+  const { name, slug, image, _rawBio, parentPage } = props;
+  return (
+    <>
       <div className="_editor-header">
         <div className="wrap">
           <h1 className="page-title">Meet the Editor </h1>
@@ -56,7 +71,7 @@ const AuthorPage = (props: AuthorPageProps) => {
         slug={slug.current}
         authorName={name}
       />
-    </Layout>
+    </>
   );
 };
 
