@@ -9,6 +9,7 @@ module.exports = ({ themeConfig }) => {
     lang: themeConfig['meta_lang'],
     sanityId: themeConfig['sanity_id'],
     sanityDataset: themeConfig['sanity_dataset'],
+    sanityReadToken: themeConfig['sanity_token'],
     algoliaAppID: themeConfig['algolia_app_id'],
     algoliaAdminApiKey: themeConfig['algolia_admin_api_key'],
     algoliaApiKey: themeConfig['algolia_api_key'],
@@ -42,6 +43,7 @@ module.exports = ({ themeConfig }) => {
     options: {
       projectId: siteMetadata.sanityId,
       dataset: siteMetadata.sanityDataset,
+      token: siteMetadata.sanityReadToken,
       watchMode: true,
     },
   };
@@ -68,6 +70,10 @@ module.exports = ({ themeConfig }) => {
           ],
         },
       },
+    },
+    {
+      resolve: `gatsby-plugin-create-client-paths`,
+      options: { prefixes: [`/previews/*`] },
     },
     'gatsby-plugin-sass',
     'gatsby-plugin-react-helmet',

@@ -1,16 +1,16 @@
-const env = process.env.NODE_ENV || 'development'
+// const env = process.env.NODE_ENV || 'development'
+const baseUrl = 'http://localhost:8000'
 
 export default function resolvePreviewUrl(document) {
-  const baseUrl =
-    env === 'development' ? 'http://localhost:8000' : 'sanity-gatsby-blog-web-3d35kyw2'
   switch (document._type) {
-    case 'route':
-      if (!document.slug || !document.slug.current) {
-        return baseUrl
-      }
+    case 'landingPage':
       return `${baseUrl}/${document.slug.current}`
-    case 'managePages':
-      return `${baseUrl}/managePages/${document.slug.current}`
+    case 'featureArticle':
+      return `${baseUrl}/hair-style/${document.slug.current}`
+    case 'product':
+      return `${baseUrl}/${document.slug.current}`
+    case 'author':
+      return `${baseUrl}/${document.slug.current}`
     case 'brandInformation':
       if (document._id === 'frontpage' || document._id === 'drafts.frontpage') {
         return baseUrl

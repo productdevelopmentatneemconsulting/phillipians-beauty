@@ -1,4 +1,4 @@
-import {FaNewspaper} from 'react-icons/fa'
+import { FaNewspaper } from 'react-icons/fa'
 
 export default {
   name: 'featureArticle',
@@ -68,7 +68,7 @@ export default {
       title: 'Read Next',
       type: 'reference',
       description: 'Editorial recommendation for next article to read',
-      to: [{type: 'howToArticle'}, {type: 'featureArticle'}, {type: 'galleryArticle'}]
+      to: [{ type: 'howToArticle' }, { type: 'featureArticle' }, { type: 'galleryArticle' }]
     },
 
     {
