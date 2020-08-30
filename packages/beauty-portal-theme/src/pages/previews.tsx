@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Router } from '@reach/router';
 import Layout from '../components/Layout';
 import { AuthorComponent } from '../templates/Author/index';
+import Breadcrumb from '../components//Breadcrumb';
 import sanityClient from '@sanity/client';
 
 const client = sanityClient({
@@ -14,20 +15,23 @@ const PreviewPage = ({ document }: { document: string }) => {
   const [data, setData] = useState(null);
 
   const queryPreviewPage = ` 
-  *[_type == 'author' && slug.current == '${document}' ]{name, image{alt, asset->{url}},parentPage->{slug}, bio, slug}
+  *[_type == 'author' && slug.current == '${document}' ]{name, image{alt, asset->{url}},parentPage->{name, slug, path}, bio, slug}
 `;
 
   useEffect(() => {
     client.fetch(queryPreviewPage).then(result => {
-      console.log(result);
       setData(result[0]);
     });
   }, []);
 
   return !data ? (
-    <h1>Loading...</h1>
+    <div>
+      <h1>Preview Loading...</h1>
+    </div>
   ) : (
     <Layout>
+      <Breadcrumb parentPageTitle={data.parentPage} pageTitle={data.name} />
+
       <AuthorComponent
         name={data.name}
         parentPage={data.parentPage}

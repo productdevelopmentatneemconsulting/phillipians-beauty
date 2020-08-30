@@ -6,7 +6,7 @@ import { FaEye } from 'react-icons/fa'
 
 const remoteURL = 'http://localhost:8080/previews'
 const localURL = 'http://localhost:8000/previews'
-const previewURL = 'http://localhost:8080/previews'
+const previewURL = 'https://preview-liberty.netlify.app/previews'
 
 export default () =>
   S.listItem()
