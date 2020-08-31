@@ -1,4 +1,5 @@
 ._editor-header {
+  padding-bottom: 2rem !important;
   .wrap {
     text-align: center;
     @media (min-width: 768px) {
@@ -31,6 +32,12 @@
         }
       }
     }
+  }
+  .img-editor {
+    max-width: 175px;
+    max-height: 175px;
+    margin-left: auto;
+    margin-right: auto;
   }
   .img-wrapper {
     position: relative;
