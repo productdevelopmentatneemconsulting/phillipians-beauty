@@ -37,7 +37,7 @@ const PreviewPage = ({ document }: { document: string }) => {
         parentPage={data.parentPage}
         image={data.image}
         slug={data.slug}
-        _rawBio={data.bioRaw}
+        _rawBio={data.bio}
       />
     </Layout>
   );

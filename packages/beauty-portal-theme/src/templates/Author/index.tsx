@@ -7,6 +7,8 @@ import SEO from '../../components/Seo';
 import Search from '../../search';
 import BlockContent from '@sanity/block-content-to-react';
 import { blockTypeDefaultSerializers } from '../../helpers/sanity';
+import { useInView } from 'react-intersection-observer';
+import { urlFor } from '../../helpers/imageUrl';
 import './styles.scss';
 
 const searchIndices = [
@@ -37,34 +39,76 @@ export const AuthorComponent = (props: {
   parentPage: any;
 }) => {
   const { name, slug, image, _rawBio, parentPage } = props;
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    rootMargin: '5px 0px',
+  });
   return (
     <>
-      <div className="_editor-header">
-        <div className="wrap">
-          <h1 className="page-title">Meet the Editor </h1>
-          <div className="img-editor mx-auto">
-            <div className="img-wrapper rounded-circle overflow-hidden d-inline-block">
-              <picture>
-                <source
-                  srcSet={`${image.asset.url}?w=200&h=200&auto=format 1x, ${image.asset.url}?w=200&h=200&auto=format&dpr=2 2x`}
-                  media="screen and (min-width: 767px)"
+      <header>
+        <div className="bp-container">
+          <div className="_editor-header">
+            <div className="wrap">
+              <h1 className="page-title">Meet the Editor </h1>
+              <div className="img-editor mx-auto">
+                <div
+                  className="img-wrapper rounded-circle overflow-hidden d-inline-block"
+                  ref={ref}
+                  data-inview={inView}
+                >
+                  <figure>
+                    {inView ? (
+                      <picture
+                        className="bp-image__placeholder"
+                        style={{
+                          paddingTop: '100%',
+                        }}
+                      >
+                        <source
+                          media="screen and (min-width: 560px)"
+                          srcSet={`${urlFor(image.asset.url)
+                            .width(175)
+                            .height(175)
+                            .fit('max')
+                            .auto('format')
+                            .url()
+                            .toString()}`}
+                        />
+                        <source
+                          media="screen and (min-width: 320px)"
+                          srcSet={`${urlFor(image.asset.url)
+                            .width(175)
+                            .height(175)
+                            .fit('max')
+                            .auto('format')
+                            .url()
+                            .toString()}`}
+                        />
+                        <img
+                          className="bp-slider_image"
+                          src={urlFor(image.asset.url)
+                            .width(200)
+                            .height(200)
+                            .fit('max')
+                            .url()}
+                          alt={image.alt}
+                        />
+                      </picture>
+                    ) : null}
+                  </figure>
+                </div>
+              </div>
+              <h2 className="name">{name} </h2>
+              <p className="bio">
+                <BlockContent
+                  blocks={_rawBio}
+                  serializers={blockTypeDefaultSerializers}
                 />
-                <img
-                  src={`${image.asset.url}?w=200&h=200&auto=format`}
-                  alt={image.alt}
-                />
-              </picture>
+              </p>
             </div>
-            <h2 className="name">{name} </h2>
-            <p className="bio">
-              <BlockContent
-                blocks={_rawBio}
-                serializers={blockTypeDefaultSerializers}
-              />
-            </p>
           </div>
         </div>
-      </div>
+      </header>
       <Search
         authors="true"
         indices={searchIndices}
