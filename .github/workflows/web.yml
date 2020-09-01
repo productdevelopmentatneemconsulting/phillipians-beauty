@@ -7,6 +7,7 @@ on:
     branches:
       - master
       - develop
+      - preview
     paths:
       - packages/web/**
       - packages/beauty-portal-theme/**
@@ -66,6 +67,18 @@ jobs:
         run: lhci autorun --config=packages/lighthouse-tests/lighthouserc.json
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+      - name: Deploy Web Preview to Netlify Preview Environment
+        if: ${{ contains(github.ref, 'preview') }}
+        id: netlify-deploy-preview
+        uses: nwtgck/actions-netlify@v1.1
+        with:
+          publish-dir: "packages/web/public"
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          production-branch: preview
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_WEB_DEV_SITE_ID }}
+      - run: echo netlify URL ${{ steps.netlify-deploy-preview.outputs.deploy-url }}
       - name: Deploy Web to Netlify Development Environment
         if: ${{ contains(github.ref, 'develop') }}
         id: netlify-deploy-develop
