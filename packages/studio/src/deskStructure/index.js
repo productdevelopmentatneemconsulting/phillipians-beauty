@@ -28,8 +28,8 @@ import product from './product'
 import landingPage from './landingPage'
 
 // Web preview configuration
-const remoteURL = 'https://qa-liberty.netlify.app/previews'
-const localURL = 'http://localhost:8000/previews'
+const remoteURL = 'https://qa-liberty.netlify.app'
+const localURL = 'http://localhost:8000'
 const previewURL = window.location.hostname === 'localhost' ? localURL : remoteURL
 
 export default () =>
