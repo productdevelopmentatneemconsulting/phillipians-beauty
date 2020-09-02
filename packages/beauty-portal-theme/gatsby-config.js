@@ -20,7 +20,7 @@ module.exports = ({ themeConfig }) => {
     mergeSecurityHeaders: false,
     mergeCachingHeaders: false,
     headers: {
-      '/*': [
+      'https://phillipians-beauty.sanity.studio/desk/*': [
         `X-Frame-Options: SAMEORIGIN`,
         `X-XSS-Protection: 1; mode=block`,
         `X-Content-Type-Options: nosniff`,
@@ -31,9 +31,9 @@ module.exports = ({ themeConfig }) => {
   const noCacheHeader = `Cache-Control: public, max-age=0, must-revalidate`;
 
   if (themeConfig['nocache'] === 'true') {
-    netlifyOptions.headers['https://studio-liberty.netlify.app/desk/'].push(
-      noCacheHeader
-    );
+    netlifyOptions.headers[
+      'https://phillipians-beauty.sanity.studio/desk/'
+    ].push(noCacheHeader);
   } else {
     netlifyOptions.headers['/webpack-runtime.js'] = [noCacheHeader];
     netlifyOptions.headers['/styles.js'] = [noCacheHeader];
