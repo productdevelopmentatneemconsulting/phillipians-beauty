@@ -1,6 +1,10 @@
 import S from '@sanity/desk-tool/structure-builder'
-import { FaNewspaper } from 'react-icons/fa'
+import { FaEye, FaNewspaper } from 'react-icons/fa'
 import AllSeoPreviews from '../previews/AllSeoPreviews'
+import IframePreview from '../previews/IframePreview'
+const remoteURL = 'https://sanity-gatsby-blog-web-3d35kyw2.netlify.app'
+const localURL = 'http://localhost:8000'
+const previewURL = window.location.hostname === 'localhost' ? localURL : remoteURL
 
 const getArticlePreviews = type =>
   S.documentTypeListItem(type).child(
@@ -10,6 +14,11 @@ const getArticlePreviews = type =>
         .schemaType(type)
         .views([
           S.view.form(),
+          S.view
+            .component(IframePreview)
+            .options({ previewURL })
+            .title('Web Preview')
+            .icon(FaEye),
           S.view
             .component(AllSeoPreviews)
             .title('SEO Preview')

@@ -22,7 +22,6 @@ const ProductPage = (props: ProductPageProps) => {
       articleBlock,
     },
   } = props;
-  console.log('page', page);
   page.seo = page.seo || {};
   return (
     <Layout>

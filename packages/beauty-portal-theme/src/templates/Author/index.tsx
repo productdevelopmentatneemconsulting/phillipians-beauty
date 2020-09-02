@@ -17,13 +17,7 @@ const searchIndices = [
 
 const AuthorPage = (props: AuthorPageProps) => {
   const { data } = props;
-  console.log('data', data);
-  const { name, slug, parentPage, _rawBio, image } = data.page.nodes[0];
-
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    rootMargin: '5px 0px',
-  });
+  const { name, slug, parentPage } = data.page.nodes[0];
 
   return (
     <Layout>
@@ -32,6 +26,25 @@ const AuthorPage = (props: AuthorPageProps) => {
       {slug !== '/' && (
         <Breadcrumb parentPageTitle={parentPage} pageTitle={name} />
       )}
+      <AuthorComponent {...data.page.nodes[0]} />
+    </Layout>
+  );
+};
+
+export const AuthorComponent = (props: {
+  name: any;
+  image: any;
+  slug: any;
+  _rawBio: any;
+  parentPage: any;
+}) => {
+  const { name, slug, image, _rawBio, parentPage } = props;
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    rootMargin: '5px 0px',
+  });
+  return (
+    <>
       <header>
         <div className="bp-container">
           <div className="_editor-header">
@@ -49,8 +62,6 @@ const AuthorPage = (props: AuthorPageProps) => {
                         className="bp-image__placeholder"
                         style={{
                           paddingTop: '100%',
-                          background: `url(${image.asset.fluid.base64})`,
-                          backgroundSize: 'cover',
                         }}
                       >
                         <source
@@ -104,7 +115,7 @@ const AuthorPage = (props: AuthorPageProps) => {
         slug={slug.current}
         authorName={name}
       />
-    </Layout>
+    </>
   );
 };
 

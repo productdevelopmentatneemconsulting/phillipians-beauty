@@ -17,8 +17,8 @@
   },
   "devDependencies": {
     "@sanity/cli": "^1.149.9",
-    "lerna": "^3.13.1",
     "cypress-multi-reporters": "^1.4.0",
+    "lerna": "^3.13.1",
     "mocha": "^8.0.1",
     "mochawesome": "^6.1.1",
     "mochawesome-merge": "^4.1.0",

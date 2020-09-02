@@ -9,6 +9,7 @@ module.exports = ({ themeConfig }) => {
     lang: themeConfig['meta_lang'],
     sanityId: themeConfig['sanity_id'],
     sanityDataset: themeConfig['sanity_dataset'],
+    sanityReadToken: themeConfig['sanity_token'],
     algoliaAppID: themeConfig['algolia_app_id'],
     algoliaAdminApiKey: themeConfig['algolia_admin_api_key'],
     algoliaApiKey: themeConfig['algolia_api_key'],
@@ -20,7 +21,7 @@ module.exports = ({ themeConfig }) => {
     mergeCachingHeaders: false,
     headers: {
       '/*': [
-        `X-Frame-Options: DENY`,
+        `X-Frame-Options: SAMEORIGIN`,
         `X-XSS-Protection: 1; mode=block`,
         `X-Content-Type-Options: nosniff`,
         `Referrer-Policy: strict-origin-when-cross-origin`, // need to reqrite only this one to enable Kritique widget but because of plugin implemetation every security header is defined
@@ -30,7 +31,9 @@ module.exports = ({ themeConfig }) => {
   const noCacheHeader = `Cache-Control: public, max-age=0, must-revalidate`;
 
   if (themeConfig['nocache'] === 'true') {
-    netlifyOptions.headers['/*'].push(noCacheHeader);
+    netlifyOptions.headers['https://studio-liberty.netlify.app/desk/'].push(
+      noCacheHeader
+    );
   } else {
     netlifyOptions.headers['/webpack-runtime.js'] = [noCacheHeader];
     netlifyOptions.headers['/styles.js'] = [noCacheHeader];
@@ -42,6 +45,7 @@ module.exports = ({ themeConfig }) => {
     options: {
       projectId: siteMetadata.sanityId,
       dataset: siteMetadata.sanityDataset,
+      token: siteMetadata.sanityReadToken,
       watchMode: true,
     },
   };
@@ -68,6 +72,10 @@ module.exports = ({ themeConfig }) => {
           ],
         },
       },
+    },
+    {
+      resolve: `gatsby-plugin-create-client-paths`,
+      options: { prefixes: [`/previews/*`] },
     },
     'gatsby-plugin-sass',
     'gatsby-plugin-react-helmet',

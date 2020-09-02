@@ -10,7 +10,6 @@ const Breadcrumb: FunctionComponent<BreadcrumbInterface> = ({
   parentPageTitle,
   searchResultPath,
 }) => {
-  console.log('parentPageTitle', parentPageTitle);
   return (
     <section className="bp-breadcrumb">
       <div className="bp-container-fluid">

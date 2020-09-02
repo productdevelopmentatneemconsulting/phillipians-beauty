@@ -69,7 +69,7 @@ const DeployGitHub = () => {
         </p>
         <hr />
         <ul className={styles.mid_container}>
-          <li className={styles.list}>
+          {/* <li className={styles.list}>
             <figure>
               <img src="../../static/badge-studio.svg" />
               <figcaption>
@@ -86,7 +86,7 @@ const DeployGitHub = () => {
             >
               {deployingStudio ? 'Deploying...' : 'Deploy'}
             </button>
-          </li>
+          </li> */}
 
           <li className={styles.list}>
             <figure>
@@ -104,7 +104,7 @@ const DeployGitHub = () => {
                 onClick={deployWeb}
                 disabled={disableWeb}
               >
-                {deployingWeb ? 'Deploying...' : 'Deploy'}
+                {deployingWeb ? 'Deploying...' : 'Deploy to Live'}
               </button>
             </div>
           </li>
