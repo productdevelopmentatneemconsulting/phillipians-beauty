@@ -32,7 +32,7 @@ import author from './author'
 // Web preview configuration
 const remoteURL = 'http://localhost:8080/previews'
 const localURL = 'http://localhost:8000/previews'
-const previewURL = 'http://localhost:8080/previews'
+const previewURL = 'https://qa-liberty.netlify.app/previews'
 
 export const getDefaultDocumentNode = props => {
   /**
