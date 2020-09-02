@@ -29,9 +29,15 @@ import IframePreview from '../previews/IframePreview'
 import article from './article'
 
 // Web preview configuration
+<<<<<<< HEAD
 const remoteURL = 'https://sanity-gatsby-blog-web-3d35kyw2.netlify.app'
 const localURL = 'http://localhost:8000'
 const previewURL = window.location.hostname === 'localhost' ? localURL : remoteURL
+=======
+const remoteURL = 'http://localhost:8080/previews'
+const localURL = 'http://localhost:8000/previews'
+const previewURL = 'https://qa-liberty.netlify.app/previews'
+>>>>>>> 25e1225... added qa deploy to web & changed preview URL
 
 export const getDefaultDocumentNode = props => {
   /**

@@ -53,8 +53,8 @@ const DeployGitHub = () => {
     )
       .then(res => res.json())
       .then(() => {
-        setTimeout(() => setDeployingWeb(false), 180000)
-        setTimeout(() => setDisableWeb(false), 180000)
+        setTimeout(() => setDeployingWeb(false), 600000)
+        setTimeout(() => setDisableWeb(false), 600000)
       })
   }
   return (
@@ -69,7 +69,7 @@ const DeployGitHub = () => {
         </p>
         <hr />
         <ul className={styles.mid_container}>
-          <li className={styles.list}>
+          {/* <li className={styles.list}>
             <figure>
               <img src="../../static/badge-studio.svg" />
               <figcaption>
@@ -86,7 +86,7 @@ const DeployGitHub = () => {
             >
               {deployingStudio ? 'Deploying...' : 'Deploy'}
             </button>
-          </li>
+          </li> */}
 
           <li className={styles.list}>
             <figure>
@@ -104,7 +104,27 @@ const DeployGitHub = () => {
                 onClick={deployWeb}
                 disabled={disableWeb}
               >
-                {deployingWeb ? 'Deploying...' : 'Deploy'}
+                {deployingWeb ? 'Deploying...' : 'Deploy to Live'}
+              </button>
+            </div>
+          </li>
+          <li className={styles.list}>
+            <figure>
+              <img src="../../static/badge.svg" />
+              <figcaption>
+                <a href="https://github.com/productdevelopmentatneemconsulting/phillipians-beauty/actions?query=workflow%3A%22Web+%7C+Build+and+Deploy%22">
+                  View Web Deployment
+                </a>
+              </figcaption>
+            </figure>
+            <div>
+              <button
+                className={styles.button}
+                type="button"
+                onClick={deployWeb}
+                disabled={disableWeb}
+              >
+                {deployingWeb ? 'Deploying...' : 'Deploy to QA'}
               </button>
             </div>
           </li>
