@@ -56,6 +56,29 @@ const HowtoArticlePage = (props: HowtoArticlePageProps) => {
         data={page}
       />
       <OGTags type={'article'} slug={page.path} data={page} />
+      <HowToArticleComponent
+        page={page}
+        brandInfo={brandInfo}
+        genericLabels={genericLabels}
+        relatedArticles={relatedArticles}
+        sectionTitles={sectionTitles}
+        preview=""
+      />
+    </Layout>
+  );
+};
+
+export const HowToArticleComponent = (props: HowtoArticlePageProps) => {
+  const {
+    page,
+    sectionTitles,
+    preview,
+    brandInfo,
+    genericLabels,
+    relatedArticles,
+  } = props;
+  return (
+    <>
       <div className="bp-container">
         <div className="col-container">
           <div className="col col-7">
@@ -80,18 +103,20 @@ const HowtoArticlePage = (props: HowtoArticlePageProps) => {
             )}
           </div>
           <div className="col col-1"></div>
-          <div className="col col-4">
-            {relatedArticles.length !== 0 && (
-              <RelatedArticles
-                articles={relatedArticles}
-                title={sectionTitles.relatedArticlesName}
-              />
-            )}
-          </div>
+          {!preview && (
+            <div className="col col-4">
+              {relatedArticles.length !== 0 && (
+                <RelatedArticles
+                  articles={relatedArticles}
+                  title={sectionTitles.relatedArticlesName}
+                />
+              )}
+            </div>
+          )}
         </div>
         <Tags data={page.tags} title={sectionTitles.relatedTopicsName} />
       </div>
-    </Layout>
+    </>
   );
 };
 
@@ -153,6 +178,12 @@ export const query = graphql`
 `;
 
 interface HowtoArticlePageProps {
+  page: any;
+  preview: any;
+  brandInfo: any;
+  genericLabels: any;
+  sectionTitles: any;
+  relatedArticles: any;
   data: {
     page: any;
     galleryArticles: any;

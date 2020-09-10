@@ -28,7 +28,8 @@ export default {
       type: 'reference',
       to: {
         type: 'landingPage'
-      }
+      },
+      validation: Rule => Rule.required().error('Please select parent page')
     },
     {
       name: 'slug',
@@ -37,7 +38,11 @@ export default {
       options: {
         source: 'name',
         maxLength: 96
-      }
+      },
+      validation: Rule =>
+        Rule.required().error(
+          'Please generate slug by clicking on generate button or adding it manually'
+        )
     }
   ],
   preview: {

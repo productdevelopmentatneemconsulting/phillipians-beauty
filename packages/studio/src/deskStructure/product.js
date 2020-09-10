@@ -1,7 +1,6 @@
 import IframePreview from '../previews/IframePreview'
 import S from '@sanity/desk-tool/structure-builder'
-// import article from './src/structure/article'
-import { MdPerson } from 'react-icons/md'
+import { GiSpray } from 'react-icons/gi'
 import { FaEye } from 'react-icons/fa'
 
 const remoteURL = 'https://qa-liberty.netlify.app/previews'
@@ -10,12 +9,12 @@ const previewURL = 'https://qa-liberty.netlify.app/previews'
 
 export default () =>
   S.listItem()
-    .title('Authors')
-    .icon(MdPerson)
-    .schemaType('author')
+    .title('Product')
+    .icon(GiSpray)
+    .schemaType('product')
     .child(
-      S.documentTypeList('author')
-        .title('Author')
+      S.documentTypeList('product')
+        .title('Product')
         .child(documentId =>
           S.document()
             .documentId(documentId)

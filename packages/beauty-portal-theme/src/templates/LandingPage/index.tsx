@@ -43,6 +43,15 @@ const LandingPage = (props: LandingPageProps) => {
       {page.path !== '/' && (
         <Breadcrumb parentPageTitle="" pageTitle={page.name} />
       )}
+      <LandingPageComponent page={page} />
+    </Layout>
+  );
+};
+
+export const LandingPageComponent = (props: { page: any }) => {
+  const { page } = props;
+  return (
+    <>
       {(page.headline || page._rawIntroduction) && (
         <div className="bp-container">
           <div className="bp-page_section">
@@ -68,7 +77,7 @@ const LandingPage = (props: LandingPageProps) => {
           preferPerformance={index <= 1}
         />
       ))}
-    </Layout>
+    </>
   );
 };
 

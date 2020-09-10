@@ -35,7 +35,7 @@ const GridStacker: FunctionComponent<GridStackerInterface> = ({
             className="bp-author-section_item"
             to={slide.path ? slide.path : slide.slug.current}
           >
-            {slide.image && (
+            {slide._rawImage && (
               <figure>
                 {inView ? (
                   <picture
@@ -71,7 +71,7 @@ const GridStacker: FunctionComponent<GridStackerInterface> = ({
                         .height(280)
                         .fit('max')
                         .url()}
-                      alt={slide.image.alt}
+                      alt={slide._rawImage.alt}
                     />
                   </picture>
                 ) : null}

@@ -17,7 +17,6 @@ export const query = graphql`
 const browser = typeof window !== 'undefined' && window;
 
 const NotFound = ({ data: { site } }: NotFoundProps) => {
-  console.log('site', site);
   return (
     browser && (
       <Layout>

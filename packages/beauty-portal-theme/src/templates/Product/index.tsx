@@ -35,7 +35,12 @@ const ProductPage = (props: ProductPageProps) => {
       {page.path !== '/' && (
         <Breadcrumb parentPageTitle={page.parentPage} pageTitle={page.name} />
       )}
-      <ProductDetails product={page} metaInfo={{ brandInfo }} />
+      <ProductDetailComponent
+        page={page}
+        brandInfo={brandInfo}
+        articleBlock={articleBlock}
+        preview={''}
+      />
       {productNodes.length && (
         <SanityProductSlider
           slides={productNodes}
@@ -62,6 +67,28 @@ const ProductPage = (props: ProductPageProps) => {
         </div>
       )}
     </Layout>
+  );
+};
+
+export const ProductDetailComponent = (props: {
+  page: any;
+  preview: any;
+  brandInfo: any;
+  articleBlock: any;
+}) => {
+  const { page, preview, brandInfo, articleBlock } = props;
+  return (
+    <>
+      <ProductDetails product={page} metaInfo={{ brandInfo }} />
+      {preview && (
+        <>
+          {articleBlock && <SingleArticle {...articleBlock} />}
+          <div className="bp-container">
+            <Tags title="Find something else" data={page.tags} />
+          </div>
+        </>
+      )}
+    </>
   );
 };
 

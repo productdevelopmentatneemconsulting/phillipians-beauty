@@ -14,6 +14,8 @@ const ImageBlock: FunctionComponent<ImageBlockInterface> = ({
   name,
   _rawTextBlockBody,
   _rawImage,
+  heroImage,
+  image,
   url,
   imageBlockType,
   type,
@@ -35,7 +37,9 @@ const ImageBlock: FunctionComponent<ImageBlockInterface> = ({
           <link
             rel="preload"
             as="image"
-            href={`${urlFor(_rawImage)
+            href={`${urlFor(
+              _rawImage ? _rawImage : heroImage ? heroImage : image
+            )
               .width(426)
               .height(240)
               .quality(80)
@@ -48,13 +52,21 @@ const ImageBlock: FunctionComponent<ImageBlockInterface> = ({
             className="bp-image__placeholder"
             style={{
               paddingTop: `56.25%`,
-              background: `url(${_rawImage.asset.metadata.lqip})`,
+              background: `url(${
+                _rawImage
+                  ? _rawImage.asset.metadata.lqip
+                  : heroImage
+                  ? heroImage.asset.metadata.lqip
+                  : image.asset.metadata.lqip
+              })`,
               backgroundSize: 'cover',
             }}
           >
             <source
               media="screen and (min-width: 560px)"
-              srcSet={`${urlFor(_rawImage)
+              srcSet={`${urlFor(
+                _rawImage ? _rawImage : heroImage ? heroImage : image
+              )
                 .width(752)
                 .height(422)
                 .quality(80)
@@ -65,7 +77,9 @@ const ImageBlock: FunctionComponent<ImageBlockInterface> = ({
             />
             <source
               media="screen and (min-width: 320px)"
-              srcSet={`${urlFor(_rawImage)
+              srcSet={`${urlFor(
+                _rawImage ? _rawImage : heroImage ? heroImage : image
+              )
                 .width(426)
                 .height(240)
                 .quality(80)
@@ -75,14 +89,20 @@ const ImageBlock: FunctionComponent<ImageBlockInterface> = ({
                 .toString()}`}
             />
             <img
-              src={urlFor(_rawImage)
+              src={urlFor(_rawImage ? _rawImage : heroImage ? heroImage : image)
                 .width(752)
                 .height(422)
                 .fit('crop')
                 .auto('format')
                 .quality(80)
                 .url()}
-              alt={_rawImage.alt}
+              alt={
+                _rawImage
+                  ? _rawImage.alt
+                  : heroImage
+                  ? heroImage.alt
+                  : image.alt
+              }
             />
           </picture>
         </>

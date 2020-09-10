@@ -92,7 +92,8 @@ export default {
       type: 'reference',
       to: {
         type: 'landingPage'
-      }
+      },
+      validation: Rule => Rule.required().error('Please select parent page')
     },
     {
       title: 'Slug',

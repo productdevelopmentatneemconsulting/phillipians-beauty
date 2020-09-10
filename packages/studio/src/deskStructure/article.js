@@ -2,8 +2,8 @@ import S from '@sanity/desk-tool/structure-builder'
 import { FaEye, FaNewspaper } from 'react-icons/fa'
 import AllSeoPreviews from '../previews/AllSeoPreviews'
 import IframePreview from '../previews/IframePreview'
-const remoteURL = 'https://sanity-gatsby-blog-web-3d35kyw2.netlify.app'
-const localURL = 'http://localhost:8000'
+const remoteURL = 'https://qa-liberty.netlify.app/previews'
+const localURL = 'http://localhost:8000/previews'
 const previewURL = window.location.hostname === 'localhost' ? localURL : remoteURL
 
 const getArticlePreviews = type =>

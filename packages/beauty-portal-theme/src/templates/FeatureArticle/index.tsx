@@ -51,35 +51,67 @@ const FeatureArticle = (props: FeatureArticleProps) => {
         data={page}
       />
       <OGTags type={'article'} slug={page.path} data={page} />
- <Breadcrumb
+      <Breadcrumb
         tag={page.tags[0]}
         parentPageTitle=""
         pageTitle={page.headline}
       />
-      <div className="bp-container">
-        <div className="col-container">
-          <div className="col col-7">
-            <ArticleHeader
-              article={page}
-              type={'feature'}
-              socialLinks={brandInfo}
-              playLabel={genericLabels.play}
+      <FeatureArticleComponent
+        page={page}
+        preview={''}
+        brandInfo={brandInfo}
+        genericLabels={genericLabels}
+        sectionTitles={sectionTitles}
+        relatedArticles={relatedArticles}
+      />
+    </Layout>
+  );
+};
+
+export const FeatureArticleComponent = (props: {
+  page: any;
+  preview: any;
+  brandInfo: any;
+  genericLabels: any;
+  sectionTitles: any;
+  relatedArticles: any;
+}) => {
+  const {
+    page,
+    preview,
+    brandInfo,
+    genericLabels,
+    sectionTitles,
+    relatedArticles,
+  } = props;
+
+  return (
+    <div className="bp-container">
+      <div className="col-container">
+        <div className="col col-7">
+          <ArticleHeader
+            article={page}
+            type={'feature'}
+            socialLinks={brandInfo}
+            playLabel={genericLabels.play}
+          />
+          {page.toolList && (
+            <ToolList data={page.toolList} title={sectionTitles.toolName} />
+          )}
+          {page.productList && (
+            <ProductList
+              data={page._rawProductList}
+              title={sectionTitles.productName}
             />
-            {page.toolList && (
-              <ToolList data={page.toolList} title={sectionTitles.toolName} />
-            )}
-            {page.productList && (
-              <ProductList
-                data={page._rawProductList}
-                title={sectionTitles.productName}
-              />
-            )}
-            {page._rawFeatureBody && <RichText data={page._rawFeatureBody} />}
-            {page.readnext && (
-              <ReadNext data={page} title={sectionTitles.nextRead} />
-            )}
-          </div>
-          <div className="col col-1"></div>
+          )}
+          {page._rawFeatureBody && <RichText data={page._rawFeatureBody} />}
+          {page.readnext && (
+            <ReadNext data={page} title={sectionTitles.nextRead} />
+          )}
+        </div>
+        <div className="col col-1"></div>
+
+        {!preview && (
           <div className="col col-4">
             {relatedArticles.length !== 0 && (
               <RelatedArticles
@@ -88,10 +120,10 @@ const FeatureArticle = (props: FeatureArticleProps) => {
               />
             )}
           </div>
-        </div>
-        <Tags data={page.tags} title={sectionTitles.relatedTopicsName} />
+        )}
       </div>
-    </Layout>
+      <Tags data={page.tags} title={sectionTitles.relatedTopicsName} />
+    </div>
   );
 };
 

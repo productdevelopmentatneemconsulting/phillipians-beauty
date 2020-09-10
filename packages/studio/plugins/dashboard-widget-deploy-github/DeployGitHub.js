@@ -19,6 +19,7 @@ function useInterval(callback, delay) {
   }, [delay])
 }
 const DeployGitHub = () => {
+  const role = localStorage.getItem('role')
   const [deployingStudio, setDeployingStudio] = useState(false)
   const [deployingWeb, setDeployingWeb] = useState(false)
   const [disableStudio, setDisableStudio] = useState(false)
@@ -59,11 +60,13 @@ const DeployGitHub = () => {
   }
   return (
     <>
-      <div className={styles.container}>
+      <div
+        className={`${role.toLowerCase() == 'administrator' ? styles.container : styles.hidden}`}
+      >
         <header className={styles.header}>
           <h2>Build & Deploy</h2>
         </header>
-        <p>
+        <p className={styles.note}>
           NOTE: Because these sites are static builds, they need to be re-deployed to see the
           changes when documents are published.
         </p>

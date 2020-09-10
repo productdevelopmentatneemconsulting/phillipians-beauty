@@ -3,6 +3,7 @@ export interface ImageBlockInterface {
   name: string;
   image: any;
   _rawImage: any;
+  heroImage: any;
   url: string;
   imageBlockType: any;
   _rawTextBlockBody: any;

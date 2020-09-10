@@ -11,6 +11,9 @@ const assembleProjectUrl = ({ displayed, options }) => {
     console.warn('Missing slug or previewURL', { current, previewURL })
     return ''
   }
+  if (current == '/') {
+    return previewURL
+  }
   return `${previewURL}/${current}`
 }
 
