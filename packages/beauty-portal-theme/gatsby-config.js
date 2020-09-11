@@ -58,6 +58,14 @@ module.exports = ({ themeConfig }) => {
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'UA-177775759-1',
+        head: true,
+        anonymize: true,
+      },
+    },
+    {
       resolve: 'gatsby-plugin-zopfli',
     },
     {
