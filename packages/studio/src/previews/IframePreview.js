@@ -32,8 +32,10 @@ const Preview = props => {
   useEffect(() => {
     const { options } = props
     const { displayed, draft } = props.document
-    console.log('build the url', assembleProjectUrl({ displayed, draft, options }))
-    setUrl(assembleProjectUrl({ displayed, draft, options }))
+    if (displayed.slug) {
+      console.log('build the url', assembleProjectUrl({ displayed, draft, options }))
+      setUrl(assembleProjectUrl({ displayed, draft, options }))
+    }
   }, [])
 
   const { displayed } = document
