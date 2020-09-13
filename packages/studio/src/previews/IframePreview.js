@@ -2,9 +2,10 @@
 import React, { useState, useEffect } from 'react'
 import styles from './IframePreview.module.css'
 
-const assembleProjectUrl = ({ displayed, options }) => {
+const assembleProjectUrl = ({ displayed, options, draft }) => {
   const {
-    slug: { current }
+    slug: { current },
+    _id
   } = displayed
   const { previewURL } = options
   if (!current || !previewURL) {
@@ -12,9 +13,9 @@ const assembleProjectUrl = ({ displayed, options }) => {
     return ''
   }
   if (current == '/') {
-    return previewURL
+    return `${previewURL}?id=${_id}`
   }
-  return `${previewURL}/${current}`
+  return `${previewURL}/${current}?id=${_id}`
 }
 
 const Preview = props => {

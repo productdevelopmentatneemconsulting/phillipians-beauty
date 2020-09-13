@@ -2,11 +2,8 @@ import S from '@sanity/desk-tool/structure-builder'
 import { FaEye, FaNewspaper } from 'react-icons/fa'
 import AllSeoPreviews from '../previews/AllSeoPreviews'
 import IframePreview from '../previews/IframePreview'
-const remoteURL = 'https://qa-liberty.netlify.app/previews'
-const localURL = 'http://localhost:8000/previews'
-const previewURL = window.location.hostname === 'localhost' ? localURL : remoteURL
 
-const getArticlePreviews = type =>
+const getArticlePreviews = (type, previewURL) =>
   S.documentTypeListItem(type).child(
     S.documentTypeList(type).child(docId =>
       S.document()
@@ -27,15 +24,16 @@ const getArticlePreviews = type =>
     )
   )
 
-export default S.listItem()
-  .title('Articles')
-  .icon(FaNewspaper)
-  .child(
-    S.list()
-      .title('Article Type')
-      .items([
-        getArticlePreviews('featureArticle').title('Feature'),
-        getArticlePreviews('galleryArticle').title('Gallery'),
-        getArticlePreviews('howToArticle').title('How To')
-      ])
-  )
+export default previewURL =>
+  S.listItem()
+    .title('Articles')
+    .icon(FaNewspaper)
+    .child(
+      S.list()
+        .title('Article Type')
+        .items([
+          getArticlePreviews('featureArticle', previewURL).title('Feature'),
+          getArticlePreviews('galleryArticle', previewURL).title('Gallery'),
+          getArticlePreviews('howToArticle', previewURL).title('How To')
+        ])
+    )

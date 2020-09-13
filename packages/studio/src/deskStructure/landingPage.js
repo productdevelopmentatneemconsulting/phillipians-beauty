@@ -3,11 +3,7 @@ import S from '@sanity/desk-tool/structure-builder'
 import { MdViewCompact } from 'react-icons/md'
 import { FaEye } from 'react-icons/fa'
 
-const remoteURL = 'https://qa-liberty.netlify.app/previews'
-const localURL = 'http://localhost:8000/previews'
-const previewURL = 'https://qa-liberty.netlify.app/previews'
-
-export default () =>
+export default previewURL =>
   S.listItem()
     .title('Manage Pages')
     .icon(MdViewCompact)

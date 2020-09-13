@@ -111,26 +111,6 @@ const DeployGitHub = () => {
               </button>
             </div>
           </li>
-          <li className={styles.list}>
-            <figure>
-              <img src="../../static/badge.svg" />
-              <figcaption>
-                <a href="https://github.com/productdevelopmentatneemconsulting/phillipians-beauty/actions?query=workflow%3A%22Web+%7C+Build+and+Deploy%22">
-                  View Web Deployment
-                </a>
-              </figcaption>
-            </figure>
-            <div>
-              <button
-                className={styles.button}
-                type="button"
-                onClick={deployWeb}
-                disabled={disableWeb}
-              >
-                {deployingWeb ? 'Deploying...' : 'Deploy to QA'}
-              </button>
-            </div>
-          </li>
         </ul>
         <div className={styles.link}>
           <a href="https://www.netlify.com/" target="_blank">

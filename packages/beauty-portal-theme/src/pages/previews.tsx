@@ -8,6 +8,7 @@ import { GalleryArticleComponent } from '../templates/GalleryArticle/index';
 import { ProductDetailComponent } from '../templates/Product/index';
 import { LandingPageComponent } from '../templates/LandingPage/index';
 import Breadcrumb from '../components//Breadcrumb';
+console.log(process.env.app_local_sanityToken, 'ENV');
 import {
   authorQuery,
   howToArticleQuery,
@@ -20,9 +21,11 @@ import {
 import sanityClient from '@sanity/client';
 
 const client = sanityClient({
-  projectId: 'xmpcmhrn',
-  dataset: 'production',
+  projectId: process.env.app_local_sanityId || '',
+  dataset: process.env.app_local_sanityDataset,
+  token: process.env.app_local_sanityToken,
   useCdn: false,
+  withCredentials: true,
 });
 
 const PreviewHomePage = () => {
@@ -49,24 +52,37 @@ const PreviewHomePage = () => {
   );
 };
 
-const PreviewPage = ({ document }: { document: string }) => {
+const PreviewPage = ({
+  document,
+  location,
+}: {
+  document: string;
+  location: any;
+}) => {
   const [data, setData] = useState(null);
+  const queryParams = new URLSearchParams(location.search);
 
   const queryDraft = `*[slug.current == "${document}"]  {
     ...,
   }`;
 
   const queryAuthorPage = `
-  *[_type == 'author' && slug.current == '${document}'] {
+  *[_type == 'author' && slug.current == '${document}' && (_id in path('${queryParams.get(
+    'id'
+  )}'))] {
     ${authorQuery}
   }
   `;
 
   const queryHowToArticlePage = `
   {
-    '_type': *[_type == 'howToArticle' && slug.current == '${document}']{_type}[0],
+    '_type': *[_type == 'howToArticle' && slug.current == '${document}' && (_id in path('${queryParams.get(
+    'id'
+  )}'))]{_type}[0],
 
-    'page': *[_type == 'howToArticle' && slug.current == '${document}'] 
+    'page': *[_type == 'howToArticle' && slug.current == '${document}' && (_id in path('${queryParams.get(
+    'id'
+  )}'))] 
     {
     ${howToArticleQuery}
     }[0],
@@ -78,9 +94,13 @@ const PreviewPage = ({ document }: { document: string }) => {
 
   const queryFeatureArticlePage = `
   {
-    '_type': *[_type == 'featureArticle' && slug.current == '${document}']{_type}[0],
+    '_type': *[_type == 'featureArticle' && slug.current == '${document}' && (_id in path('${queryParams.get(
+    'id'
+  )}'))]{_type}[0],
 
-    'page': *[_type == 'featureArticle' && slug.current == '${document}'] 
+    'page': *[_type == 'featureArticle' && slug.current == '${document}' && (_id in path('${queryParams.get(
+    'id'
+  )}'))] 
     {
     ${featureArticleQuery}
     }[0],
@@ -92,9 +112,13 @@ const PreviewPage = ({ document }: { document: string }) => {
 
   const queryGalleryArticlePage = `
   {
-    '_type': *[_type == 'galleryArticle' && slug.current == '${document}']{_type}[0],
+    '_type': *[_type == 'galleryArticle' && slug.current == '${document}' && (_id in path('${queryParams.get(
+    'id'
+  )}'))]{_type}[0],
 
-    'page': *[_type == 'galleryArticle' && slug.current == '${document}'] 
+    'page': *[_type == 'galleryArticle' && slug.current == '${document}' && (_id in path('${queryParams.get(
+    'id'
+  )}'))] 
     {
     ${galleryArticleQuery}
     }[0],
@@ -106,8 +130,12 @@ const PreviewPage = ({ document }: { document: string }) => {
 
   const queryProductDetailPage = `
   {
-    '_type': *[_type == 'product' && slug.current == '${document}']{_type}[0],
-    'page': *[_type == 'product' && slug.current == '${document}'] 
+    '_type': *[_type == 'product' && slug.current == '${document}' && (_id in path('${queryParams.get(
+    'id'
+  )}'))]{_type}[0],
+    'page': *[_type == 'product' && slug.current == '${document}' && (_id in path('${queryParams.get(
+    'id'
+  )}'))] 
     {
     ${productQuery}
     }[0],
@@ -117,7 +145,9 @@ const PreviewPage = ({ document }: { document: string }) => {
   `;
 
   const queryLandingPage = `
-  *[_type == 'landingPage' && slug.current == '${document}' ] {
+  *[_type == 'landingPage' && slug.current == '${document}' && (_id in path('${queryParams.get(
+    'id'
+  )}')) ] {
     ${landingPageQuery}
   }
   `;
