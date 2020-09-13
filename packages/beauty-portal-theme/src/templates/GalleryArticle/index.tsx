@@ -51,6 +51,27 @@ const GalleryArticlePage = (props: GalleryArticlePageProps) => {
         parentPageTitle=""
         pageTitle={page.headline}
       />
+      <GalleryArticleComponent
+        page={page}
+        preview={''}
+        brandInfo={brandInfo}
+        sectionTitles={sectionTitles}
+        relatedArticles={relatedArticles}
+      />
+    </Layout>
+  );
+};
+
+export const GalleryArticleComponent = (props: {
+  page: any;
+  preview: any;
+  brandInfo: any;
+  sectionTitles: any;
+  relatedArticles: any;
+}) => {
+  const { page, preview, brandInfo, sectionTitles, relatedArticles } = props;
+  return (
+    <>
       <div className="bp-container">
         <ArticleHeader
           article={page}
@@ -74,18 +95,20 @@ const GalleryArticlePage = (props: GalleryArticlePageProps) => {
             )}
           </div>
           <div className="col col-1"></div>
-          <div className="col col-4" style={{ position: 'relative' }}>
-            {relatedArticles.length !== 0 && (
-              <RelatedArticles
-                articles={relatedArticles}
-                title={sectionTitles.relatedArticlesName}
-              />
-            )}
-          </div>
+          {!preview && (
+            <div className="col col-4" style={{ position: 'relative' }}>
+              {relatedArticles.length !== 0 && (
+                <RelatedArticles
+                  articles={relatedArticles}
+                  title={sectionTitles.relatedArticlesName}
+                />
+              )}
+            </div>
+          )}
         </div>
         <Tags data={page.tags} title={sectionTitles.relatedTopicsName} />
       </div>
-    </Layout>
+    </>
   );
 };
 

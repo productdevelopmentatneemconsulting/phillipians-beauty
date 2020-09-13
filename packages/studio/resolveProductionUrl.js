@@ -1,21 +1,27 @@
 // const env = process.env.NODE_ENV || 'development'
-const baseUrl = 'https://qa-liberty.netlify.app/previews'
+const remoteURL = 'https://qa-liberty.netlify.app'
+const localURL = 'http://localhost:8000'
+const baseUrl = window.location.hostname === 'localhost' ? localURL : remoteURL
 
 export default function resolvePreviewUrl(document) {
+  const { _id } = document
+
   switch (document._type) {
     case 'landingPage':
-      return `${baseUrl}/${document.slug.current}`
-    case 'featureArticle':
-      return `${baseUrl}/hair-style/${document.slug.current}`
-    case 'product':
-      return `${baseUrl}/${document.slug.current}`
-    case 'author':
-      return `${baseUrl}/previews/${document.slug.current}`
-    case 'brandInformation':
-      if (document._id === 'frontpage' || document._id === 'drafts.frontpage') {
-        return baseUrl
+      if (document.slug.current == '/') {
+        return `${baseUrl}/previews${document.slug.current}?id=${_id}`
       }
-      return null
+      return `${baseUrl}/previews/${document.slug.current}?id=${_id}`
+    case 'howToArticle':
+      return `${baseUrl}/previews/${document.slug.current}?id=${_id}`
+    case 'featureArticle':
+      return `${baseUrl}/previews/${document.slug.current}?id=${_id}`
+    case 'galleryArticle':
+      return `${baseUrl}/previews/${document.slug.current}?id=${_id}`
+    case 'product':
+      return `${baseUrl}/previews/${document.slug.current}?id=${_id}`
+    case 'author':
+      return `${baseUrl}/previews/${document.slug.current}?id=${_id}`
     default:
       return null
   }

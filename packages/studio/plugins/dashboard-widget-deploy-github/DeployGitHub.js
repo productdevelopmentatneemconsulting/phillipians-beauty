@@ -19,6 +19,7 @@ function useInterval(callback, delay) {
   }, [delay])
 }
 const DeployGitHub = () => {
+  const role = localStorage.getItem('role')
   const [deployingStudio, setDeployingStudio] = useState(false)
   const [deployingWeb, setDeployingWeb] = useState(false)
   const [disableStudio, setDisableStudio] = useState(false)
@@ -59,11 +60,13 @@ const DeployGitHub = () => {
   }
   return (
     <>
-      <div className={styles.container}>
+      <div
+        className={`${role.toLowerCase() == 'administrator' ? styles.container : styles.hidden}`}
+      >
         <header className={styles.header}>
           <h2>Build & Deploy</h2>
         </header>
-        <p>
+        <p className={styles.note}>
           NOTE: Because these sites are static builds, they need to be re-deployed to see the
           changes when documents are published.
         </p>
@@ -105,26 +108,6 @@ const DeployGitHub = () => {
                 disabled={disableWeb}
               >
                 {deployingWeb ? 'Deploying...' : 'Deploy to Live'}
-              </button>
-            </div>
-          </li>
-          <li className={styles.list}>
-            <figure>
-              <img src="../../static/badge.svg" />
-              <figcaption>
-                <a href="https://github.com/productdevelopmentatneemconsulting/phillipians-beauty/actions?query=workflow%3A%22Web+%7C+Build+and+Deploy%22">
-                  View Web Deployment
-                </a>
-              </figcaption>
-            </figure>
-            <div>
-              <button
-                className={styles.button}
-                type="button"
-                onClick={deployWeb}
-                disabled={disableWeb}
-              >
-                {deployingWeb ? 'Deploying...' : 'Deploy to QA'}
               </button>
             </div>
           </li>

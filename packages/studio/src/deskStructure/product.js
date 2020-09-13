@@ -1,16 +1,16 @@
 import IframePreview from '../previews/IframePreview'
 import S from '@sanity/desk-tool/structure-builder'
-import { MdPerson } from 'react-icons/md'
+import { GiSpray } from 'react-icons/gi'
 import { FaEye } from 'react-icons/fa'
 
 export default previewURL =>
   S.listItem()
-    .title('Authors')
-    .icon(MdPerson)
-    .schemaType('author')
+    .title('Product')
+    .icon(GiSpray)
+    .schemaType('product')
     .child(
-      S.documentTypeList('author')
-        .title('Author')
+      S.documentTypeList('product')
+        .title('Product')
         .child(documentId =>
           S.document()
             .documentId(documentId)

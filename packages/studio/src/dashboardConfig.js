@@ -1,6 +1,7 @@
 export default {
   widgets: [
     { name: 'structure-menu' },
+    /* This deploy to github widget should be visible to admin only */
     { name: 'deploy-github', layout: { height: 'auto', width: 'medium' } },
     { name: 'project-users', layout: { height: 'auto' } },
     {
@@ -11,23 +12,6 @@ export default {
         types: ['howToArticle', 'featureArticle', 'galleryArticle']
       },
       layout: { width: 'medium' }
-    },
-    {
-      name: 'project-info',
-      options: {
-        data: [
-          {
-            title: 'GitHub repo',
-            value: 'https://github.com/productdevelopmentatneemconsulting/phillipians-beauty.git',
-            category: 'Code'
-          },
-          {
-            title: 'Frontend',
-            value: 'http://friendly-banach-4b076d.netlify.app',
-            category: 'apps'
-          }
-        ]
-      }
     }
   ]
 }

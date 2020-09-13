@@ -46,13 +46,13 @@ const ArticleHeader: FunctionComponent<ArticleHeaderInterface> = ({
     setVideoLoading(false);
   };
 
-  const renderVideoThumbnail = (image, alt) => {
+  const renderVideoThumbnail = (_rawHeroImage, alt) => {
     return (
       <>
         <link
           rel="preload"
           as="image"
-          href={`${urlFor(image)
+          href={`${urlFor(_rawHeroImage)
             .width(665)
             .height(374)
             .quality(80)
@@ -67,13 +67,13 @@ const ArticleHeader: FunctionComponent<ArticleHeaderInterface> = ({
             className="bp-image__placeholder"
             style={{
               paddingTop: `56.25%`,
-              background: `url(${image.asset.metadata.lqip})`,
+              background: `url(${_rawHeroImage.asset.metadata.lqip})`,
               backgroundSize: 'cover',
             }}
           >
             <source
               media="screen and (min-width: 1025px)"
-              srcSet={`${urlFor(image)
+              srcSet={`${urlFor(_rawHeroImage)
                 .width(665)
                 .height(374)
                 .quality(80)
@@ -84,7 +84,7 @@ const ArticleHeader: FunctionComponent<ArticleHeaderInterface> = ({
             />
             <source
               media="screen and (min-width: 560px)"
-              srcSet={`${urlFor(image)
+              srcSet={`${urlFor(_rawHeroImage)
                 .width(436)
                 .height(245)
                 .quality(80)
@@ -95,7 +95,7 @@ const ArticleHeader: FunctionComponent<ArticleHeaderInterface> = ({
             />
             <source
               media="screen and (min-width: 320px)"
-              srcSet={`${urlFor(image)
+              srcSet={`${urlFor(_rawHeroImage)
                 .width(414)
                 .height(232)
                 .fit('max')
@@ -104,7 +104,7 @@ const ArticleHeader: FunctionComponent<ArticleHeaderInterface> = ({
                 .toString()}`}
             />
             <img
-              src={urlFor(image)
+              src={urlFor(_rawHeroImage)
                 .width(436)
                 .height(245)
                 .quality(80)
@@ -158,7 +158,7 @@ const ArticleHeader: FunctionComponent<ArticleHeaderInterface> = ({
         <div className="bp-articleHeader_image">
           {!showVideo &&
             !heroVideo &&
-            renderVideoThumbnail(_rawHeroImage, heroImage.alt)}
+            renderVideoThumbnail(_rawHeroImage, _rawHeroImage.alt)}
           {!showVideo && heroVideo && !videoLoading && (
             <>
               {heroVideo.heroImage
@@ -166,7 +166,7 @@ const ArticleHeader: FunctionComponent<ArticleHeaderInterface> = ({
                     _rawHeroVideo.heroImage,
                     heroVideo.heroImage.alt
                   )
-                : renderVideoThumbnail(_rawHeroImage, heroImage.alt)}
+                : renderVideoThumbnail(_rawHeroImage, _rawHeroImage.alt)}
               <button
                 type="button"
                 className="icon-video"

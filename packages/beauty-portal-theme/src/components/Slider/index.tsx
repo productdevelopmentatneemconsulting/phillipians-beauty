@@ -105,7 +105,7 @@ const Slider: FunctionComponent<SliderInterface> = ({
                         .height(280)
                         .fit('max')
                         .url()}
-                      alt={slide.heroImage.alt}
+                      alt={slide._rawHeroImage.alt}
                     />
                   </picture>
                 ) : null}
@@ -167,7 +167,7 @@ const Slider: FunctionComponent<SliderInterface> = ({
                         .height(280)
                         .fit('max')
                         .url()}
-                      alt={slide.image.alt}
+                      alt={slide._rawImage.alt}
                     />
                   </picture>
                 ) : null}
@@ -233,7 +233,7 @@ const Slider: FunctionComponent<SliderInterface> = ({
                         .height(280)
                         .fit('max')
                         .url()}
-                      alt={slide.image.alt}
+                      alt={slide._rawImage.alt}
                     />
                   </picture>
                 ) : null}
@@ -251,7 +251,7 @@ const Slider: FunctionComponent<SliderInterface> = ({
   const renderHeroSlides = slide => (
     <SwiperSlide className="bp-slider_slide" key={slide.path}>
       <Link to={slide.path}>
-        {slide.heroImage && (
+        {slide._rawHeroImage && (
           <>
             <figure>
               <picture
@@ -264,16 +264,16 @@ const Slider: FunctionComponent<SliderInterface> = ({
               >
                 <source
                   media="(max-width: 799px)"
-                  srcSet={`${slide.heroImage.asset.url}?q=80&w=414&h=232&fit=crop&auto=format`}
+                  srcSet={`${slide._rawHeroImage.asset.url}?q=80&w=414&h=232&fit=crop&auto=format`}
                 />
                 <source
                   media="(min-width: 800px)"
-                  srcSet={`${slide.heroImage.asset.url}?q=80&w=752&h=423&fit=crop&auto=format`}
+                  srcSet={`${slide._rawHeroImage.asset.url}?q=80&w=752&h=423&fit=crop&auto=format`}
                 />
                 <img
-                  src={`${slide.heroImage.asset.url}?q=80&w=752&h=423&fit=crop&auto=format`}
+                  src={`${slide._rawHeroImage.asset.url}?q=80&w=752&h=423&fit=crop&auto=format`}
                   loading="lazy"
-                  alt={slide.heroImage.alt}
+                  alt={slide._rawHeroImage.alt}
                 />
               </picture>
             </figure>

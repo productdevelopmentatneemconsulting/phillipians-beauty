@@ -2,16 +2,20 @@
 import React, { useState, useEffect } from 'react'
 import styles from './IframePreview.module.css'
 
-const assembleProjectUrl = ({ displayed, options }) => {
+const assembleProjectUrl = ({ displayed, options, draft }) => {
   const {
-    slug: { current }
+    slug: { current },
+    _id
   } = displayed
   const { previewURL } = options
   if (!current || !previewURL) {
     console.warn('Missing slug or previewURL', { current, previewURL })
     return ''
   }
-  return `${previewURL}/${current}`
+  if (current == '/') {
+    return `${previewURL}?id=${_id}`
+  }
+  return `${previewURL}/${current}?id=${_id}`
 }
 
 const Preview = props => {

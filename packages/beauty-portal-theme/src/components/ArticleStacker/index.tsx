@@ -49,7 +49,7 @@ const TileStacker: FunctionComponent<TileStackerInterface> = ({
                           .quality(80)
                           .url()
                           .toString()}`}
-                        alt={slide.heroImage.alt}
+                        alt={slide._rawHeroImage.alt}
                       />
                     </picture>
                   ) : null}

@@ -1,16 +1,16 @@
 import IframePreview from '../previews/IframePreview'
 import S from '@sanity/desk-tool/structure-builder'
-import { MdPerson } from 'react-icons/md'
+import { MdViewCompact } from 'react-icons/md'
 import { FaEye } from 'react-icons/fa'
 
 export default previewURL =>
   S.listItem()
-    .title('Authors')
-    .icon(MdPerson)
-    .schemaType('author')
+    .title('Manage Pages')
+    .icon(MdViewCompact)
+    .schemaType('landingPage')
     .child(
-      S.documentTypeList('author')
-        .title('Author')
+      S.documentTypeList('landingPage')
+        .title('Landing Pages')
         .child(documentId =>
           S.document()
             .documentId(documentId)

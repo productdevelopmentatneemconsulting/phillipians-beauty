@@ -11,6 +11,7 @@ const SingleArticle: FunctionComponent<SanitySingleArticleInterface> = ({
   return (
     <ImageBlock
       type={'article'}
+      heroImage={article.heroImage}
       _rawImage={article._rawHeroImage}
       _rawTextBlockBody={article.subheading}
       name={article.headline}

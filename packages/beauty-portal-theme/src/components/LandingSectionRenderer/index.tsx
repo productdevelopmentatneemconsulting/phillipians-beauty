@@ -24,13 +24,23 @@ const componentsMap = {
   SanityTaxonomyBlock: SanityTagsBlock,
   SanityAccordionBlock: SanityAccordionBlock,
   SanitySingleArticleBlock: SanitySingleArticle,
+  articleSlider: SanityArticleSlider,
+  productSlider: SanityProductSlider,
+  textBlock: SanityTextBlock,
+  authorSlider: SanityAuthorSlider,
+  searchBlock: SanitySearchBlock,
+  newsletterBlock: NewsletterBlock,
+  imageBlock: ImageBlock,
+  taxonomyBlock: SanityTagsBlock,
+  accordionBlock: SanityAccordionBlock,
+  singleArticleBlock: SanitySingleArticle,
 };
 
 const LandingSectionRenderer: FunctionComponent<LandingSectionRendererInterface> = ({
   section,
   preferPerformance = false,
 }) => {
-  const sanityType = section.__typename;
+  const sanityType = section.__typename ? section.__typename : section._type;
   const getComponent = sanityType => {
     const component = componentsMap[sanityType];
 

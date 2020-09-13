@@ -11,7 +11,7 @@ const ReadNext: FunctionComponent<ReadNextInterface> = ({ data, title }) => {
     rootMargin: '200px 0px',
   });
   const {
-    readnext: { path, headline, _type, _rawHeroImage },
+    readnext: { path, headline, _type, _rawHeroImage, heroImage },
   } = data;
 
   return (
@@ -26,13 +26,17 @@ const ReadNext: FunctionComponent<ReadNextInterface> = ({ data, title }) => {
                   className="bp-image__placeholder"
                   style={{
                     paddingTop: '56.25%',
-                    background: `url(${_rawHeroImage.asset.metadata.lqip})`,
+                    background: `url(${
+                      _rawHeroImage
+                        ? _rawHeroImage.asset.metadata.lqip
+                        : heroImage.asset.metadata.lqip
+                    })`,
                     backgroundSize: 'cover',
                   }}
                 >
                   <source
                     media="screen and (min-width: 320px)"
-                    srcSet={`${urlFor(_rawHeroImage)
+                    srcSet={`${urlFor(_rawHeroImage ? _rawHeroImage : heroImage)
                       .width(436)
                       .height(245)
                       .fit('max')
@@ -41,12 +45,12 @@ const ReadNext: FunctionComponent<ReadNextInterface> = ({ data, title }) => {
                       .toString()}`}
                   />
                   <img
-                    src={urlFor(_rawHeroImage)
+                    src={urlFor(_rawHeroImage ? _rawHeroImage : heroImage)
                       .width(436)
                       .height(245)
                       .fit('max')
                       .url()}
-                    alt={_rawHeroImage.alt}
+                    alt={_rawHeroImage ? _rawHeroImage.alt : heroImage.alt}
                   />
                 </picture>
               ) : null}

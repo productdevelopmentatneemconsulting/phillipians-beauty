@@ -9,6 +9,7 @@ import './styles.scss';
 const SanityAccordionBlock: FunctionComponent<SanityAccordionBlockInterface> = ({
   name,
   _rawTextBlockBody,
+  textBlockBody,
 }) => {
   const [accordion, toggleAccordion] = useState(false);
 
@@ -41,7 +42,7 @@ const SanityAccordionBlock: FunctionComponent<SanityAccordionBlockInterface> = (
           >
             <BlockContent
               serializers={blockTypeDefaultSerializers}
-              blocks={_rawTextBlockBody}
+              blocks={_rawTextBlockBody ? _rawTextBlockBody : textBlockBody}
             />
           </div>
         </div>
