@@ -7,3 +7,6 @@
 # lerna files
 /lerna-debug.log
 /.idea
+
+# Local Netlify folder
+.netlify

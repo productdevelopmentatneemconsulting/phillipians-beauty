@@ -21,7 +21,7 @@ import {
   FaGlobe,
   FaNewspaper
 } from 'react-icons/fa'
-import { GiSpray, GiCherish, GiHairStrands, GiStopSign } from 'react-icons/gi'
+import { GiCherish, GiHairStrands, GiStopSign } from 'react-icons/gi'
 import article from './article'
 import author from './author'
 import product from './product'
@@ -30,7 +30,7 @@ import landingPage from './landingPage'
 // Web preview configuration
 const remoteURL = 'https://qa-liberty.netlify.app/previews'
 const localURL = 'http://localhost:8000/previews'
-const previewURL = 'https://qa-liberty.netlify.app/previews'
+const previewURL = window.location.hostname === 'localhost' ? localURL : remoteURL
 
 export default () =>
   userStore.currentUser.pipe(
@@ -43,7 +43,7 @@ export default () =>
           .title('Content')
           .items([
             S.divider(),
-            article,
+            article(previewURL),
             product(previewURL),
             S.divider(),
             S.listItem()
@@ -293,7 +293,7 @@ export default () =>
         .title('Content')
         .items([
           S.divider(),
-          article,
+          article(previewURL),
           product(previewURL),
           S.divider(),
           S.listItem()
