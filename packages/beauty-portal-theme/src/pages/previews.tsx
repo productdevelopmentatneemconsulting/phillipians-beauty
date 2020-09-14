@@ -62,8 +62,10 @@ const PreviewPage = ({
   const [data, setData] = useState(null);
   const queryParams = new URLSearchParams(location.search);
 
-  const queryDraft = `*[slug.current == "${document}"]  {
-    ...,
+  const queryDraft = `*[slug.current == "${document}" && (_id in path('${queryParams.get(
+    'id'
+  )}'))]  {
+    ..., 'tags': tags[]-> name
   }`;
 
   const queryAuthorPage = `
@@ -89,6 +91,7 @@ const PreviewPage = ({
    'sectionTitles': *[_type == 'howToTemplate']{...}[0],
    'brandInfo': *[_type == 'brandInfo']{${brandInfoQuery}}[0],
    'genericLabels': *[_type == 'globalLabels']{...}[0],
+   'relatedArticles': *[_type in ['howToArticle', 'featureArticle', 'galleryArticle'] && references(*[_type=="tag" && name in $tags]._id) && !(_id in path('drafts.**')) ] | order(_createdAt desc) {${howToArticleQuery}, ${featureArticleQuery}, ${galleryArticleQuery}}[0...10],
   }
   `;
 
@@ -161,9 +164,11 @@ const PreviewPage = ({
           });
           break;
         case 'howToArticle':
-          client.fetch(queryHowToArticlePage).then(res => {
-            setData(res);
-          });
+          client
+            .fetch(queryHowToArticlePage, { tags: response[0].tags })
+            .then(res => {
+              setData(res);
+            });
           break;
         case 'featureArticle':
           client.fetch(queryFeatureArticlePage).then(res => {
@@ -213,6 +218,7 @@ const PreviewPage = ({
               sectionTitles={data.sectionTitles}
               brandInfo={data.brandInfo}
               genericLabels={data.genericLabels}
+              relatedArticles={data.relatedArticles}
               preview="true"
             />
           );

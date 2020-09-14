@@ -103,7 +103,7 @@ export const HowToArticleComponent = (props: HowtoArticlePageProps) => {
             )}
           </div>
           <div className="col col-1"></div>
-          {!preview && (
+          {
             <div className="col col-4">
               {relatedArticles.length !== 0 && (
                 <RelatedArticles
@@ -112,7 +112,7 @@ export const HowToArticleComponent = (props: HowtoArticlePageProps) => {
                 />
               )}
             </div>
-          )}
+          }
         </div>
         <Tags data={page.tags} title={sectionTitles.relatedTopicsName} />
       </div>
