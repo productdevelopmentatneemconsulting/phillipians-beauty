@@ -28,10 +28,13 @@ const client = sanityClient({
   withCredentials: true,
 });
 
-const PreviewHomePage = () => {
+const PreviewHomePage = ({ location }: { location: any }) => {
   const [homePageData, setHomePageData] = useState('');
+  const queryParams = new URLSearchParams(location.search);
   const queryHomePage = `
-  *[_type == 'landingPage' && slug.current == '/' ] {
+  *[_type == 'landingPage' && slug.current == '/' && (_id in path('${queryParams.get(
+    'id'
+  )}')) ] {
     ${landingPageQuery}
   }
   `;
