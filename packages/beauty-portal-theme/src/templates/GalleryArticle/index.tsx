@@ -95,7 +95,7 @@ export const GalleryArticleComponent = (props: {
             )}
           </div>
           <div className="col col-1"></div>
-          {!preview && (
+          {
             <div className="col col-4" style={{ position: 'relative' }}>
               {relatedArticles.length !== 0 && (
                 <RelatedArticles
@@ -104,7 +104,7 @@ export const GalleryArticleComponent = (props: {
                 />
               )}
             </div>
-          )}
+          }
         </div>
         <Tags data={page.tags} title={sectionTitles.relatedTopicsName} />
       </div>

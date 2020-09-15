@@ -113,6 +113,7 @@ const PreviewPage = ({
    'sectionTitles': *[_type == 'featureTemplate']{...}[0],
    'brandInfo': *[_type == 'brandInfo']{${brandInfoQuery}}[0],
    'genericLabels': *[_type == 'globalLabels']{...}[0],
+   'relatedArticles': *[_type in ['howToArticle', 'featureArticle', 'galleryArticle'] && references(*[_type=="tag" && name in $tags]._id) && !(_id in path('drafts.**')) ] | order(_createdAt desc) {${howToArticleQuery}, ${featureArticleQuery}, ${galleryArticleQuery}}[0...10],
   }
   `;
 
@@ -131,6 +132,7 @@ const PreviewPage = ({
    'sectionTitles': *[_type == 'galleryTemplate']{...}[0],
    'brandInfo': *[_type == 'brandInfo']{${brandInfoQuery}}[0],
    'genericLabels': *[_type == 'globalLabels']{...}[0],
+   'relatedArticles': *[_type in ['howToArticle', 'featureArticle', 'galleryArticle'] && references(*[_type=="tag" && name in $tags]._id) && !(_id in path('drafts.**')) ] | order(_createdAt desc) {${howToArticleQuery}, ${featureArticleQuery}, ${galleryArticleQuery}}[0...10],
   }
   `;
 
@@ -174,14 +176,18 @@ const PreviewPage = ({
             });
           break;
         case 'featureArticle':
-          client.fetch(queryFeatureArticlePage).then(res => {
-            setData(res);
-          });
+          client
+            .fetch(queryFeatureArticlePage, { tags: response[0].tags })
+            .then(res => {
+              setData(res);
+            });
           break;
         case 'galleryArticle':
-          client.fetch(queryGalleryArticlePage).then(res => {
-            setData(res);
-          });
+          client
+            .fetch(queryGalleryArticlePage, { tags: response[0].tags })
+            .then(res => {
+              setData(res);
+            });
           break;
         case 'product':
           client.fetch(queryProductDetailPage).then(res => {
@@ -231,6 +237,7 @@ const PreviewPage = ({
               page={data.page}
               sectionTitles={data.sectionTitles}
               brandInfo={data.brandInfo}
+              relatedArticles={data.relatedArticles}
               genericLabels={data.genericLabels}
               preview="true"
             />
@@ -241,6 +248,7 @@ const PreviewPage = ({
               page={data.page}
               sectionTitles={data.sectionTitles}
               brandInfo={data.brandInfo}
+              relatedArticles={data.relatedArticles}
               genericLabels={data.genericLabels}
               preview="true"
             />
