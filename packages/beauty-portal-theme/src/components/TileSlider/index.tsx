@@ -28,7 +28,7 @@ const TileSlider: FunctionComponent<TileSliderInterface> = ({
     <div className="bp-tileSlider">
       <div className="bp-tileSlider_header">
         <h2 className="bp-tileSlider_title">{headline}</h2>
-        {searchCtaLabel && (
+        {searchCtaLabel && searchTags && (
           <Link
             className="bp-tileSlider_link"
             to={getSearchUrlWithTagsAndCategory(searchTags)}
