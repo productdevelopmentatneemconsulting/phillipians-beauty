@@ -22,6 +22,14 @@ export default {
       title: 'Biography'
     },
     {
+      name: 'authorSections',
+      type: 'reference',
+      title: 'Product sliders',
+      description: 'Select product slider for products you might like section',
+      to: { type: 'productSlider' },
+      validation: Rule => Rule.required().error('Please select product slider')
+    },
+    {
       name: 'parentPage',
       title: 'Parent Page',
       description: 'Author will be categorised under the parent authors page',

@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/camelcase */
 require('dotenv').config();
 
-console.log('ENV', process.env);
 const path = require('path');
 const queries = require('./src/helpers/AlgoliaSearch');
 module.exports = ({ themeConfig }) => {

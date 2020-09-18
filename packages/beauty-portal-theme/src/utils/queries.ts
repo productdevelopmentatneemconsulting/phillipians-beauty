@@ -3,6 +3,13 @@ _id,
 _type,
 name, 
 image{alt, asset->{url}},
+authorSections-> {
+_id, 
+_type,
+name,
+slides[]->{_type, _id, name, '_rawImage' :image{alt, asset->{url, metadata}}, brand->{name}, slug{current}},
+slideType->{description, name}, 
+},
 parentPage->{name, slug, path},
 bio, 
 slug

@@ -8,7 +8,6 @@ import { GalleryArticleComponent } from '../templates/GalleryArticle/index';
 import { ProductDetailComponent } from '../templates/Product/index';
 import { LandingPageComponent } from '../templates/LandingPage/index';
 import Breadcrumb from '../components//Breadcrumb';
-console.log(process.env.app_local_sanityToken, 'ENV');
 import {
   authorQuery,
   howToArticleQuery,
@@ -211,6 +210,7 @@ const PreviewPage = ({
         typeof data._type === 'string' ? data._type : data._type._type;
       switch (type) {
         case 'author':
+          console.log('data', data);
           return (
             <AuthorComponent
               name={data.name}
@@ -218,6 +218,7 @@ const PreviewPage = ({
               image={data.image}
               slug={data.slug}
               _rawBio={data.bio}
+              authorSections={data.authorSections}
             />
           );
         case 'howToArticle':

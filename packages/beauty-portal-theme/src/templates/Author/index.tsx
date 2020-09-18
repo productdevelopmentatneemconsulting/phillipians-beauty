@@ -5,6 +5,7 @@ import OGTags from '../../components/OGTags';
 import Breadcrumb from '../../components/Breadcrumb';
 import SEO from '../../components/Seo';
 import Search from '../../search';
+import SanityProductSlider from 'src/components/SanityProductSlider';
 import BlockContent from '@sanity/block-content-to-react';
 import { blockTypeDefaultSerializers } from '../../helpers/sanity';
 import { useInView } from 'react-intersection-observer';
@@ -17,7 +18,7 @@ const searchIndices = [
 
 const AuthorPage = (props: AuthorPageProps) => {
   const { data } = props;
-  const { name, slug, parentPage } = data.page.nodes[0];
+  const { name, slug, parentPage, authorSections } = data.page.nodes[0];
 
   return (
     <Layout>
@@ -37,8 +38,9 @@ export const AuthorComponent = (props: {
   slug: any;
   _rawBio: any;
   parentPage: any;
+  authorSections: any;
 }) => {
-  const { name, slug, image, _rawBio, parentPage } = props;
+  const { name, slug, image, _rawBio, parentPage, authorSections } = props;
   const [ref, inView] = useInView({
     triggerOnce: true,
     rootMargin: '5px 0px',
@@ -115,6 +117,15 @@ export const AuthorComponent = (props: {
         slug={slug.current}
         authorName={name}
       />
+      {authorSections && (
+        <SanityProductSlider
+          slides={authorSections.slides}
+          name=""
+          headline="Products You Might Also Like"
+          searchCtaLabel="See All"
+          searchTags={''}
+        />
+      )}
     </>
   );
 };
@@ -151,6 +162,47 @@ export const query = graphql`
           path
         }
         _rawBio(resolveReferences: { maxDepth: 10 })
+        authorSections {
+          id
+          name
+          searchCtaLabel
+          searchTags {
+            name
+          }
+          slides {
+            _type
+            name
+            _rawImage(resolveReferences: { maxDepth: 10 })
+            image {
+              asset {
+                source {
+                  url
+                }
+                fluid {
+                  aspectRatio
+                  base64
+                  sizes
+                  src
+                  srcSet
+                  srcSetWebp
+                  srcWebp
+                }
+              }
+              alt
+            }
+            brand {
+              name
+            }
+            path
+            slug {
+              current
+            }
+          }
+          slideType {
+            description
+            name
+          }
+        }
       }
     }
   }
