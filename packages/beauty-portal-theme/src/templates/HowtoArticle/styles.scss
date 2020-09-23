@@ -1,0 +1,7 @@
+.fixable-sidebar {
+  position: relative;
+
+  &.fixed {
+    position: fixed;
+  }
+}

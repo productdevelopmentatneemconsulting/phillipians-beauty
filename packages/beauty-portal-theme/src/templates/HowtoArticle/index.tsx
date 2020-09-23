@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { graphql } from 'gatsby';
 import SEO from '../../components/Seo';
 import Layout from '../../components/Layout';
@@ -12,8 +12,25 @@ import Tags from '../../components/Tags';
 import ReadNext from '../../components/ReadNext';
 import PageSchema from '../../components/PageSchema';
 import OGTags from '../../components/OGTags';
+import './styles.scss';
 
 const HowtoArticlePage = (props: HowtoArticlePageProps) => {
+  const [fixed, setFixed] = useState(false);
+  const ref = useRef(null);
+
+  const handleScroll = (e: any) => {
+    if (ref && ref.current && ref.current.getBoundingClientRect()) {
+      console.log('ref.current', ref.current);
+      setFixed(ref.current.getBoundingClientRect().top >= 1000);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const {
     data: {
       page,
@@ -97,9 +114,13 @@ export const HowToArticleComponent = (props: HowtoArticlePageProps) => {
                 title={sectionTitles.productName}
               />
             )}
+
             <RichText data={page._rawHowTobody} />
+
             {page.readnext && (
-              <ReadNext data={page} title={sectionTitles.nextRead} />
+              <div ref={ref}>
+                <ReadNext data={page} title={sectionTitles.nextRead} />
+              </div>
             )}
           </div>
           <div className="col col-1"></div>
@@ -197,5 +218,4 @@ interface HowtoArticlePageProps {
     slug: string;
     title: string;
   };
-  location: WindowLocation;
 }
