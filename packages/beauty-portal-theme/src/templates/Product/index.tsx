@@ -25,7 +25,7 @@ const ProductPage = (props: ProductPageProps) => {
   console.log('page', page);
   page.seo = page.seo || {};
   return (
-    <Layout>
+    <Layout overflow="hidden">
       <SEO
         lang={'tl-ph'}
         title={page.name}

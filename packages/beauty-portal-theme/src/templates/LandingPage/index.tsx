@@ -25,7 +25,7 @@ const LandingPage = (props: LandingPageProps) => {
   };
 
   return (
-    <Layout className={getLayoutClassName(page.name)}>
+    <Layout overflow="hidden" className={getLayoutClassName(page.name)}>
       <SEO
         lang={'en-us'}
         title={page.name}
