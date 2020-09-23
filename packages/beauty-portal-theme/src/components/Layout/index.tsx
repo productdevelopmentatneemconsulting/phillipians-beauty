@@ -7,7 +7,7 @@ import SubscriptionPopup from '../SubscriptionPopup';
 import { MyContext } from '../../context/Context';
 import './styles.scss';
 
-const Layout = ({ className, children }: LayoutProps) => {
+const Layout = ({ className, children, overflow }: LayoutProps) => {
   const [open, setOpen] = React.useContext(MyContext);
   return (
     <>
@@ -21,6 +21,7 @@ const Layout = ({ className, children }: LayoutProps) => {
         id="main"
         aria-label="Main Content"
         className={classNames('bp-page', className === 'home' ? 'p0' : null)}
+        style={overflow ? { overflow: overflow } : {}}
       >
         {children}
       </main>
@@ -34,4 +35,5 @@ export default Layout;
 interface LayoutProps {
   children?: ReactNode | ReactNode[];
   className?: string;
+  overflow?: string;
 }

@@ -15,22 +15,6 @@ import OGTags from '../../components/OGTags';
 import './styles.scss';
 
 const HowtoArticlePage = (props: HowtoArticlePageProps) => {
-  const [fixed, setFixed] = useState(false);
-  const ref = useRef(null);
-
-  const handleScroll = (e: any) => {
-    if (ref && ref.current && ref.current.getBoundingClientRect()) {
-      console.log('ref.current', ref.current);
-      setFixed(ref.current.getBoundingClientRect().top >= 1000);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   const {
     data: {
       page,
@@ -95,22 +79,20 @@ const HowtoArticlePage = (props: HowtoArticlePageProps) => {
             <RichText data={page._rawHowTobody} />
 
             {page.readnext && (
-              <div ref={ref}>
-                <ReadNext data={page} title={sectionTitles.nextRead} />
-              </div>
+              <ReadNext data={page} title={sectionTitles.nextRead} />
             )}
           </div>
           <div className="col col-1"></div>
-          <aside className="col col-4">
-            {relatedArticles.length !== 0 && (
-              <div className={'fixable-sidebar ' + (fixed ? 'fixed' : '')}>
+          <div className="col col-4">
+            <div className="sticky">
+              {relatedArticles.length !== 0 && (
                 <RelatedArticles
                   articles={relatedArticles}
                   title={sectionTitles.relatedArticlesName}
                 />
-              </div>
-            )}
-          </aside>
+              )}
+            </div>
+          </div>
         </div>
         <Tags data={page.tags} title={sectionTitles.relatedTopicsName} />
       </div>

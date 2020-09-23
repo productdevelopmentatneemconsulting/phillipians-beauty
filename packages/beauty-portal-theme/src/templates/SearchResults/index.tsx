@@ -10,7 +10,7 @@ const searchIndices = [
 
 const SearchResults: FunctionComponent = () => {
   return (
-    <Layout>
+    <Layout overflow="hidden">
       <SEO lang={'en-us'} title="Search" description="" keywords={[]} />
       <Breadcrumb parentPageTitle="" pageTitle="Search Results" />
       <Search indices={searchIndices} />

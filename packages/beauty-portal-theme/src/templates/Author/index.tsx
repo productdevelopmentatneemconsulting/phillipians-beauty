@@ -34,7 +34,7 @@ const AuthorPage = (props: AuthorPageProps) => {
   });
 
   return (
-    <Layout>
+    <Layout overflow="hidden">
       <SEO lang={'tl-ph'} title={name} description={name} keywords={[' ']} />
       <OGTags type={'page'} slug={slug} data={data.page} />
       {slug !== '/' && (

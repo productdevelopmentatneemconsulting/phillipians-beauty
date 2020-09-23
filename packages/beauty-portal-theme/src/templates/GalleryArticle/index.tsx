@@ -11,6 +11,7 @@ import Breadcrumb from '../../components/Breadcrumb';
 import RichText from '../../components/RichText';
 import ArticleHeader from '../../components/ArticleHeader';
 import OGTags from '../../components/OGTags';
+import './styles.scss';
 
 const GalleryArticlePage = (props: GalleryArticlePageProps) => {
   const {
@@ -51,18 +52,41 @@ const GalleryArticlePage = (props: GalleryArticlePageProps) => {
         parentPageTitle=""
         pageTitle={page.headline}
       />
-      <div className="bp-container">
-        <ArticleHeader
-          article={page}
-          type={'gallery'}
-          socialLinks={brandInfo}
-        />
-        <Gallery
-          data={page._rawImageGallery}
-          name={page.headline}
-          authorName={page.author.name}
-          slug={page.path}
-        />
+      <GalleryArticleComponent
+        page={page}
+        preview={''}
+        brandInfo={brandInfo}
+        sectionTitles={sectionTitles}
+        relatedArticles={relatedArticles}
+      />
+    </Layout>
+  );
+};
+
+export const GalleryArticleComponent = (props: {
+  page: any;
+  preview: any;
+  brandInfo: any;
+  sectionTitles: any;
+  relatedArticles: any;
+}) => {
+  const { page, preview, brandInfo, sectionTitles, relatedArticles } = props;
+  return (
+    <>
+      <div style={{ overflow: 'hidden' }}>
+        <div className="bp-container">
+          <ArticleHeader
+            article={page}
+            type={'gallery'}
+            socialLinks={brandInfo}
+          />
+          <Gallery
+            data={page._rawImageGallery}
+            name={page.headline}
+            authorName={page.author.name}
+            slug={page.path}
+          />
+        </div>
       </div>
 
       <div className="bp-container">
@@ -74,18 +98,22 @@ const GalleryArticlePage = (props: GalleryArticlePageProps) => {
             )}
           </div>
           <div className="col col-1"></div>
-          <div className="col col-4" style={{ position: 'relative' }}>
-            {relatedArticles.length !== 0 && (
-              <RelatedArticles
-                articles={relatedArticles}
-                title={sectionTitles.relatedArticlesName}
-              />
-            )}
-          </div>
+          {
+            <div className="col col-4" style={{ position: 'relative' }}>
+              <div className="sticky">
+                {relatedArticles.length !== 0 && (
+                  <RelatedArticles
+                    articles={relatedArticles}
+                    title={sectionTitles.relatedArticlesName}
+                  />
+                )}
+              </div>
+            </div>
+          }
         </div>
         <Tags data={page.tags} title={sectionTitles.relatedTopicsName} />
       </div>
-    </Layout>
+    </>
   );
 };
 
