@@ -26,7 +26,13 @@ export const blockTypeDefaultSerializers = {
         return null;
       }
 
-      return <Product data={node.product} metadata={node.product} />;
+      return (
+        <Product
+          data={node.product}
+          metadata={node.product}
+          type={node._type}
+        />
+      );
     },
     // eslint-disable-next-line react/display-name
     youTube: props => {

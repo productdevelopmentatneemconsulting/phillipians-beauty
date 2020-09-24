@@ -4,7 +4,11 @@ import { urlFor } from '../../helpers/imageUrl';
 import { ReactComponent as IconBuy } from '../../images/icons/buy.svg';
 import './styles.scss';
 
-const Product: FunctionComponent<ProductInterface> = ({ metadata, data }) => {
+const Product: FunctionComponent<ProductInterface> = ({
+  metadata,
+  data,
+  type,
+}) => {
   const {
     slug,
     image: { alt },
@@ -16,7 +20,14 @@ const Product: FunctionComponent<ProductInterface> = ({ metadata, data }) => {
 
   return (
     <div className="bp-product">
-      <Link className="bp-product_link" to={(slug && slug.current) || '/'}>
+      <Link
+        className="bp-product_link"
+        to={
+          type == 'productReference'
+            ? `/product-showcase/${slug.current}`
+            : slug.current
+        }
+      >
         <div className="bp-product_image">
           <figure>
             <picture>
@@ -76,5 +87,6 @@ const Product: FunctionComponent<ProductInterface> = ({ metadata, data }) => {
 interface ProductInterface {
   metadata: any;
   data: any;
+  type: any;
 }
 export default Product;
