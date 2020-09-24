@@ -2,16 +2,22 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable import/no-unresolved */
 // eslint-disable-next-line no-unused-vars
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import axios from 'axios'
 import qs from 'qs'
+import countriesList from './countries'
+
 import Dialog from 'part:@sanity/components/dialogs/fullscreen'
 import TextInput from 'part:@sanity/components/textinputs/default'
 import Button from 'part:@sanity/components/buttons/default'
 import Spinner from 'part:@sanity/components/loading/spinner'
+import Select from './select'
+import client from 'part:@sanity/base/client'
 
 import { TabImage } from './TabImage'
 import styles from './TabAssetSource.css'
+
+const query = `*[_type == 'brand'] { name }`
 
 const SearchInput = ({ label, onChange, onEnter, value }) => {
   const onKeyPress = useCallback(
@@ -31,15 +37,51 @@ const SearchInput = ({ label, onChange, onEnter, value }) => {
   )
 }
 
-const TabImageSearch = ({ onClose, onSelect }) => {
+const SelectInput = ({ label, onChange, options, onEnter, value }) => {
+  const onKeyPress = useCallback(
+    event => {
+      if (event.key === 'Enter') onEnter(event)
+    },
+    [onEnter]
+  )
+
+  return (
+    <div className={styles['c-search']}>
+      <label className={styles['c-search__label']}>
+        <span className={styles['c-search__text']}>{label}</span>
+        <Select
+          value={value}
+          items={options}
+          onChange={onChange}
+          onKeyPress={onKeyPress}
+          onChange={onChange}
+        />
+      </label>
+    </div>
+  )
+}
+
+const TabImageSearch = ({ onClose, onSelect, document }) => {
   const [searchTerms, setSearchTerms] = useState({
     assetId: '',
-    search: ''
+    search: '',
+    brand: '',
+    countries: 'Philippines'
   })
   const [hasError, setHasError] = useState(false)
   const [foundAssets, setFoundAssets] = useState()
   const [loading, setLoading] = useState(false)
   const [pageNumber, setPageNumber] = useState(1)
+  const [brands, setBrands] = useState([])
+
+  useEffect(() => {
+    client.fetch(query).then(res => setBrands(res.map(item => item.name)))
+    if (document.brand) {
+      client
+        .fetch(`*[_type == 'brand' && _id == '${document.brand._ref}'].name[0]`)
+        .then(res => setSearchTerms({ ...searchTerms, brand: res }))
+    }
+  }, [])
 
   const onSearchTermChange = useCallback(
     key => val => {
@@ -63,8 +105,8 @@ const TabImageSearch = ({ onClose, onSelect }) => {
             ...(searchTerms.search && { search: searchTerms.search }),
             pageSize: 50,
             pageNumber: page,
-            brand: `Simple`,
-            countries: 'United Kingdom, Ireland'
+            brand: searchTerms.brand,
+            countries: searchTerms.countries
           })}`,
           {
             headers: {
@@ -95,8 +137,22 @@ const TabImageSearch = ({ onClose, onSelect }) => {
   }, [onSearch, setPageNumber])
 
   return (
-    <Dialog title="Select image from TAB" onClose={onClose} isOpen>
+    <Dialog title="Select image from TAB" className={styles.dialog} onClose={onClose} isOpen>
       <div className={styles.container}>
+        <SelectInput
+          onChange={({ title }) => setSearchTerms({ ...searchTerms, brand: title })}
+          options={brands.map(brand => ({ title: brand }))}
+          onEnter={onSearch}
+          value={searchTerms.brand}
+          label="Brand"
+        />
+        <SelectInput
+          onChange={({ title }) => setSearchTerms({ ...searchTerms, countries: title })}
+          options={countriesList.map(country => ({ title: country }))}
+          onEnter={onSearch}
+          value={searchTerms.countries}
+          label="Countries"
+        />
         <SearchInput
           onChange={onSearchTermChange('assetId')}
           onEnter={onSearch}
@@ -114,6 +170,7 @@ const TabImageSearch = ({ onClose, onSelect }) => {
           <Button onClick={onSearch}>Search</Button>
         </div>
       </div>
+      <div className={styles.container}></div>
       <div className={styles['c-results-container']}>
         {hasError && `Sorry an error has occured`}
         {foundAssets &&

@@ -4,15 +4,21 @@
   margin-right: auto;
   margin-left: auto;
   display: flex;
+
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+}
+
+.dialog {
+  text-align: center;
 }
 
 .container__divider {
-  margin: 0 1rem;
-  align-self: start;
+  padding-top: 2rem;
+  font-weight: bold;
+  align-self: center;
 }
 
 /* Search Input */
