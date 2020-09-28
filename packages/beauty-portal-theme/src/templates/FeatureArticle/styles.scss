@@ -1,0 +1,8 @@
+.sticky {
+  position: relative;
+
+  @media (min-width: 768px) {
+    position: sticky;
+    top: 210px;
+  }
+}

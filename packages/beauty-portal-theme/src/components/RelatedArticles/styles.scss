@@ -157,6 +157,9 @@
 
     @media (min-width: 768px) {
       display: block;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      height: 200px;
     }
   }
 

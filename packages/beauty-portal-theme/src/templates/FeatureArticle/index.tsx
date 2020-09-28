@@ -12,6 +12,7 @@ import ProductList from 'src/components/ProductList';
 import ArticleHeader from 'src/components/ArticleHeader';
 import PageSchema from '../../components/PageSchema';
 import OGTags from '../../components/OGTags';
+import './styles.scss';
 
 const FeatureArticle = (props: FeatureArticleProps) => {
   const {
@@ -51,7 +52,7 @@ const FeatureArticle = (props: FeatureArticleProps) => {
         data={page}
       />
       <OGTags type={'article'} slug={page.path} data={page} />
- <Breadcrumb
+      <Breadcrumb
         tag={page.tags[0]}
         parentPageTitle=""
         pageTitle={page.headline}
@@ -81,12 +82,14 @@ const FeatureArticle = (props: FeatureArticleProps) => {
           </div>
           <div className="col col-1"></div>
           <div className="col col-4">
-            {relatedArticles.length !== 0 && (
-              <RelatedArticles
-                articles={relatedArticles}
-                title={sectionTitles.relatedArticlesName}
-              />
-            )}
+            <div className="sticky">
+              {relatedArticles.length !== 0 && (
+                <RelatedArticles
+                  articles={relatedArticles}
+                  title={sectionTitles.relatedArticlesName}
+                />
+              )}
+            </div>
           </div>
         </div>
         <Tags data={page.tags} title={sectionTitles.relatedTopicsName} />
