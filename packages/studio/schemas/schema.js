@@ -60,6 +60,7 @@ import landingpagesPortableText from './objects/landingpagesPortableText'
 import excerptPortableText from './objects/excerptPortableText'
 import mainImage from './objects/mainImage'
 import beforeAfterImage from './objects/beforeAfterImage'
+import editorGuide from './documents/editorGuides'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -124,6 +125,7 @@ export default createSchema({
     landingpagesPortableText,
     youTube,
     beforeAfterImage,
+    editorGuide,
 
     // Old Stuff to be deleted
     mainImage,
