@@ -327,6 +327,7 @@ export default () =>
                     S.document()
                       .documentId(documentId)
                       .views([
+                        S.view.form(),
                         S.view
                           .component(EditorGuidePreview)
                           .title('Documentation')
