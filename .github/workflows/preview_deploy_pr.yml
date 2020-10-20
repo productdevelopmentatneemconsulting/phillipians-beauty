@@ -58,6 +58,7 @@ jobs:
           SANITY_DEPLOY_STUDIO_TOKEN: ${{secrets.SANITY_AUTH_TOKEN}}
           app_local_algolia_search_api_key: ${{secrets.ALGOLIA_SEARCH_API_KEY}}
           app_local_algolia_app_id: ${{secrets.ALGOLIA_APP_ID}}
+          app_local_sanityDataset: 'develop'
         run: yarn workspace web build
       - name: Upload Public Directory
         uses: actions/upload-artifact@v1
