@@ -105,6 +105,14 @@ const SiteNavigation: FunctionComponent = searchResultPath => {
           }
         }
       }
+      pages: allSanityLandingPage {
+        nodes {
+          slug {
+            current
+          }
+          name
+        }
+      }
     }
   `);
 

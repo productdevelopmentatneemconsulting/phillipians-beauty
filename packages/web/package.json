@@ -6,7 +6,7 @@
   "scripts": {
     "build": "cross-env GATSBY_INCREMENTAL_BUILD=true gatsby build --log-pages",
     "serve": "gatsby serve",
-    "develop": "cross-env NODE_ENV=development && gatsby develop",
+    "develop": "cross-env NODE_ENV=development && gatsby clean && gatsby develop",
     "clean": "gatsby clean"
   },
   "dependencies": {
