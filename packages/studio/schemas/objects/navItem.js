@@ -24,32 +24,12 @@ export default {
       type: 'array',
       of: [
         {
-          name: "secondNav",
-          title: 'Secondary Navigation',
-          type: 'object',
-          fields: [
-            {
-              name: 'tagCategory',
-              type: 'reference',
-              to: [{
-                type: 'tagCategory'
-              }]
-            },
-            {
-              name: 'landingPages',
-              type:'reference',
-              to:[{
-                type: 'landingPage'
-              }]
-            }
-          ],
-          preview:{
-            select: {
-              title: 'secondNav.landingPage'
-            }
+          type: 'reference',
+          to: {
+            type: 'tagCategory'
           }
         }
-      ],
+      ]
     },
     {
       name: 'article',

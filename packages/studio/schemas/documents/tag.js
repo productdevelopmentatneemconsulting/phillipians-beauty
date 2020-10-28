@@ -13,12 +13,24 @@ export default {
       to: {
         type: 'tagCategory'
       },
+      validation: Rule => Rule.required() ,
       description: 'Select Category'
     },
     {
       name: 'name',
       type: 'string',
-      title: 'Tag'
+      title: 'Tag',
+      validation: Rule => Rule.required()
+    },
+    {
+      name: 'title',
+      label: 'Title',
+      type: 'string'
+    },
+    {
+      name: 'description',
+      label: 'Tag Description',
+      type: 'text'
     }
   ],
   preview: {

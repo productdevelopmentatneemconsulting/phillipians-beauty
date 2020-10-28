@@ -1,0 +1,17 @@
+.tagCategorySection {
+    padding-bottom: 2rem !important;
+    .wrap {
+      text-align: center;
+      @media (min-width: 768px) {
+        width: 752px;
+        margin: 0 auto;
+      }  
+    }
+  }
+.d-inline-block {
+display: inline-block !important;
+}
+
+.rounded-circle {
+border-radius: 50% !important;
+}

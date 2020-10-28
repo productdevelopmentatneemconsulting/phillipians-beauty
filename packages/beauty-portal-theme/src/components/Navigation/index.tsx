@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
 import { useStaticQuery, graphql, Link } from 'gatsby';
+import _ from 'lodash';
 import getType from '../../helpers/getType';
 import { getSearchUrl } from '../../helpers/searchUrl';
 import './styles.scss';
@@ -102,6 +103,8 @@ const SiteNavigation: FunctionComponent = searchResultPath => {
             tagCategory {
               name
             }
+            title
+            description
           }
         }
       }
@@ -209,20 +212,29 @@ const SiteNavigation: FunctionComponent = searchResultPath => {
                                   )
                                   .slice(0, 4)
                                   .map((subCategory: any) => {
+                                    console.log('subCategory', subCategory);
                                     return (
                                       <ul className="menu menu-list">
                                         <li key={subCategory.name}>
-                                          <a
-                                            href={getSearchUrl(
-                                              '/search-results',
-                                              subCategory.name,
-                                              'tag'
-                                            )}
-                                            className="menu-link menu-list-link"
-                                          >
-                                            {subCategory.name &&
-                                              subCategory.name}
-                                          </a>
+                                          {
+                                            (subCategory.title || subCategory.description)  ? 
+                                            (<Link to={`/${_.kebabCase(navItem.navL1.name)}/${_.kebabCase(tagCategory.name)}/${_.kebabCase(subCategory.name)}?tag=${subCategory.name}`} className="menu-link menu-list-link">
+                                               {subCategory.name &&
+                                                subCategory.name}
+                                            </Link>)
+                                            : 
+                                            (<a
+                                              href={getSearchUrl(
+                                                '/search-results',
+                                                subCategory.name,
+                                                'tag'
+                                              )}
+                                              className="menu-link menu-list-link"
+                                            >
+                                              {subCategory.name &&
+                                                subCategory.name}
+                                            </a>)
+                                          }
                                         </li>
                                       </ul>
                                     );
