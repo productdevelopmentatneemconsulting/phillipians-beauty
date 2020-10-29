@@ -197,25 +197,22 @@ const SiteNavigation: FunctionComponent = searchResultPath => {
                             </Link>
                           </li>
                           {navItem.navCategory.map((tagCategory: any) => (
-                            <li>
-                              <Link
-                                to="/"
+                            <li className="">
+                              <span
                                 className="menu-link mega-menu-link mega-menu-header"
                               >
                                 {tagCategory.name}
-                              </Link>
+                              </span>
                               {tags.length &&
                                 tags
                                   .filter(
                                     (tag: any) =>
                                       tag.tagCategory.name == tagCategory.name
                                   )
-                                  .slice(0, 4)
                                   .map((subCategory: any) => {
-                                    console.log('subCategory', subCategory);
                                     return (
-                                      <ul className="menu menu-list">
-                                        <li key={subCategory.name}>
+                                      // <ul className="menu menu-list">
+                                        <li  className="menu menu-list" key={subCategory.name}>
                                           {
                                             (subCategory.title || subCategory.description)  ? 
                                             (<Link to={`/${_.kebabCase(navItem.navL1.name)}/${_.kebabCase(tagCategory.name)}/${_.kebabCase(subCategory.name)}?tag=${subCategory.name}`} className="menu-link menu-list-link">
@@ -236,7 +233,7 @@ const SiteNavigation: FunctionComponent = searchResultPath => {
                                             </a>)
                                           }
                                         </li>
-                                      </ul>
+                                      // </ul>
                                     );
                                   })}
                             </li>
