@@ -196,55 +196,61 @@ const SiteNavigation: FunctionComponent = searchResultPath => {
                               See all {navItem.navL1.name}
                             </Link>
                           </li>
-                          {navItem.navCategory.map((tagCategory: any) => (
-                            <li className="">
-                              <span
-                                className="menu-link mega-menu-link mega-menu-header"
-                              >
-                                {tagCategory.name}
-                              </span>
-                              {tags.length &&
-                                tags
-                                  .filter(
-                                    (tag: any) =>
-                                      tag.tagCategory.name == tagCategory.name
-                                  )
-                                  .map((subCategory: any) => {
-                                    return (
-                                      // <ul className="menu menu-list">
-                                        <li  className="menu menu-list" key={subCategory.name}>
-                                          {
-                                            (subCategory.title || subCategory.description)  ? 
-                                            (<Link to={`/${_.kebabCase(navItem.navL1.name)}/${_.kebabCase(tagCategory.name)}/${_.kebabCase(subCategory.name)}?tag=${subCategory.name}`} className="menu-link menu-list-link">
-                                               {subCategory.name &&
-                                                subCategory.name}
-                                            </Link>)
-                                            : 
-                                            (<a
-                                              href={getSearchUrl(
-                                                '/search-results',
-                                                subCategory.name,
-                                                'tag'
-                                              )}
-                                              className="menu-link menu-list-link"
-                                            >
-                                              {subCategory.name &&
-                                                subCategory.name}
-                                            </a>)
-                                          }
-                                        </li>
-                                      // </ul>
-                                    );
-                                  })}
-                            </li>
-                          ))}
+                          {navItem.navCategory.map((tagCategory: any) => {
+                            let hasMoreItems = tags.length ?  tags
+                              .filter(
+                                (tag: any) =>
+                                  tag.tagCategory.name == tagCategory.name
+                              ).length > 6  : false;
+                            return(
+                              <li>
+                               <span
+                                  className="menu-link mega-menu-link mega-menu-header"
+                                >
+                                  {tagCategory.name}
+                                </span>
+                                <div className={`${hasMoreItems ? 'mega-menu-list-split' : ''}`}>
+                                {tags.length &&
+                                  tags
+                                    .filter(
+                                      (tag: any) =>
+                                        tag.tagCategory.name == tagCategory.name
+                                    )
+                                    .map((subCategory: any) => {
+                                      return (
+                                          <li  className="menu-list" key={subCategory.name}>
+                                            {
+                                              (subCategory.title || subCategory.description)  ? 
+                                              (<Link to={`/${_.kebabCase(navItem.navL1.name)}/${_.kebabCase(tagCategory.name)}/${_.kebabCase(subCategory.name)}?tag=${subCategory.name}`} className="menu-link menu-list-link">
+                                                 {subCategory.name &&
+                                                  subCategory.name}
+                                              </Link>)
+                                              : 
+                                              (<a
+                                                href={getSearchUrl(
+                                                  '/search-results',
+                                                  subCategory.name,
+                                                  'tag'
+                                                )}
+                                                className="menu-link menu-list-link"
+                                              >
+                                                {subCategory.name &&
+                                                  subCategory.name}
+                                              </a>)
+                                            }
+                                          </li>
+                                      );
+                                    })}
+                                </div>
+                              </li>
+                            )
+                          })}
                           <li>
-                            <Link
-                              to={navItem.article.path}
+                            <span
                               className="menu-link mega-menu-link mega-menu-header"
                             >
                               Trending
-                            </Link>
+                            </span>
                             <ul className="menu menu-list">
                               <div className="menu-list-article-card">
                                 <Link to={navItem.article.path}>
