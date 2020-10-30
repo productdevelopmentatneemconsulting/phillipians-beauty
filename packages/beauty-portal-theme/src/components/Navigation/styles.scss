@@ -20,6 +20,7 @@
 }
 
 .menu-link {
+  display: block;
   font-size: 1.125rem;
   font-weight: 700;
   padding: 16px 24px;
@@ -97,7 +98,7 @@
     visibility: visible;
     opacity: 1;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: space-between;
     border-top: 0.3125rem solid #b8f0c0;
     padding: 1rem !important;
@@ -671,5 +672,7 @@
 }
 .mega-menu-list-split{
   column-count: 2;
-  margin-bottom: 4rem !important;
+  @media (min-width:768px){
+    margin-bottom: 4rem !important;
+  }
 }
