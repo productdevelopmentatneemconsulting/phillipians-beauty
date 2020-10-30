@@ -196,20 +196,21 @@ const SiteNavigation: FunctionComponent = searchResultPath => {
                               See all {navItem.navL1.name}
                             </Link>
                           </li>
-                          {navItem.navCategory.map((tagCategory: any) => {
+                          {navItem.navCategory.map((tagCategory: any) => { 
                             let hasMoreItems = tags.length ?  tags
-                              .filter(
-                                (tag: any) =>
-                                  tag.tagCategory.name == tagCategory.name
-                              ).length > 6  : false;
-                            return(
-                              <li>
-                               <span
-                                  className="menu-link mega-menu-link mega-menu-header"
-                                >
-                                  {tagCategory.name}
-                                </span>
-                                <div className={`${hasMoreItems ? 'mega-menu-list-split' : ''}`}>
+                            .filter(
+                              (tag: any) =>
+                                tag.tagCategory.name == tagCategory.name
+                            ).length > 6  : false;
+                            return (
+                            <li>
+                              <Link
+                                to="/"
+                                className="menu-link mega-menu-link mega-menu-header"
+                              >
+                                {tagCategory.name}
+                              </Link>
+                              <span className={`${hasMoreItems ? 'mega-menu-list-split' : ''}`}>                                   
                                 {tags.length &&
                                   tags
                                     .filter(
@@ -218,8 +219,9 @@ const SiteNavigation: FunctionComponent = searchResultPath => {
                                     )
                                     .map((subCategory: any) => {
                                       return (
-                                          <li  className="menu-list" key={subCategory.name}>
-                                            {
+                                        <ul className="menu menu-list">
+                                          <li key={subCategory.name}>
+                                          {
                                               (subCategory.title || subCategory.description)  ? 
                                               (<Link to={`/${_.kebabCase(navItem.navL1.name)}/${_.kebabCase(tagCategory.name)}/${_.kebabCase(subCategory.name)}?tag=${subCategory.name}`} className="menu-link menu-list-link">
                                                  {subCategory.name &&
@@ -239,18 +241,20 @@ const SiteNavigation: FunctionComponent = searchResultPath => {
                                               </a>)
                                             }
                                           </li>
+                                        </ul>
                                       );
-                                    })}
-                                </div>
-                              </li>
-                            )
-                          })}
+                                    })
+                                }
+                              </span>  
+                            </li>
+                          )})}
                           <li>
-                            <span
+                            <Link
+                              to={navItem.article.path}
                               className="menu-link mega-menu-link mega-menu-header"
                             >
                               Trending
-                            </span>
+                            </Link>
                             <ul className="menu menu-list">
                               <div className="menu-list-article-card">
                                 <Link to={navItem.article.path}>

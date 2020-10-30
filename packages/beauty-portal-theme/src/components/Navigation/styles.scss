@@ -671,8 +671,9 @@
   }
 }
 .mega-menu-list-split{
-  column-count: 2;
+  display: block;
   @media (min-width:768px){
+    column-count: 2;
     margin-bottom: 4rem !important;
   }
 }
