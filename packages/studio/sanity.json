@@ -6,7 +6,7 @@
   },
   "api": {
     "projectId": "xmpcmhrn",
-    "dataset": "production"
+    "dataset": "develop"
   },
   "plugins": [
     "@sanity/base",
