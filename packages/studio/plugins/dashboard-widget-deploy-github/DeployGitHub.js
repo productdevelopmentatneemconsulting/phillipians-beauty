@@ -44,11 +44,12 @@ const DeployGitHub = () => {
   const deployWeb = () => {
     setDeployingWeb(true)
     setDisableWeb(true)
-    fetch(
-      'https://c2je1jc4ub.execute-api.eu-central-1.amazonaws.com/beta/stackbot/add-webhook/4d56f34f-80e6-438f-acb1-3272046a158f/productdevelopmentatneemconsulting/phillipians-beauty',
+    console.log(process.env.WEB_URL)
+    console.log(process.env.INCOMING_HOOK_URL)
+    let url = new URL(process.env['INCOMING_HOOK_URL'] || '');
+    fetch(url,
       {
         method: 'POST',
-        body: JSON.stringify({ event_type: 'web-build-deploy' }),
         headers: { 'Content-Type': 'application/json' }
       }
     )
@@ -95,7 +96,7 @@ const DeployGitHub = () => {
             <figure>
               <img src="../../static/badge.svg" />
               <figcaption>
-                <a href="https://github.com/productdevelopmentatneemconsulting/phillipians-beauty/actions?query=workflow%3A%22Web+%7C+Build+and+Deploy%22">
+                <a href="https://github.com/unilever-bpc/beauty-portal/actions">
                   View Web Deployment
                 </a>
               </figcaption>
