@@ -1,7 +1,11 @@
+import { FaImage } from 'react-icons/fa'
+
 export default {
   name: 'mainImage',
   type: 'image',
+  icon: FaImage,
   title: 'Image',
+  description: 'Upload image from your computer or paste image fom clipboard',
   options: {
     hotspot: true
   },

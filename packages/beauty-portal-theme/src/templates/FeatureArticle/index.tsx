@@ -111,7 +111,7 @@ export const FeatureArticleComponent = (props: {
         </div>
         <div className="col col-1"></div>
 
-        {!preview && (
+        {
           <div className="col col-4">
             {relatedArticles.length !== 0 && (
               <RelatedArticles
@@ -120,7 +120,7 @@ export const FeatureArticleComponent = (props: {
               />
             )}
           </div>
-        )}
+        }
       </div>
       <Tags data={page.tags} title={sectionTitles.relatedTopicsName} />
     </div>

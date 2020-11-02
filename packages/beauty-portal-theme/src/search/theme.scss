@@ -85,42 +85,21 @@ a[class^='ais-'] {
   .ais-InfiniteHits-item__buyNowLink {
     font-size: 0.825rem;
     font-weight: 700;
-    width: 6rem;
-    height: 2rem;
     margin-left: -1;
     cursor: pointer;
-    background-color: var(--secondary-color);
-    border: 1px solid var(--secondary-color);
-    color: var(--black-color);
     position: relative;
-    transform: perspective(1px) translateZ(0);
+    transition: all ease-in-out .3s;
+    border-radius: 25px;
+    padding: .6rem 2rem;
+    background-color: #fff;
+
     @media (min-width: 768px) {
       font-size: 1.125rem;
-      width: 8rem;
-      height: 2.5rem;
-    }
-    &::before {
-      content: '';
-      position: absolute;
-      z-index: -1;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: var(--black-color);
-      color: var(--white-color);
-      transform: scaleX(0);
-      transform-origin: 0 50%;
-      transition-property: transform;
-      transition-duration: 0.3s;
-      transition-timing-function: ease-out;
     }
     &:hover {
       color: var(--white-color);
-      border-color: var(--black-color);
-      &::before {
-        transform: scaleX(1);
-      }
+      border: 2px solid var(--primary-color);
+      background-color: var(--primary-color);
     }
   }
 
@@ -402,7 +381,7 @@ a[class^='ais-'] {
 .ais-InfiniteHits-loadMore {
   font-size: 0.875rem;
   font-weight: 700;
-  background-color: var(--primary-color);
+  background-color: #fff;
   color: black;
   padding: 10px 16px;
   position: relative;
@@ -410,33 +389,15 @@ a[class^='ais-'] {
   margin: auto;
   margin-top: 32px;
   margin-bottom: 32px;
-  border: none;
+  border: 2px solid #000;
   cursor: pointer;
   transition: all 0.3s;
-  transform: perspective(1px) translateZ(0);
-
-  &::before {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: black;
-    transform: scaleY(0);
-    transform-origin: 50% 0;
-    transition-property: transform;
-    transition-duration: 0.3s;
-    transition-timing-function: ease-out;
-  }
+  border-radius: 25px;
 
   &:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
     color: white;
-
-    &::before {
-      transform: scaleY(1);
-    }
   }
 
   &:focus {
@@ -472,4 +433,7 @@ a[class^='ais-'] {
       font-size: 2.5rem;
     }
   }
+}
+.hide{
+  display: none;
 }

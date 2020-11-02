@@ -44,6 +44,17 @@
 }
 .search-container-results {
   flex: 3;
+
+  li {
+    img {
+      transition: all ease-in-out 1s;
+    }
+    &:hover {
+      img {
+        transform: scale(1.1) !important;
+      }
+    }
+  }
 }
 .search-container-options {
   border-bottom: 1px solid #ebecf3;

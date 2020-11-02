@@ -29,7 +29,7 @@
     flex-direction: column;
     &:hover {
       & h6 span {
-        background-image: linear-gradient(120deg, #b8f0c0 0%, #b8f0c0 100%);
+        background-image: linear-gradient(120deg, var(--primary-color) 0%, var(--primary-color) 100%);
         background-repeat: no-repeat;
         background-size: 100% 0.1875rem;
         background-position: 0 100%;

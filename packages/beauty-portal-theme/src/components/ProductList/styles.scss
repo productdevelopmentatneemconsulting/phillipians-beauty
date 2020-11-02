@@ -5,7 +5,7 @@
 
   &::before {
     content: "";
-    background: #f8e6de;
+    background: #F9BACB;
     position: absolute;
     right: 0;
     bottom: 0;
@@ -24,7 +24,7 @@
 
     &::before {
       content: "";
-      background: #f8e6de;
+      background: #F9BACB;
       position: absolute;
       right: 0;
       top: 0;
@@ -62,7 +62,7 @@
         }
 
         &:hover h3 span {
-          background-image: linear-gradient(120deg, #b8f0c0 0%, #b8f0c0 100%);
+          background-image: linear-gradient(120deg, var(--secoundary-color) 0%,var(--secoundary-color)  100%);
           background-repeat: no-repeat;
           background-size: 100% .1875rem;
           background-position: 0 100%;

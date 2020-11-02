@@ -8,7 +8,6 @@ import { GalleryArticleComponent } from '../templates/GalleryArticle/index';
 import { ProductDetailComponent } from '../templates/Product/index';
 import { LandingPageComponent } from '../templates/LandingPage/index';
 import Breadcrumb from '../components//Breadcrumb';
-console.log(process.env.app_local_sanityToken, 'ENV');
 import {
   authorQuery,
   howToArticleQuery,
@@ -28,10 +27,13 @@ const client = sanityClient({
   withCredentials: true,
 });
 
-const PreviewHomePage = () => {
+const PreviewHomePage = ({ location }: { location: any }) => {
   const [homePageData, setHomePageData] = useState('');
+  const queryParams = new URLSearchParams(location.search);
   const queryHomePage = `
-  *[_type == 'landingPage' && slug.current == '/' ] {
+  *[_type == 'landingPage' && slug.current == '/' && (_id in path('${queryParams.get(
+    'id'
+  )}')) ] {
     ${landingPageQuery}
   }
   `;
@@ -62,8 +64,10 @@ const PreviewPage = ({
   const [data, setData] = useState(null);
   const queryParams = new URLSearchParams(location.search);
 
-  const queryDraft = `*[slug.current == "${document}"]  {
-    ...,
+  const queryDraft = `*[slug.current == "${document}" && (_id in path('${queryParams.get(
+    'id'
+  )}'))]  {
+    ..., 'tags': tags[]-> name
   }`;
 
   const queryAuthorPage = `
@@ -89,6 +93,7 @@ const PreviewPage = ({
    'sectionTitles': *[_type == 'howToTemplate']{...}[0],
    'brandInfo': *[_type == 'brandInfo']{${brandInfoQuery}}[0],
    'genericLabels': *[_type == 'globalLabels']{...}[0],
+   'relatedArticles': *[_type in ['howToArticle', 'featureArticle', 'galleryArticle'] && references(*[_type=="tag" && name in $tags]._id) && !(_id in path('drafts.**')) ] | order(_createdAt desc) {${howToArticleQuery}, ${featureArticleQuery}, ${galleryArticleQuery}}[0...10],
   }
   `;
 
@@ -107,6 +112,7 @@ const PreviewPage = ({
    'sectionTitles': *[_type == 'featureTemplate']{...}[0],
    'brandInfo': *[_type == 'brandInfo']{${brandInfoQuery}}[0],
    'genericLabels': *[_type == 'globalLabels']{...}[0],
+   'relatedArticles': *[_type in ['howToArticle', 'featureArticle', 'galleryArticle'] && references(*[_type=="tag" && name in $tags]._id) && !(_id in path('drafts.**')) ] | order(_createdAt desc) {${howToArticleQuery}, ${featureArticleQuery}, ${galleryArticleQuery}}[0...10],
   }
   `;
 
@@ -125,6 +131,7 @@ const PreviewPage = ({
    'sectionTitles': *[_type == 'galleryTemplate']{...}[0],
    'brandInfo': *[_type == 'brandInfo']{${brandInfoQuery}}[0],
    'genericLabels': *[_type == 'globalLabels']{...}[0],
+   'relatedArticles': *[_type in ['howToArticle', 'featureArticle', 'galleryArticle'] && references(*[_type=="tag" && name in $tags]._id) && !(_id in path('drafts.**')) ] | order(_createdAt desc) {${howToArticleQuery}, ${featureArticleQuery}, ${galleryArticleQuery}}[0...10],
   }
   `;
 
@@ -161,19 +168,25 @@ const PreviewPage = ({
           });
           break;
         case 'howToArticle':
-          client.fetch(queryHowToArticlePage).then(res => {
-            setData(res);
-          });
+          client
+            .fetch(queryHowToArticlePage, { tags: response[0].tags })
+            .then(res => {
+              setData(res);
+            });
           break;
         case 'featureArticle':
-          client.fetch(queryFeatureArticlePage).then(res => {
-            setData(res);
-          });
+          client
+            .fetch(queryFeatureArticlePage, { tags: response[0].tags })
+            .then(res => {
+              setData(res);
+            });
           break;
         case 'galleryArticle':
-          client.fetch(queryGalleryArticlePage).then(res => {
-            setData(res);
-          });
+          client
+            .fetch(queryGalleryArticlePage, { tags: response[0].tags })
+            .then(res => {
+              setData(res);
+            });
           break;
         case 'product':
           client.fetch(queryProductDetailPage).then(res => {
@@ -197,6 +210,7 @@ const PreviewPage = ({
         typeof data._type === 'string' ? data._type : data._type._type;
       switch (type) {
         case 'author':
+          console.log('data', data);
           return (
             <AuthorComponent
               name={data.name}
@@ -204,6 +218,7 @@ const PreviewPage = ({
               image={data.image}
               slug={data.slug}
               _rawBio={data.bio}
+              authorSections={data.authorSections}
             />
           );
         case 'howToArticle':
@@ -213,6 +228,7 @@ const PreviewPage = ({
               sectionTitles={data.sectionTitles}
               brandInfo={data.brandInfo}
               genericLabels={data.genericLabels}
+              relatedArticles={data.relatedArticles}
               preview="true"
             />
           );
@@ -222,6 +238,7 @@ const PreviewPage = ({
               page={data.page}
               sectionTitles={data.sectionTitles}
               brandInfo={data.brandInfo}
+              relatedArticles={data.relatedArticles}
               genericLabels={data.genericLabels}
               preview="true"
             />
@@ -232,6 +249,7 @@ const PreviewPage = ({
               page={data.page}
               sectionTitles={data.sectionTitles}
               brandInfo={data.brandInfo}
+              relatedArticles={data.relatedArticles}
               genericLabels={data.genericLabels}
               preview="true"
             />
