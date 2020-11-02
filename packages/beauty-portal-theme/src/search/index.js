@@ -76,7 +76,7 @@ const Search = props => {
         root={{ props: { ref } }}
       >
         {props.indices[0].name === 'products' ||
-        props.authors === 'true' ? null : (
+        ( props.authors === 'true' || props.hideSearchFilter ) ? null : (
           <header className="search-header" ref={headerRef}>
             <CustomAutocomplete />
           </header>
@@ -103,104 +103,104 @@ const Search = props => {
         </div>
 
         <main className="search-container" ref={containerRef}>
-          <div className="search-container-wrapper">
-            <section className="search-container-filters" onKeyUp={onKeyUp}>
-              <div className="search-container-header">
-                <h2>Filters</h2>
+            <div className={`search-container-wrapper ${props.hideSearchFilter ? 'hide' : ''} `}>
+              <section className="search-container-filters" onKeyUp={onKeyUp}>
+                <div className="search-container-header">
+                  <h2>Filters</h2>
 
-                <div className="clear-filters" data-layout="desktop">
-                  <ClearRefinements
-                    translations={{
-                      reset: (
-                        <>
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="11"
-                            height="11"
-                            viewBox="0 0 11 11"
-                          >
-                            <g fill="none" fillRule="evenodd" opacity=".4">
-                              <path d="M0 0h11v11H0z" />
-                              <path
-                                fill="#000"
-                                fillRule="nonzero"
-                                d="M8.26 2.75a3.896 3.896 0 1 0 1.102 3.262l.007-.056a.49.49 0 0 1 .485-.456c.253 0 .451.206.437.457 0 0 .012-.109-.006.061a4.813 4.813 0 1 1-1.348-3.887v-.987a.458.458 0 1 1 .917.002v2.062a.459.459 0 0 1-.459.459H7.334a.458.458 0 1 1-.002-.917h.928z"
-                              />
-                            </g>
-                          </svg>
-                          Clear filters
-                        </>
-                      ),
-                    }}
-                  />
+                  <div className="clear-filters" data-layout="desktop">
+                    <ClearRefinements
+                      translations={{
+                        reset: (
+                          <>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="11"
+                              height="11"
+                              viewBox="0 0 11 11"
+                            >
+                              <g fill="none" fillRule="evenodd" opacity=".4">
+                                <path d="M0 0h11v11H0z" />
+                                <path
+                                  fill="#000"
+                                  fillRule="nonzero"
+                                  d="M8.26 2.75a3.896 3.896 0 1 0 1.102 3.262l.007-.056a.49.49 0 0 1 .485-.456c.253 0 .451.206.437.457 0 0 .012-.109-.006.061a4.813 4.813 0 1 1-1.348-3.887v-.987a.458.458 0 1 1 .917.002v2.062a.459.459 0 0 1-.459.459H7.334a.458.458 0 1 1-.002-.917h.928z"
+                                />
+                              </g>
+                            </svg>
+                            Clear filters
+                          </>
+                        ),
+                      }}
+                    />
+                  </div>
+
+                  <div className="clear-filters" data-layout="mobile">
+                    <ResultsNumberMobile />
+                  </div>
                 </div>
 
-                <div className="clear-filters" data-layout="mobile">
-                  <ResultsNumberMobile />
+                <div className="search-container-body">
+                  {props.indices[0].name === 'products' ? (
+                    <>
+                      <Panel header="Category">
+                        <RefinementList
+                          attribute="tag"
+                          limit={6}
+                          showMore={true}
+                        />
+                      </Panel>
+                      <Panel header="All brands">
+                        <RefinementList attribute="brand" />
+                      </Panel>
+                      <Panel header="All Ingredients">
+                        <RefinementList
+                          attribute="ingredient"
+                          limit={6}
+                          showMore={true}
+                        />
+                      </Panel>
+                    </>
+                  ) : (
+                    <>
+                      <Panel header="Tag">
+                        <RefinementList
+                          attribute="tag"
+                          limit={6}
+                          showMore={true}
+                        />
+                      </Panel>
+                      <Panel header="Category">
+                        <RefinementList
+                          attribute="category"
+                          limit={6}
+                          showMore={true}
+                        />
+                      </Panel>
+                      <Panel header="Page Type">
+                        <RefinementList attribute="pageType" />
+                      </Panel>
+                      <Panel header="Duration">
+                        <RefinementList attribute="duration" />
+                      </Panel>
+                    </>
+                  )}
                 </div>
-              </div>
+              </section>
 
-              <div className="search-container-body">
-                {props.indices[0].name === 'products' ? (
-                  <>
-                    <Panel header="Category">
-                      <RefinementList
-                        attribute="tag"
-                        limit={6}
-                        showMore={true}
-                      />
-                    </Panel>
-                    <Panel header="All brands">
-                      <RefinementList attribute="brand" />
-                    </Panel>
-                    <Panel header="All Ingredients">
-                      <RefinementList
-                        attribute="ingredient"
-                        limit={6}
-                        showMore={true}
-                      />
-                    </Panel>
-                  </>
-                ) : (
-                  <>
-                    <Panel header="Tag">
-                      <RefinementList
-                        attribute="tag"
-                        limit={6}
-                        showMore={true}
-                      />
-                    </Panel>
-                    <Panel header="Category">
-                      <RefinementList
-                        attribute="category"
-                        limit={6}
-                        showMore={true}
-                      />
-                    </Panel>
-                    <Panel header="Page Type">
-                      <RefinementList attribute="pageType" />
-                    </Panel>
-                    <Panel header="Duration">
-                      <RefinementList attribute="duration" />
-                    </Panel>
-                  </>
-                )}
-              </div>
-            </section>
+              <footer
+                className="search-container-filters-footer"
+                data-layout="mobile"
+              >
+                <div className="search-container-filters-footer-button-wrapper">
+                  <ClearFiltersMobile containerRef={containerRef} />
+                </div>
 
-            <footer
-              className="search-container-filters-footer"
-              data-layout="mobile"
-            >
-              <div className="search-container-filters-footer-button-wrapper">
-                <ClearFiltersMobile containerRef={containerRef} />
-              </div>
-
-              <div className="search-container-filters-footer-button-wrapper">
-                <SaveFiltersMobile onClick={closeFilters} />
-              </div>
-            </footer>
-          </div>
+                <div className="search-container-filters-footer-button-wrapper">
+                  <SaveFiltersMobile onClick={closeFilters} />
+                </div>
+              </footer>
+            </div>
 
           <section className="search-container-results">
             <header className="search-container-header search-container-options">
@@ -255,7 +255,7 @@ const Search = props => {
           </section>
         </main>
 
-        <aside data-layout="mobile">
+        <aside data-layout="mobile"  className={`${props.hideSearchFilter ? 'hide' : ''}`}>
           <button
             className="filters-button"
             data-action="open-overlay"

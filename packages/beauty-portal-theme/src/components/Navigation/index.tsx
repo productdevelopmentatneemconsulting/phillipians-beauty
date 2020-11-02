@@ -196,7 +196,13 @@ const SiteNavigation: FunctionComponent = searchResultPath => {
                               See all {navItem.navL1.name}
                             </Link>
                           </li>
-                          {navItem.navCategory.map((tagCategory: any) => (
+                          {navItem.navCategory.map((tagCategory: any) => { 
+                            let hasMoreItems = tags.length ?  tags
+                            .filter(
+                              (tag: any) =>
+                                tag.tagCategory.name == tagCategory.name
+                            ).length > 6  : false;
+                            return (
                             <li>
                               <Link
                                 to="/"
@@ -204,43 +210,44 @@ const SiteNavigation: FunctionComponent = searchResultPath => {
                               >
                                 {tagCategory.name}
                               </Link>
-                              {tags.length &&
-                                tags
-                                  .filter(
-                                    (tag: any) =>
-                                      tag.tagCategory.name == tagCategory.name
-                                  )
-                                  .slice(0, 4)
-                                  .map((subCategory: any) => {
-                                    console.log('subCategory', subCategory);
-                                    return (
-                                      <ul className="menu menu-list">
-                                        <li key={subCategory.name}>
+                              <span className={`${hasMoreItems ? 'mega-menu-list-split' : ''}`}>                                   
+                                {tags.length &&
+                                  tags
+                                    .filter(
+                                      (tag: any) =>
+                                        tag.tagCategory.name == tagCategory.name
+                                    )
+                                    .map((subCategory: any) => {
+                                      return (
+                                        <ul className="menu menu-list">
+                                          <li key={subCategory.name}>
                                           {
-                                            (subCategory.title || subCategory.description)  ? 
-                                            (<Link to={`/${_.kebabCase(navItem.navL1.name)}/${_.kebabCase(tagCategory.name)}/${_.kebabCase(subCategory.name)}?tag=${subCategory.name}`} className="menu-link menu-list-link">
-                                               {subCategory.name &&
-                                                subCategory.name}
-                                            </Link>)
-                                            : 
-                                            (<a
-                                              href={getSearchUrl(
-                                                '/search-results',
-                                                subCategory.name,
-                                                'tag'
-                                              )}
-                                              className="menu-link menu-list-link"
-                                            >
-                                              {subCategory.name &&
-                                                subCategory.name}
-                                            </a>)
-                                          }
-                                        </li>
-                                      </ul>
-                                    );
-                                  })}
+                                              (subCategory.title || subCategory.description)  ? 
+                                              (<Link to={`/${_.kebabCase(navItem.navL1.name)}/${_.kebabCase(tagCategory.name)}/${_.kebabCase(subCategory.name)}?tag=${subCategory.name}`} className="menu-link menu-list-link">
+                                                 {subCategory.name &&
+                                                  subCategory.name}
+                                              </Link>)
+                                              : 
+                                              (<a
+                                                href={getSearchUrl(
+                                                  '/search-results',
+                                                  subCategory.name,
+                                                  'tag'
+                                                )}
+                                                className="menu-link menu-list-link"
+                                              >
+                                                {subCategory.name &&
+                                                  subCategory.name}
+                                              </a>)
+                                            }
+                                          </li>
+                                        </ul>
+                                      );
+                                    })
+                                }
+                              </span>  
                             </li>
-                          ))}
+                          )})}
                           <li>
                             <Link
                               to={navItem.article.path}

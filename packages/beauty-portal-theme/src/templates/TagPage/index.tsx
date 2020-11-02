@@ -1,16 +1,15 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import BlockContent from '@sanity/block-content-to-react';
 import SEO from '../../components/Seo';
 import Layout from '../../components/Layout';
-import LandingSectionRenderer from '../../components/LandingSectionRenderer';
 import PageSchema from '../../components/PageSchema';
 import OGTags from '../../components/OGTags';
 import Breadcrumb from '../../components/Breadcrumb';
-import { blockTypeDefaultSerializers } from '../../helpers/sanity';
 import Search from '../../search'
 import './styles.scss';
-import SiteMap from '../../components/SiteMap';
+import Tags from '../../components/Tags';
+import SanityArticleSlider from '../../components/SanityArticleSlider';
+
 
 const searchIndices = [
   { name: `howtoArticle`, title: `howtoArticle`, hitComp: `Hit` },
@@ -52,11 +51,20 @@ const TagPage = (props: TagpageProps) => {
 export const TagPageComponent = (props: { page: any }) => {
   const { slug } = props;
   const tagData = props.data.tags.edges[0].node;
+  const {
+    data: {
+      galleryArticles: { nodes: galleryNodes },
+      featureArticles: { nodes: featureNodes },
+      howToArticles: { nodes: howToNodes },
+      remainingTags
+    }
+  } = props;
+  const relatedArticles = [...galleryNodes, ...featureNodes, ...howToNodes];
   return (
-    <>
+    <section className="tag-container">
       <div className="bp-container">
         <div className="tagCategorySection">
-          <div className="wrap">
+          <div className="wrap"> 
             <h1>{tagData.title || tagData.name}</h1>
             {
               tagData.description && (
@@ -68,20 +76,29 @@ export const TagPageComponent = (props: { page: any }) => {
               )
             }
           </div>
+        {relatedArticles.length > 0 && (
+          <SanityArticleSlider
+            name="articles"
+            slides={relatedArticles}
+            headline="Our Tips & Advice"
+            slideType={{ name: 'editor' }}
+          />
+        )}
         </div>
       </div>
-      <Search
+       <Search
         indices={searchIndices}
         slug={slug}
+        hideSearchFilter={true}
       />
-      {/* {page.landingSections.map((section, index) => (
-        <LandingSectionRenderer
-          key={section.id}
-          section={section}
-          preferPerformance={index <= 1}
-        />
-      ))} */}
-    </>
+      {
+        (remainingTags.nodes && remainingTags.nodes.length) ? (
+          <div className="bp-container">
+            <Tags title="Find something else" data={remainingTags.nodes} />
+          </div>
+        ) : (<></>)
+      }
+    </section>
   );
 };
 
@@ -96,8 +113,52 @@ export const query = graphql`query MyQuery($title: String, $categoryName: String
           name
         }
         description
+        title
       }
     }
+  }
+  remainingTags: allSanityTag(filter: {name: {ne: $title}, tagCategory: {name: {eq: $categoryName}}}) {
+    nodes {
+      id
+      tagCategory {
+        id
+        name
+      }
+      name
+    }
+  }
+  galleryArticles: allSanityGalleryArticle(filter: {tags: {elemMatch: {name: {eq: $title}}}}, limit: 10, sort: {fields: _createdAt, order: DESC}) {
+    nodes{
+      ...GalleryFieldsTile
+    }
+  }
+  howToArticles: allSanityHowToArticle(filter: {tags: {elemMatch: {name: {eq: $title}}}}, limit: 10, sort: {fields: _createdAt, order: DESC}) {
+    nodes{
+      ...HowToFieldsTile
+    }
+  }
+  featureArticles: allSanityFeatureArticle(filter: {tags: {elemMatch: {name: {eq: $title}}}}, limit: 10, sort: {fields: _createdAt, order: DESC}) {
+    nodes {
+      ...FeatureFieldsTile
+    }
+  }
+  brandInfo: sanityBrandInfo {
+    pinteresturl
+    twitterurl
+    youtubeurl
+    facebookurl
+    instaurl
+  }
+  genericLabels: sanityGlobalLabels {
+    play
+  }
+  sectionTitles: sanityHowToTemplate {
+    name
+    nextRead
+    productName
+    relatedArticlesName
+    relatedTopicsName
+    toolName
   }
 }
 `;
