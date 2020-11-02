@@ -306,7 +306,7 @@ const Slider: FunctionComponent<SliderInterface> = ({
   return (
     <>
       <div
-        className={classNames('bp-slider', type === 'hero' ? 'pbx10' : null)}
+        className={classNames('bp-slider')}
         ref={ref}
         data-inview={inView}
       >
@@ -316,7 +316,9 @@ const Slider: FunctionComponent<SliderInterface> = ({
           onClick={swiperNext}
           disabled={isLastSlide}
         >
-          {type === 'author' ? <NextWhite /> : <Next />}
+          <span>
+            {type === 'author' ? <NextWhite /> : <Next />}
+          </span>
           <span className="srOnly">Next</span>
         </button>
         <Swiper
@@ -349,7 +351,9 @@ const Slider: FunctionComponent<SliderInterface> = ({
           onClick={swiperPrev}
           disabled={isFirstSlide}
         >
-          {type === 'author' ? <NextWhite /> : <Next />}
+          <span>
+            {type === 'author' ? <NextWhite /> : <Next />}
+          </span>
           <span className="srOnly">Prev</span>
         </button>
       </div>

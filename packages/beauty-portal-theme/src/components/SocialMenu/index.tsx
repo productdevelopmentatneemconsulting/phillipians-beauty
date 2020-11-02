@@ -26,7 +26,7 @@ const SocialMenu: FunctionComponent<SocialMenuInterface> = ({
       return (
         <li key={value}>
           <a href={value} target="_blank" rel="noopener noreferrer">
-            <Component />
+            <span className='social-icon'><Component /></span>
             <span className="srOnly">key</span>
           </a>
         </li>

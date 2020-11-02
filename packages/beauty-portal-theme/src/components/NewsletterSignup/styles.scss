@@ -72,16 +72,17 @@
     width: 160px;
     height: 50px;
     cursor: pointer;
-    background-color: var(--primary-color);
-    border: 1px solid var(--primary-color);
+    background-color: #fff;
+    border: 2px solid #000;
     color: black;
     position: relative;
     transition: all .3s ease-out;
+    border-radius: 25px;
     margin-top: 24px;
 
     &:hover {
-      border-color: black;
-      background-color: black;
+      border-color: var(--primary-color);
+      background-color:var(--primary-color);
       color: white;
     }
   }

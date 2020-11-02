@@ -17,7 +17,7 @@
     font-weight: 600;
     line-height: 1;
     margin-top: -5px;
-    color: #fed760;
+    color:var(--yellow-color);
 
     @media (min-width: 768px) {
       font-size: 6.25rem;
@@ -44,7 +44,7 @@
       font-weight: 600;
       line-height: 1;
       margin-top: -5px;
-      color: #fed760;
+      color: var(--yellow-color);
 
       @media (min-width: 768px) {
         font-size: 6.25rem;
