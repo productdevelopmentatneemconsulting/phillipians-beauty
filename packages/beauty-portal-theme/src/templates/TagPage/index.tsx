@@ -92,11 +92,11 @@ export const TagPageComponent = (props: { page: any }) => {
         hideSearchFilter={true}
       />
       {
-        remainingTags.nodes && remainingTags.nodes.length && (
+        (remainingTags.nodes && remainingTags.nodes.length) ? (
           <div className="bp-container">
             <Tags title="Find something else" data={remainingTags.nodes} />
           </div>
-        )
+        ) : (<></>)
       }
     </section>
   );
@@ -113,6 +113,7 @@ export const query = graphql`query MyQuery($title: String, $categoryName: String
           name
         }
         description
+        title
       }
     }
   }
