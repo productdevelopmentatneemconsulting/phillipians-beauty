@@ -132,7 +132,17 @@
         }
 
         svg {
-          fill: black;
+          fill: #fff;
+          height: 25px;
+        }
+
+        .social-icon {
+          transition: all ease-in-out .3s;
+          background: black;
+          height: 30px;
+          width: 30px;
+          padding: 12px 6px;
+          border-radius: 50%;
         }
       }
     }
@@ -141,8 +151,8 @@
       fill: white;
     }
 
-    a:hover svg {
-      fill: var(--primary-color, #ff5c85);
+    a:hover .social-icon {
+      background-color: var(--primary-color);
     }
 
     @media (min-width: 768px) {
@@ -157,42 +167,24 @@
   &_button {
     font-size: 0.875rem;
     font-weight: 700;
-    background-color: var(--primary-color, #ff5c85);
+    border: 2px solid #000;
     color: black;
-    padding: 10px 16px;
-
     display: block;
     position: relative;
     text-align: center;
-    transform: perspective(1px) translateZ(0);
-
-    &::before {
-      content: '';
-      position: absolute;
-      z-index: -1;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: black;
-      transform: scaleX(0);
-      transform-origin: 0 50%;
-      transition-property: transform;
-      transition-duration: 0.3s;
-      transition-timing-function: ease-out;
-    }
+    transition: all ease-in-out .3s;
+    border-radius: 25px;
+    padding: 6px;
 
     &:hover {
-      color: white;
-
-      &::before {
-        transform: scaleX(1);
-      }
+      background-color:var(--primary-color);
+      color: #fff;
+      border-color: var(--primary-color);
     }
 
     @media (min-width: 768px) {
       font-size: 1.125rem;
-      padding: 14px 20px;
+      padding: 8px 20px;
     }
   }
 }

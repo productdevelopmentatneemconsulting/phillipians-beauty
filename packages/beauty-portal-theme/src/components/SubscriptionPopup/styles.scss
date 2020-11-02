@@ -42,13 +42,13 @@
       flex-direction: column;
       width: 100%;
       pointer-events: auto;
-      background-color: #2c5270;
+      background-color: var(--lightBlue--color, #77BEE9);
       border: 0;
       border-radius: 0;
 
       @media (min-width: 899px) {
         width: 500px;
-        border: 1.25rem solid #2c5270;
+        border: 1.25rem solid #77BEE9;
         border-top-width: 1rem;
       }
       .modal-header {
@@ -57,7 +57,7 @@
         align-items: flex-start;
         justify-content: space-between;
         padding: 1.25rem;
-        background-color: #2c5270;
+        background-color: var(--lightBlue--color, #77BEE9);
         border: 0;
         border-radius: 0;
       }

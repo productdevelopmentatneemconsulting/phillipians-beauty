@@ -100,7 +100,7 @@
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
-    border-top: 0.3125rem solid #b8f0c0;
+    border-top: 0.3125rem solid #F66628;
     padding: 1rem !important;
   }
 
@@ -143,8 +143,8 @@
   .menu-bar > li > [aria-haspopup='true']:focus,
   .menu-bar > li:focus-within > [aria-haspopup='true'],
   .menu-bar > li:hover > a {
-    background: var(--secondary-color);
-    color: var(--black-color, black);
+    background: var(--primary-color);
+    color: #fff;
   }
 
   .menu-bar > li > [aria-haspopup='true']:focus:after,
